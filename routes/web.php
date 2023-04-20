@@ -43,11 +43,8 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
         // Users
         Route::resource('users', 'UserController')->names('users');
 
-        // Students
-        Route::resource('students', 'StudentController')->names('students');
-
-        // Teachers
-        Route::resource('teachers', 'TeacherController')->names('teachers');
+        // Sections
+        Route::resource('sections', 'SectionController')->names('sections');
 
         // Contacts
         Route::resource('contacts', 'ContactController')->names('contacts');

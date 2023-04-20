@@ -1,18 +1,12 @@
 $(document).ready(function () {
-    $("#createServiceForm").validate({
+    $("#createSectionForm").validate({
         // initialize the plugin
 
         rules: {
-            title_ar: {
+            name_ar: {
                 required: true,
             },
-            title_en: {
-                required: true,
-            },
-            desc_ar: {
-                required: true,
-            },
-            desc_en: {
+            name_en: {
                 required: true,
             },
             image: {
@@ -28,20 +22,14 @@ $(document).ready(function () {
         },
     });
 
-    $("#updateServiceForm").validate({
+    $("#updateSectionForm").validate({
         // initialize the plugin
 
         rules: {
-            title_ar: {
+            name_ar: {
                 required: true,
             },
-            title_en: {
-                required: true,
-            },
-            desc_ar: {
-                required: true,
-            },
-            desc_en: {
+            name_en: {
                 required: true,
             },
             // image: {

@@ -25,6 +25,15 @@
                 <span>المستخدمين</span></a>
         </li> --}}
 
+        <!-- Nav Item - Sections -->
+        <li
+            class="nav-item {{ areActiveRoutes(['dashboard.sections.index', 'dashboard.sections.create', 'dashboard.sections.edit']) }}">
+            <a class="nav-link" href="{{ route('dashboard.sections.index') }}">
+                <i class="fa-solid fa-cubes-stacked"></i>
+                <span>الأقسام الرئيسية</span>
+            </a>
+        </li>
+
         <!-- Nav Item - Contacts -->
         <li
             class="nav-item {{ areActiveRoutes(['dashboard.contacts.index', 'dashboard.contacts.create', 'dashboard.contacts.edit']) }}">
@@ -34,8 +43,7 @@
         </li>
 
         <!-- Nav Item - Mail Lists -->
-        <li
-            class="nav-item {{ isActiveRoute('dashboard.mail.index') }}">
+        <li class="nav-item {{ isActiveRoute('dashboard.mail.index') }}">
             <a class="nav-link" href="{{ route('dashboard.mail.index') }}">
                 <i class="fa-solid fa-envelope"></i>
                 <span>القائمة البريدية</span></a>

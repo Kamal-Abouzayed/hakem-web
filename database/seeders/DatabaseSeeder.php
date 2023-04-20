@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ContactTableSeeder::class);
         $this->call(MailListSeeder::class);
         $this->call(SettingTableSeeder::class);
+        $this->call(SectionTableSeeder::class);
     }
 }

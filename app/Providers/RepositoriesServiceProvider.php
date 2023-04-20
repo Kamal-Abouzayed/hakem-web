@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+        use App\Repositories\Sql\SectionRepository;
+        use App\Repositories\Contract\SectionRepositoryInterface;
+
         use App\Repositories\Sql\UserRepository;
         use App\Repositories\Contract\UserRepositoryInterface;
 
@@ -38,6 +41,8 @@ class RepositoriesServiceProvider extends ServiceProvider
 {
 
     public function register(){
+
+        $this->app->bind(SectionRepositoryInterface::class, SectionRepository::class);
 
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
 
