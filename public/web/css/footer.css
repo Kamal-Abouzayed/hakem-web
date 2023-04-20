@@ -1,0 +1,231 @@
+footer {
+    background: #4C4D4F;
+    margin-bottom: 0 !important;
+
+}
+
+.copyright .sm-border {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+footer:after {
+    content: "";
+    position: absolute;
+    background: #fff;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    z-index: -1;
+}
+
+.right-footer-grid {
+    background: #4C4D4F;
+}
+
+.left-footer-grid {
+    background: #fff;
+    padding: 40px 70px;
+    line-height: 33px;
+    display: flex;
+    align-items: center;
+}
+
+.left-footer-grid img {
+    margin-bottom: 30px;
+}
+
+footer .main-menu-links {
+    margin: 50px auto 40px;
+}
+
+footer .main-menu-links a {
+    color: #fff;
+    font-size: 14px;
+}
+
+footer .main-menu-links li:not(:last-of-type):before {
+    content: "";
+    height: 100%;
+    width: 1px;
+    background: #fff;
+    left: -20px;
+    position: absolute;
+}
+
+footer .main-menu-links li {
+    position: relative;
+}
+
+footer .main-menu-links a span {
+    margin-bottom: 10px;
+}
+
+.footer-list a {
+    color: #fff;
+    font-size: 14px;
+    position: relative;
+    padding: 0 15px;
+}
+
+.footer-list a:before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 2px);
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    background: #fff;
+}
+
+.footer-list a:hover:before {
+    transform: scale(2);
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    background: var(--secondarycolor);
+}
+
+.footer-list a:hover {
+    color: var(--secondarycolor);
+}
+
+footer .main-menu-links li:hover i {
+    animation: swing 1s infinite both;
+    -webkit-animation: swing 1s infinite both;
+    color: var(--maincolor);
+
+}
+
+footer .main-menu-links li:hover a {
+    color: var(--secondarycolor);
+}
+
+.socialmedia {
+    margin: 40px auto;
+}
+
+.socialmedia a {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    color: #fff;
+    line-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 10px;
+    font-size: 20px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    border: 1px solid #fff;
+    transition-duration: .3s;
+
+}
+
+.socialmedia a:hover {
+    border-color: var(--maincolor);
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
+
+
+.socialmedia i {
+    position: relative;
+    z-index: 1;
+    transition-duration: .7s;
+
+}
+
+.socialmedia a:hover i {
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    color: #fff;
+    text-shadow: 0 0 8px #000;
+    opacity: .8;
+}
+
+.socialmedia a:hover .wave-btn__waves {
+    top: 20%;
+}
+
+.wave-btn__waves {
+    width: 100%;
+}
+
+.wave-btn__waves {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 40px;
+    background-color: var(--maincolor);
+    transition-duration: .7s;
+}
+
+.wave-btn__waves:after,
+.wave-btn__waves:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 250%;
+    height: 250%;
+    transform: translate3d(-50%, -96%, 0) rotate(0deg) scale(1);
+    -webkit-transform: translate3d(-50%, -96%, 0) rotate(0deg) scale(1);
+    -moz-transform: translate3d(-50%, -96%, 0) rotate(0deg) scale(1);
+    -ms-transform: translate3d(-50%, -96%, 0) rotate(0deg) scale(1);
+    -o-transform: translate3d(-50%, -96%, 0) rotate(0deg) scale(1);
+}
+
+.socialmedia a:hover .wave-btn__waves:before {
+    background-color: var(--secondarycolor);
+    border-radius: 48%;
+    animation: waves 5s infinite linear;
+    -webkit-animation: waves 5s infinite linear;
+}
+
+.socialmedia a:hover .wave-btn__waves:after {
+    background-color: var(--secondarycolor);
+    border-radius: 44%;
+    animation: waves 10s infinite linear;
+    -webkit-animation: waves 10s infinite linear;
+}
+
+.copyright {
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    opacity: 1 !important;
+
+}
+
+.copyright .has_border_bottom {
+    position: static;
+}
+
+.copyright-text {
+    padding: 20px 0;
+}
+
+.copyright .sm-border:after {
+    width: 150%;
+}

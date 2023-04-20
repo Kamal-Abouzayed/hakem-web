@@ -1,0 +1,148 @@
+body {
+    direction: rtl;
+    text-align: right;
+}
+
+.text-right-dir,
+.main-slider .slick-dots {
+    text-align: right;
+}
+
+.text-left-dir {
+    text-align: left;
+}
+
+
+.about-img::before,
+.right-about-vision-grid ul li:before,
+.footer-list a:before,
+.about-block:hover::after {
+    right: 0;
+}
+
+.map-grid,
+.map-grid:before,
+.map-grid:after {
+    left: 0;
+}
+
+
+[dir='rtl'] .slick-prev:before {
+    content: '‹';
+}
+
+[dir='rtl'] .slick-next:before {
+    content: '›';
+}
+
+
+
+.slider-caption {
+    right: 40px;
+}
+
+.first-company{
+    right: 57px;
+
+}
+
+
+
+footer .main-menu-links li:not(:last-of-type) {
+    margin-left: 40px;
+}
+
+footer .main-menu-links li:not(:last-of-type):before {
+    left: -20px;
+}
+
+
+.responsive-menu i {
+    margin-left: 10px;
+}
+
+.about-block::after {
+    right: -100%;
+}
+
+.right-about-vision-grid ul li {
+    padding-right: 25px;
+}
+
+.map-grid:before,
+.map-grid:after {
+    right: auto;
+}
+
+.product-social ul {
+    margin-right: 15px;
+}
+
+@media only screen and (min-width:992px) {
+    .about-desc {
+        padding-left: 5%;
+    }
+
+    .single-product-img-grid {
+        max-width: calc(50% - 15px);
+        margin-right: 15px;
+    }
+
+    .single-product-details {
+        padding-right: 20px;
+    }
+}
+
+@media only screen and (min-width:1200px) {
+    .vision-row:nth-of-type(even) .right-about-vision-grid {
+        margin-left: 15px;
+    }
+
+
+    .vision-row:nth-of-type(odd) .right-about-vision-grid {
+        margin-right: 15px;
+    }
+}
+
+
+@media only screen and (max-width:1200px) {
+
+    footer .main-menu-links li {
+        text-align: right;
+    }
+
+}
+
+@media only screen and (max-width:992px) {
+
+
+    footer .main-menu-links {
+        text-align: right;
+    }
+
+    footer .main-menu-links li:not(:last-of-type) {
+        margin-left: 0;
+    }
+
+
+    .footer-lists-grid .list-inline li {
+        text-align: right;
+    }
+}
+
+
+@media only screen and (max-width:768px) {
+    .main-slider .first-company {
+        left: 20px;
+        right: auto;
+    }
+
+}
+
+@media only screen and (max-width:576px) {
+
+    .slider-caption,
+    .first-company {
+        right: 10px;
+    }
+}
