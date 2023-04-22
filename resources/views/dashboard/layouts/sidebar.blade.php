@@ -34,6 +34,15 @@
             </a>
         </li>
 
+        <!-- Nav Item - Sections -->
+        <li
+            class="nav-item {{ areActiveRoutes(['dashboard.articles.index', 'dashboard.articles.create', 'dashboard.articles.edit']) }}">
+            <a class="nav-link" href="{{ route('dashboard.articles.index') }}">
+                <i class="fa-solid fa-newspaper"></i>
+                <span>المقالات</span>
+            </a>
+        </li>
+
         <!-- Nav Item - Contacts -->
         <li
             class="nav-item {{ areActiveRoutes(['dashboard.contacts.index', 'dashboard.contacts.create', 'dashboard.contacts.edit']) }}">

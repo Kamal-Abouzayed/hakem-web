@@ -20,3 +20,5 @@
 <link href="{{ url('admin') }}/css/admin-rtl.css" rel="stylesheet">
 
 <link href="{{ url('admin') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+@stack('css')

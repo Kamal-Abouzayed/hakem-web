@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+        use App\Repositories\Sql\ArticleRepository;
+        use App\Repositories\Contract\ArticleRepositoryInterface;
+
         use App\Repositories\Sql\SectionRepository;
         use App\Repositories\Contract\SectionRepositoryInterface;
 
@@ -41,6 +44,8 @@ class RepositoriesServiceProvider extends ServiceProvider
 {
 
     public function register(){
+
+        $this->app->bind(ArticleRepositoryInterface::class, ArticleRepository::class);
 
         $this->app->bind(SectionRepositoryInterface::class, SectionRepository::class);
 

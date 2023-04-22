@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,9 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
 
     Route::middleware(['auth', 'role:admin'])->group(function () {
 
+        Route::get('ckeditor', 'CkeditorController@index');
+        Route::post('ckeditor/upload', 'CkeditorController@upload')->name('ckeditor.upload');
+
         Route::get('/', 'HomeController@index')->name('home');
 
         // Users
@@ -45,6 +49,9 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
 
         // Sections
         Route::resource('sections', 'SectionController')->names('sections');
+
+        // Articles
+        Route::resource('articles', 'ArticleController')->names('articles');
 
         // Contacts
         Route::resource('contacts', 'ContactController')->names('contacts');
