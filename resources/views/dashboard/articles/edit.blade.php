@@ -14,7 +14,8 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="formFile" class="form-label">الصورة</label>
-                        <input class="form-control image" type="file" id="formFile" name="img">
+                        <input class="form-control image" type="file" id="formFile" name="img"
+                            accept="image/png, image/jpeg">
                         @error('img')
                             <span class="alert alert-danger">
                                 <small class="errorTxt">{{ $message }}</small>

@@ -23,7 +23,7 @@
         id="createServiceForm">
         @csrf
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">إضافة مقال جديد</h6>
+            <h6 class="m-0 font-weight-bold text-primary">{{ $pageTitle }}</h6>
         </div>
         <div class="card-body">
 
@@ -31,7 +31,8 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="formFile" class="form-label">الصورة</label>
-                        <input class="form-control image" type="file" id="formFile" name="img" required>
+                        <input class="form-control image" type="file" id="formFile" name="img"
+                            accept="image/png, image/jpeg" required>
                         @error('img')
                             <span class="alert alert-danger">
                                 <small class="errorTxt">{{ $message }}</small>

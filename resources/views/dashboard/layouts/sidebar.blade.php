@@ -34,12 +34,21 @@
             </a>
         </li>
 
-        <!-- Nav Item - Sections -->
+        <!-- Nav Item - Articles -->
         <li
             class="nav-item {{ areActiveRoutes(['dashboard.articles.index', 'dashboard.articles.create', 'dashboard.articles.edit']) }}">
             <a class="nav-link" href="{{ route('dashboard.articles.index') }}">
                 <i class="fa-solid fa-newspaper"></i>
                 <span>المقالات</span>
+            </a>
+        </li>
+
+        <!-- Nav Item - Ads -->
+        <li
+            class="nav-item {{ areActiveRoutes(['dashboard.ads.index', 'dashboard.ads.create', 'dashboard.ads.edit']) }}">
+            <a class="nav-link" href="{{ route('dashboard.ads.index') }}">
+                <i class="fa-solid fa-rectangle-ad"></i>
+                <span>الإعلانات</span>
             </a>
         </li>
 

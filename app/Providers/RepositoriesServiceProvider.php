@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+        use App\Repositories\Sql\AdRepository;
+        use App\Repositories\Contract\AdRepositoryInterface;
+
         use App\Repositories\Sql\ArticleRepository;
         use App\Repositories\Contract\ArticleRepositoryInterface;
 
@@ -44,6 +47,8 @@ class RepositoriesServiceProvider extends ServiceProvider
 {
 
     public function register(){
+
+        $this->app->bind(AdRepositoryInterface::class, AdRepository::class);
 
         $this->app->bind(ArticleRepositoryInterface::class, ArticleRepository::class);
 
