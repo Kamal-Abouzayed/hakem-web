@@ -8,7 +8,7 @@ use App\Repositories\Contract\SectionRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class CategoryController extends Controller
+class SubCategoryController extends Controller
 {
     protected $sectionRepo;
     protected $catRepo;
@@ -27,13 +27,13 @@ class CategoryController extends Controller
     public function index($sectionSlug)
     {
 
-        $pageTitle = 'الأقسام الرئيسية';
+        $pageTitle = 'الأقسام الفرعية';
 
         $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
 
-        $categories = $this->catRepo->getWhere([['section_id', $section->id], ['parent_id', null]]);
+        $categories = $this->catRepo->getWhere([['section_id', $section->id], ['parent_id', '!=', null]]);
 
-        return view('dashboard.categories.index', compact('pageTitle', 'categories'));
+        return view('dashboard.sub-categories.index', compact('pageTitle', 'categories'));
     }
 
     /**
@@ -45,7 +45,11 @@ class CategoryController extends Controller
     {
         $pageTitle = 'إضافة قسم جديد';
 
-        return view('dashboard.categories.create', compact('pageTitle'));
+        $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
+
+        $categories = $this->catRepo->getWhere([['section_id', $section->id], ['parent_id', null]]);
+
+        return view('dashboard.sub-categories.create', compact('pageTitle', 'categories'));
     }
 
     /**
@@ -58,15 +62,21 @@ class CategoryController extends Controller
     {
         $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
 
+        $parent = $this->catRepo->findOne($request->parent_id);
+
         $data = $request->except('_token', 'img');
+
+        $data['section_id'] = $section->id;
+
+        // dd($data);
 
         if ($request->hasFile('img')) {
             $data['img'] = $request->file('img')->store('sections');
         }
 
-        $section->categories()->create($data);
+        $parent->children()->create($data);
 
-        return redirect()->route('dashboard.categories.index', $sectionSlug)->with('success', 'تمت الإضافة بنجاح');
+        return redirect()->route('dashboard.sub-categories.index', $sectionSlug)->with('success', 'تمت الإضافة بنجاح');
     }
 
     /**
@@ -92,9 +102,11 @@ class CategoryController extends Controller
 
         $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
 
-        $category = $this->catRepo->findwhere([['section_id', $section->id], ['slug', $slug]]);
+        $categories = $this->catRepo->getWhere([['section_id', $section->id], ['parent_id', null]]);
 
-        return view('dashboard.categories.edit', compact('pageTitle', 'category'));
+        $category = $this->catRepo->findwhere([['slug', $slug]]);
+
+        return view('dashboard.sub-categories.edit', compact('pageTitle', 'categories', 'category'));
     }
 
     /**
@@ -106,10 +118,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $sectionSlug, $slug)
     {
+        // $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
 
-        $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
-
-        $category = $this->catRepo->findwhere([['section_id', $section->id], ['slug', $slug]]);
+        $category = $this->catRepo->findwhere([['slug', $slug]]);
 
         $data = $request->except('_token', '_method', 'img');
 
@@ -124,7 +135,7 @@ class CategoryController extends Controller
 
         $category->update($data);
 
-        return redirect()->route('dashboard.categories.index', $sectionSlug)->with('success', 'تم التعديل بنجاح');
+        return redirect()->route('dashboard.sub-categories.index', $sectionSlug)->with('success', 'تم التعديل بنجاح');
     }
 
     /**
