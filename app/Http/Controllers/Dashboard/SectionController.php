@@ -48,12 +48,12 @@ class SectionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $req)
+    public function store(Request $request)
     {
-        $data = $req->except('_token', 'img');
+        $data = $request->except('_token', 'img');
 
-        if ($req->hasFile('img')) {
-            $data['img'] = $req->file('img')->store('sections');
+        if ($request->hasFile('img')) {
+            $data['img'] = $request->file('img')->store('sections');
         }
 
         $this->sectionRepo->create($data);
@@ -94,18 +94,18 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $req, $id)
+    public function update(Request $request, $id)
     {
 
         $section = $this->sectionRepo->findOne($id);
 
-        $data = $req->except('_token', '_method', 'img');
+        $data = $request->except('_token', '_method', 'img');
 
-        if ($req->hasFile('img')) {
+        if ($request->hasFile('img')) {
 
             Storage::delete($section->img);
 
-            $data['img'] = $req->file('img')->store('sections');
+            $data['img'] = $request->file('img')->store('sections');
         } else {
             $data['img'] = $section->img;
         }

@@ -10,7 +10,7 @@ class HomeController extends Controller
     public function index()
     {
         $pageTitle = 'لوحة التحكم';
-        
+
         return view('dashboard.home', compact('pageTitle'));
     }
 }

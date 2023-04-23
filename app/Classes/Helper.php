@@ -26,41 +26,39 @@ use Illuminate\Support\Facades\App;
 |
 */
 
-function isActiveRoute($route, $output = "active"){
+function isActiveRoute($route, $output = "active")
+{
     if (\Route::currentRouteName() == $route) return $output;
 }
 
-function areActiveRoutes(Array $routes, $output = "active show-sub"){
+function areActiveRoutes(array $routes, $output = "active show-sub")
+{
 
-    foreach ($routes as $route){
+    foreach ($routes as $route) {
         if (\Route::currentRouteName() == $route) return $output;
     }
 }
 
-function areActiveMainRoutes(Array $routes, $output = "active"){
+function areActiveMainRoutes(array $routes, $output = "active")
+{
 
-    foreach ($routes as $route){
+    foreach ($routes as $route) {
         if (\Route::currentRouteName() == $route) return $output;
     }
 }
 
-function getSetting($key , $lang = null)
+function getSetting($key, $lang = null)
 {
 
     $sittingrepository =  App::make('App\Repositories\Contract\SettingRepositoryInterface');
 
-    if($lang == null)
-    {
+    if ($lang == null) {
 
-        $setting = $sittingrepository->getWhere([['key' , $key]])->first()['value'];
+        $setting = $sittingrepository->getWhere([['key', $key]])->first()['value'];
+    } else {
 
-    } else
-    {
-
-        $setting = $sittingrepository->getWhere([['key' , $key.'_'.$lang]])->first()['value'];
-
+        $setting = $sittingrepository->getWhere([['key', $key . '_' . $lang]])->first()['value'];
     }
 
     return $setting;
-
 }

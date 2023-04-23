@@ -4,15 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Pharaonic\Laravel\Sluggable\Sluggable;
 
 class Section extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     protected $fillable = ['name_ar', 'name_en', 'img'];
+
+    protected $sluggable = 'name_en';
 
     public function getNameAttribute()
     {
         return $this->{'name_' . app()->getLocale()};
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
     }
 }

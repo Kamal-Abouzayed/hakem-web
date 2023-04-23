@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Pharaonic\Laravel\Sluggable\Sluggable;
 
-class Article extends Model
+class Category extends Model
 {
     use HasFactory, Sluggable;
 
-    protected $fillable = ['name_ar', 'name_en', 'img', 'desc_ar', 'desc_en', 'section_id'];
+    protected $fillable = ['name_ar', 'name_en', 'desc_ar', 'desc_en', 'parent_id', 'img'];
 
     protected $sluggable = 'name_en';
 
@@ -24,8 +24,13 @@ class Article extends Model
         return $this->{'desc_' . app()->getLocale()};
     }
 
-    public function section()
+    public function parent()
     {
-        return $this->belongsTo(Section::class);
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
     }
 }

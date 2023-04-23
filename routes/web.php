@@ -56,6 +56,9 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
         // Ads
         Route::resource('ads', 'AdController')->names('ads');
 
+        // categories
+        Route::resource('section/{sectionSlug}/categories', 'CategoryController')->names('categories');
+
         // Contacts
         Route::resource('contacts', 'ContactController')->names('contacts');
         Route::get('contacts/reply/{id}', 'ContactController@reply')->name('contacts.reply');

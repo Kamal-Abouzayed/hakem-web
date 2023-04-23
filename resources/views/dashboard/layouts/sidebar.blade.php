@@ -34,6 +34,32 @@
             </a>
         </li>
 
+        @foreach ($sections as $section)
+            <li
+                class="nav-item {{ areActiveRoutes(['dashboard.categories.index', 'dashboard.categories.create', 'dashboard.categories.edit']) && request()->sectionSlug == $section->slug ? 'active' : '' }}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse"
+                    data-target="#collapse-{{ $section->slug }}" aria-expanded="true"
+                    aria-controls="collapse-{{ $section->slug }}">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>{{ $section->name }}</span>
+                </a>
+                <div id="collapse-{{ $section->slug }}"
+                    class="{{ request()->sectionSlug == $section->slug ? 'collapse show' : 'collapse' }}"
+                    aria-labelledby="heading-{{ $section->slug }}" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">الأقسام:</h6>
+                        <a class="collapse-item {{ areActiveRoutes(['dashboard.categories.index', 'dashboard.categories.create', 'dashboard.categories.edit']) && request()->sectionSlug == $section->slug ? 'active' : '' }}"
+                            href="{{ route('dashboard.categories.index', $section->slug) }}">الأقسام
+                            الرئيسية</a>
+                        <a class="collapse-item" href="register.html">الأقسام الفرعية</a>
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">المقالات:</h6>
+                        <a class="collapse-item" href="404.html">المفالات</a>
+                    </div>
+                </div>
+            </li>
+        @endforeach
+
         <!-- Nav Item - Articles -->
         <li
             class="nav-item {{ areActiveRoutes(['dashboard.articles.index', 'dashboard.articles.create', 'dashboard.articles.edit']) }}">
