@@ -50,9 +50,6 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
         // Sections
         Route::resource('sections', 'SectionController')->names('sections');
 
-        // Articles
-        Route::resource('articles', 'ArticleController')->names('articles');
-
         // Ads
         Route::resource('ads', 'AdController')->names('ads');
 
@@ -61,6 +58,9 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
 
         // categories
         Route::resource('section/{sectionSlug}/sub-categories', 'SubCategoryController')->names('sub-categories');
+
+        // Articles
+        Route::resource('section/{sectionSlug}/articles', 'ArticleController')->names('articles');
 
         // Contacts
         Route::resource('contacts', 'ContactController')->names('contacts');

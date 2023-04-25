@@ -71,7 +71,7 @@ class SubCategoryController extends Controller
         // dd($data);
 
         if ($request->hasFile('img')) {
-            $data['img'] = $request->file('img')->store('sections');
+            $data['img'] = $request->file('img')->store('sub-categories');
         }
 
         $parent->children()->create($data);
@@ -128,7 +128,7 @@ class SubCategoryController extends Controller
 
             Storage::delete($category->img);
 
-            $data['img'] = $request->file('img')->store('categories');
+            $data['img'] = $request->file('img')->store('sub-categories');
         } else {
             $data['img'] = $category->img;
         }

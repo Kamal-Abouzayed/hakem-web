@@ -9,18 +9,9 @@
             }
         </style>
     @endpush --}}
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
 
-    <form class="card shadow mb-4" action="{{ route('dashboard.articles.store') }}" method="POST" enctype="multipart/form-data"
-        id="createServiceForm">
+    <form class="card shadow mb-4" action="{{ route('dashboard.articles.store', request()->sectionSlug) }}" method="POST"
+        enctype="multipart/form-data" id="createArticleForm">
         @csrf
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">{{ $pageTitle }}</h6>
@@ -47,17 +38,17 @@
 
             <div class="row">
                 <div class="form-group col-12">
-                    <label for="section_id">القسم</label>
+                    <label for="category_id">القسم</label>
 
-                    <select name="section_id" class="form-control" id="">
+                    <select name="category_id" class="form-control" id="" required>
                         <option value="">اختر</option>
-                        @foreach ($sections as $section)
-                            <option value="{{ $section->id }}" {{ old('section_id') == $section->id ? 'selected' : '' }}>
-                                {{ $section->name }}</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                {{ $category->name . ' - ' . $category->parent->name }}</option>
                         @endforeach
                     </select>
 
-                    @error('section_id')
+                    @error('category_id')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>

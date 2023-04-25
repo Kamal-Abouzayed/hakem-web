@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\ArticleRequest;
 use App\Repositories\Contract\ArticleRepositoryInterface;
+use App\Repositories\Contract\CategoryRepositoryInterface;
 use App\Repositories\Contract\SectionRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -13,11 +14,16 @@ class ArticleController extends Controller
 {
     protected $articleRepo;
     protected $sectionRepo;
+    protected $catRepo;
 
-    public function __construct(ArticleRepositoryInterface $articleRepo, SectionRepositoryInterface $sectionRepo)
-    {
+    public function __construct(
+        ArticleRepositoryInterface $articleRepo,
+        SectionRepositoryInterface $sectionRepo,
+        CategoryRepositoryInterface $catRepo
+    ) {
         $this->articleRepo = $articleRepo;
         $this->sectionRepo = $sectionRepo;
+        $this->catRepo = $catRepo;
     }
 
     /**
@@ -25,11 +31,13 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($sectionSlug)
     {
         $pageTitle = 'المقالات';
 
-        $articles = $this->articleRepo->getAll(['column' => 'id', 'dir' => 'ASC']);
+        $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
+
+        $articles = $this->articleRepo->getWhere([['section_id', $section->id]]);
 
         return view('dashboard.articles.index', compact('pageTitle', 'articles'));
     }
@@ -39,13 +47,15 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($sectionSlug)
     {
         $pageTitle = 'إضافة مقال جديد';
 
-        $sections = $this->sectionRepo->getAll(['column' => 'id', 'dir' => 'ASC']);
+        $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
 
-        return view('dashboard.articles.create', compact('pageTitle', 'sections'));
+        $categories = $this->catRepo->getWhere([['parent_id', '!=', null], ['section_id', $section->id]]);
+
+        return view('dashboard.articles.create', compact('pageTitle', 'categories'));
     }
 
     /**
@@ -54,17 +64,23 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ArticleRequest $request)
+    public function store(ArticleRequest $request, $sectionSlug)
     {
+
         $data = $request->except('_token', 'img');
+
+        $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
+
+        $data['section_id'] = $section->id;
 
         if ($request->hasFile('img')) {
             $data['img'] = $request->file('img')->store('articles');
         }
 
+        // dd($data);
         $this->articleRepo->create($data);
 
-        return redirect()->route('dashboard.articles.index')->with('success', 'تمت الإضافة بنجاح');
+        return redirect()->route('dashboard.articles.index', $sectionSlug)->with('success', 'تمت الإضافة بنجاح');
     }
 
     /**
@@ -84,15 +100,17 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($sectionSlug, $slug)
     {
-        $article = $this->articleRepo->findOne($id);
+        $article = $this->articleRepo->findWhere([['slug', $slug]]);
 
         $pageTitle = 'تعديل المقالات';
 
-        $sections = $this->sectionRepo->getAll(['column' => 'id', 'dir' => 'ASC']);
+        $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
 
-        return view('dashboard.articles.edit', compact('article', 'pageTitle', 'sections'));
+        $categories = $this->catRepo->getWhere([['section_id', $section->id], ['parent_id', '!=', null]]);
+
+        return view('dashboard.articles.edit', compact('article', 'pageTitle', 'categories'));
     }
 
     /**
@@ -102,9 +120,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ArticleRequest $request, $id)
+    public function update(ArticleRequest $request, $sectionSlug, $slug)
     {
-        $article = $this->articleRepo->findOne($id);
+        $article = $this->articleRepo->findWhere([['slug', $slug]]);
 
         $data = $request->except('_token', '_method', 'img');
 
@@ -119,7 +137,7 @@ class ArticleController extends Controller
 
         $article->update($data);
 
-        return redirect()->route('dashboard.articles.index')->with('success', 'تم التعديل بنجاح');
+        return redirect()->route('dashboard.articles.index', $sectionSlug)->with('success', 'تم التعديل بنجاح');
     }
 
     /**
@@ -128,9 +146,12 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($sectionSlug, $slug)
     {
-        $article = $this->articleRepo->findOne($id);
+
+        $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
+
+        $article = $this->articleRepo->findWhere([['section_id', $section->id], ['slug', $slug]]);
 
         if ($article->img) {
             Storage::delete($article->img);

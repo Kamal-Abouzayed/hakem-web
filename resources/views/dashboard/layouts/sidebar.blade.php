@@ -30,7 +30,7 @@
             class="nav-item {{ areActiveRoutes(['dashboard.sections.index', 'dashboard.sections.create', 'dashboard.sections.edit']) }}">
             <a class="nav-link" href="{{ route('dashboard.sections.index') }}">
                 <i class="fa-solid fa-cubes-stacked"></i>
-                <span>الأقسام الرئيسية</span>
+                <span>الصفحات الرئيسية</span>
             </a>
         </li>
 
@@ -55,20 +55,12 @@
                             href="{{ route('dashboard.sub-categories.index', $section->slug) }}">الأقسام الفرعية</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">المقالات:</h6>
-                        <a class="collapse-item" href="404.html">المقالات</a>
+                        <a class="collapse-item {{ areActiveRoutes(['dashboard.articles.index', 'dashboard.articles.create', 'dashboard.articles.edit']) && request()->sectionSlug == $section->slug ? 'active' : '' }}"
+                            href="{{ route('dashboard.articles.index', $section->slug) }}">المقالات</a>
                     </div>
                 </div>
             </li>
         @endforeach
-
-        <!-- Nav Item - Articles -->
-        <li
-            class="nav-item {{ areActiveRoutes(['dashboard.articles.index', 'dashboard.articles.create', 'dashboard.articles.edit']) }}">
-            <a class="nav-link" href="{{ route('dashboard.articles.index') }}">
-                <i class="fa-solid fa-newspaper"></i>
-                <span>المقالات</span>
-            </a>
-        </li>
 
         <!-- Nav Item - Ads -->
         <li

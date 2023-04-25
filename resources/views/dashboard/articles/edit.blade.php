@@ -1,8 +1,9 @@
 @extends('dashboard.layouts.app')
 
 @section('content')
-    <form class="card shadow mb-4" action="{{ route('dashboard.articles.update', $article->id) }}" method="POST"
-        enctype="multipart/form-data" id="updatearticleForm">
+    <form class="card shadow mb-4"
+        action="{{ route('dashboard.articles.update', ['sectionSlug' => request()->sectionSlug, 'article' => $article->slug]) }}"
+        method="POST" enctype="multipart/form-data" id="updateArticleForm">
         @csrf
         @method('PATCH')
         <div class="card-header py-3">
@@ -31,18 +32,18 @@
 
             <div class="row">
                 <div class="form-group col-12">
-                    <label for="section_id">القسم</label>
+                    <label for="category_id">القسم</label>
 
-                    <select name="section_id" class="form-control" id="">
+                    <select name="category_id" class="form-control" id="">
                         <option value="">اختر</option>
-                        @foreach ($sections as $section)
-                            <option value="{{ $section->id }}"
-                                {{ old('section_id', $article->section_id) == $section->id ? 'selected' : '' }}>
-                                {{ $section->name }}</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}"
+                                {{ old('category_id', $article->category_id) == $category->id ? 'selected' : '' }}>
+                                {{ $category->name . ' - ' . $category->parent->name }}</option>
                         @endforeach
                     </select>
 
-                    @error('section_id')
+                    @error('category_id')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>

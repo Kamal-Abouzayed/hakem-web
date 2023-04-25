@@ -27,23 +27,23 @@ class ArticleRequest extends FormRequest
         switch (request()->method()) {
             case 'PATCH':
                 return [
-                    'name_ar'    => 'required|string|max:255',
-                    'name_en'    => 'required|string|max:255',
-                    'desc_ar'    => 'required|string',
-                    'desc_en'    => 'required|string',
-                    'img'        => 'nullable',
-                    'section_id' => 'required',
+                    'name_ar'     => 'required|string|max:255',
+                    'name_en'     => 'required|string|max:255',
+                    'desc_ar'     => 'required|string',
+                    'desc_en'     => 'required|string',
+                    'img'         => 'nullable',
+                    'category_id' => 'required',
                 ];
                 break;
 
             default:
                 return [
-                    'name_ar'    => 'required|string|max:255',
-                    'name_en'    => 'required|string|max:255',
-                    'desc_ar'    => 'required|string',
-                    'desc_en'    => 'required|string',
-                    'img'        => 'required',
-                    'section_id' => 'required',
+                    'name_ar'     => 'required|string|max:255',
+                    'name_en'     => 'required|string|max:255',
+                    'desc_ar'     => 'required|string',
+                    'desc_en'     => 'required|string',
+                    'img'         => 'required',
+                    'category_id' => 'required',
                 ];
                 break;
         }

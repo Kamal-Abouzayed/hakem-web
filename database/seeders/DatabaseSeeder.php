@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MailListSeeder::class);
         $this->call(SettingTableSeeder::class);
         $this->call(SectionTableSeeder::class);
+        $this->call(CategoryTableSeeder::class);
         $this->call(AdTableSeeder::class);
     }
 }

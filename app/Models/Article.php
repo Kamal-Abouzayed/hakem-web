@@ -10,7 +10,7 @@ class Article extends Model
 {
     use HasFactory, Sluggable;
 
-    protected $fillable = ['name_ar', 'name_en', 'img', 'desc_ar', 'desc_en', 'section_id'];
+    protected $fillable = ['name_ar', 'name_en', 'img', 'desc_ar', 'desc_en', 'section_id', 'category_id'];
 
     protected $sluggable = 'name_en';
 
@@ -27,5 +27,10 @@ class Article extends Model
     public function section()
     {
         return $this->belongsTo(Section::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }
