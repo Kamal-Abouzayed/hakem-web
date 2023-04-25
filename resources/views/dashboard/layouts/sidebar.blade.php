@@ -62,6 +62,15 @@
             </li>
         @endforeach
 
+        <!-- Nav Item - BodySystems -->
+        <li
+            class="nav-item {{ areActiveRoutes(['dashboard.body-systems.index', 'dashboard.body-systems.create', 'dashboard.body-systems.edit']) }}">
+            <a class="nav-link" href="{{ route('dashboard.body-systems.index') }}">
+                <i class="fa-solid fa-x-ray"></i>
+                <span>أجهزة جسم الإنسان</span>
+            </a>
+        </li>
+
         <!-- Nav Item - Ads -->
         <li
             class="nav-item {{ areActiveRoutes(['dashboard.ads.index', 'dashboard.ads.create', 'dashboard.ads.edit']) }}">

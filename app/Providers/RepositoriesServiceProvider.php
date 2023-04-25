@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+        use App\Repositories\Sql\BodySystemRepository;
+        use App\Repositories\Contract\BodySystemRepositoryInterface;
+
         use App\Repositories\Sql\CategoryRepository;
         use App\Repositories\Contract\CategoryRepositoryInterface;
 
@@ -50,6 +53,8 @@ class RepositoriesServiceProvider extends ServiceProvider
 {
 
     public function register(){
+
+        $this->app->bind(BodySystemRepositoryInterface::class, BodySystemRepository::class);
 
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
 

@@ -5,7 +5,7 @@
 <meta name="author" content="">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-<title>{{ $pageTitle ? 'دروس خصوصية | ' . $pageTitle : 'دروس خصوصية | لوحة التحكم' }}</title>
+<title>{{ $pageTitle ? 'حكيم ويب | ' . $pageTitle : 'حكيم ويب | لوحة التحكم' }}</title>
 
 <link rel="icon" type="image/x-icon" href="{{ asset('storage/' . getSetting('favicon')) }}">
 
