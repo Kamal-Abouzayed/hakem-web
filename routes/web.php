@@ -65,6 +65,9 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
         // Body Systems
         Route::resource('body-systems', 'BodySystemController')->names('body-systems');
 
+        // Organs
+        Route::resource('organs', 'OrganController')->names('organs');
+
         // Contacts
         Route::resource('contacts', 'ContactController')->names('contacts');
         Route::get('contacts/reply/{id}', 'ContactController@reply')->name('contacts.reply');

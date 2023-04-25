@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+        use App\Repositories\Sql\OrganRepository;
+        use App\Repositories\Contract\OrganRepositoryInterface;
+
         use App\Repositories\Sql\BodySystemRepository;
         use App\Repositories\Contract\BodySystemRepositoryInterface;
 
@@ -53,6 +56,8 @@ class RepositoriesServiceProvider extends ServiceProvider
 {
 
     public function register(){
+
+        $this->app->bind(OrganRepositoryInterface::class, OrganRepository::class);
 
         $this->app->bind(BodySystemRepositoryInterface::class, BodySystemRepository::class);
 

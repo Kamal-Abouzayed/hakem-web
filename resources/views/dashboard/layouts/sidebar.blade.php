@@ -71,6 +71,15 @@
             </a>
         </li>
 
+        <!-- Nav Item - Organ -->
+        <li
+            class="nav-item {{ areActiveRoutes(['dashboard.organs.index', 'dashboard.organs.create', 'dashboard.organs.edit']) }}">
+            <a class="nav-link" href="{{ route('dashboard.organs.index') }}">
+                <i class="fa-solid fa-lungs"></i>
+                <span>أعضاء الجسم</span>
+            </a>
+        </li>
+
         <!-- Nav Item - Ads -->
         <li
             class="nav-item {{ areActiveRoutes(['dashboard.ads.index', 'dashboard.ads.create', 'dashboard.ads.edit']) }}">

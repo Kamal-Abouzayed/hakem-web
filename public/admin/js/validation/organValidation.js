@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#createArticleForm").validate({
+    $("#createOrganForm").validate({
         // initialize the plugin
         rules: {
             name_ar: {
@@ -14,7 +14,7 @@ $(document).ready(function () {
             desc_en: {
                 required: true,
             },
-            category_id: {
+            body_system_id: {
                 required: true,
             },
             img: {
@@ -30,7 +30,7 @@ $(document).ready(function () {
         },
     });
 
-    $("#updateArticleForm").validate({
+    $("#updateOrganForm").validate({
         // initialize the plugin
 
         rules: {
@@ -46,7 +46,7 @@ $(document).ready(function () {
             desc_en: {
                 required: true,
             },
-            category_id: {
+            body_system_id: {
                 required: true,
             },
             // img: {

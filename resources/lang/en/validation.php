@@ -158,6 +158,14 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name_ar'        => 'Name in arabic',
+        'name_en'        => 'Name in english',
+        'desc_ar'        => 'Description in arabic',
+        'desc_en'        => 'Description in english',
+        'img'            => 'Image',
+        'category_id'    => 'Category',
+        'body_system_id' => 'Body System'
+    ],
 
 ];
