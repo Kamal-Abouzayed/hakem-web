@@ -53,6 +53,9 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
         // Ads
         Route::resource('ads', 'AdController')->names('ads');
 
+        // Faqs
+        Route::resource('faqs', 'FaqController')->names('faqs');
+
         // categories
         Route::resource('section/{sectionSlug}/categories', 'CategoryController')->names('categories');
 

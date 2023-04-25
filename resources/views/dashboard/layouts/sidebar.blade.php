@@ -98,6 +98,15 @@
             </a>
         </li>
 
+        <!-- Nav Item - Ads -->
+        <li
+            class="nav-item {{ areActiveRoutes(['dashboard.faqs.index', 'dashboard.faqs.create', 'dashboard.faqs.edit']) }}">
+            <a class="nav-link" href="{{ route('dashboard.faqs.index') }}">
+                <i class="fa-solid fa-question"></i>
+                <span>الأسئلة الشائعة</span>
+            </a>
+        </li>
+
         <!-- Nav Item - Contacts -->
         <li
             class="nav-item {{ areActiveRoutes(['dashboard.contacts.index', 'dashboard.contacts.create', 'dashboard.contacts.edit']) }}">

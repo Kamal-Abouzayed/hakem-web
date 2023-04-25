@@ -163,6 +163,10 @@ return [
         'name_en'        => 'Name in english',
         'desc_ar'        => 'Description in arabic',
         'desc_en'        => 'Description in english',
+        'question_ar'    => 'Question in arabic',
+        'question_en'    => 'Question in english',
+        'answer_ar'      => 'Answer in arabic',
+        'answer_en'      => 'Answer in english',
         'img'            => 'Image',
         'category_id'    => 'Category',
         'body_system_id' => 'Body System'

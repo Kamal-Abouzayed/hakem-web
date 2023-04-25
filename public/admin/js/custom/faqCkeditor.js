@@ -1,4 +1,5 @@
-CKEDITOR.replace('desc_ar', {
+// Answers Textarea
+CKEDITOR.replace('answer_ar', {
     height: 300, // Set the height of the editor
     language: 'ar',
     toolbar: [
@@ -23,7 +24,7 @@ CKEDITOR.replace('desc_ar', {
     ]
 });
 
-CKEDITOR.replace('desc_en', {
+CKEDITOR.replace('answer_en', {
     height: 300, // Set the height of the editor
     language: 'en',
     toolbar: [
