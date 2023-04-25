@@ -40,6 +40,12 @@ class SectionTableSeeder extends Seeder
                 'img'     => 'sections/img-1.png'
             ],
             [
+                'name_ar' => 'الأدوية',
+                'name_en' => 'Medicines',
+                'slug'    => 'medicines',
+                'img'     => 'sections/img-1.png'
+            ],
+            [
                 'name_ar' => 'السعرات الحرارية',
                 'name_en' => 'Calories',
                 'slug'    => 'calories',
