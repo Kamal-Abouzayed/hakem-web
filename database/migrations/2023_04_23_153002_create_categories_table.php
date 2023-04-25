@@ -20,7 +20,8 @@ class CreateCategoriesTable extends Migration
             $table->longText('desc_ar')->nullable();
             $table->longText('desc_en')->nullable();
             $table->string('img');
-            $table->sluggable();
+            // $table->sluggable();
+            $table->string('slug');
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreignId('section_id')->nullable()->constrained('sections')->cascadeOnDelete();
             $table->timestamps();

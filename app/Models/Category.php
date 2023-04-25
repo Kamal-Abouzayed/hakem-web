@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Pharaonic\Laravel\Sluggable\Sluggable;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Category extends Model
 {
@@ -12,7 +12,16 @@ class Category extends Model
 
     protected $fillable = ['name_ar', 'name_en', 'desc_ar', 'desc_en', 'parent_id', 'img', 'section_id'];
 
-    protected $sluggable = 'name_en';
+    // protected $sluggable = 'name_en';
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name_en'
+            ]
+        ];
+    }
 
     public function getNameAttribute()
     {

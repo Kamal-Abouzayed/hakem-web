@@ -23,6 +23,7 @@ class CategoryTableSeeder extends Seeder
                 'desc_en'    => 'Main Category',
                 'parent_id'  => null,
                 'section_id' => 1,
+                'slug'       => 'main-category',
                 'img'        => 'categories/img-1.png'
             ],
             [
@@ -33,6 +34,7 @@ class CategoryTableSeeder extends Seeder
                 'desc_en'    => 'Sub Category',
                 'parent_id'  => 1,
                 'section_id' => 1,
+                'slug'       => 'sub-category',
                 'img'        => 'sub-categories/img-1.png'
             ],
         ]);

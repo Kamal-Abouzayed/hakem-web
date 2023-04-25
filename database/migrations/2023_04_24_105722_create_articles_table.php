@@ -20,7 +20,8 @@ class CreateArticlesTable extends Migration
             $table->string('img');
             $table->longText('desc_ar');
             $table->longText('desc_en');
-            $table->sluggable();
+            // $table->sluggable();
+            $table->string('slug');
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
             $table->foreignId('section_id')->constrained('sections')->cascadeOnDelete();
             $table->timestamps();
