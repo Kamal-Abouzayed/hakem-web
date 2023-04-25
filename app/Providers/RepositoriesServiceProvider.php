@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+        use App\Repositories\Sql\PregnancyStageRepository;
+        use App\Repositories\Contract\PregnancyStageRepositoryInterface;
+
         use App\Repositories\Sql\OrganRepository;
         use App\Repositories\Contract\OrganRepositoryInterface;
 
@@ -56,6 +59,8 @@ class RepositoriesServiceProvider extends ServiceProvider
 {
 
     public function register(){
+
+        $this->app->bind(PregnancyStageRepositoryInterface::class, PregnancyStageRepository::class);
 
         $this->app->bind(OrganRepositoryInterface::class, OrganRepository::class);
 

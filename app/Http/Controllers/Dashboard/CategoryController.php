@@ -61,7 +61,7 @@ class CategoryController extends Controller
         $data = $request->except('_token', 'img');
 
         if ($request->hasFile('img')) {
-            $data['img'] = $request->file('img')->store('sections');
+            $data['img'] = $request->file('img')->store('categories');
         }
 
         $section->categories()->create($data);

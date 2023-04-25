@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoryTableSeeder::class);
         $this->call(AdTableSeeder::class);
         $this->call(BodySystemTableSeeder::class);
+        $this->call(PregnancyStageTableSeeder::class);
     }
 }

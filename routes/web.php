@@ -68,6 +68,9 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
         // Organs
         Route::resource('organs', 'OrganController')->names('organs');
 
+        // Pregnancy Stages
+        Route::resource('pregnancy-stages', 'PregnancyStageController')->names('pregnancy-stages');
+
         // Contacts
         Route::resource('contacts', 'ContactController')->names('contacts');
         Route::get('contacts/reply/{id}', 'ContactController@reply')->name('contacts.reply');

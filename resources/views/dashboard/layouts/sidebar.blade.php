@@ -80,6 +80,15 @@
             </a>
         </li>
 
+        <!-- Nav Item - Pregnancy Stages -->
+        <li
+            class="nav-item {{ areActiveRoutes(['dashboard.pregnancy-stages.index', 'dashboard.pregnancy-stages.create', 'dashboard.pregnancy-stages.edit']) }}">
+            <a class="nav-link" href="{{ route('dashboard.pregnancy-stages.index') }}">
+                <i class="fa-solid fa-baby"></i>
+                <span>مراحل الحمل</span>
+            </a>
+        </li>
+
         <!-- Nav Item - Ads -->
         <li
             class="nav-item {{ areActiveRoutes(['dashboard.ads.index', 'dashboard.ads.create', 'dashboard.ads.edit']) }}">
