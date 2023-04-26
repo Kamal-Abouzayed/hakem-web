@@ -94,6 +94,15 @@
 
         <!-- Nav Item - Ads -->
         <li
+            class="nav-item {{ areActiveRoutes(['dashboard.videos.index', 'dashboard.videos.create', 'dashboard.videos.edit']) }}">
+            <a class="nav-link" href="{{ route('dashboard.videos.index') }}">
+                <i class="fa-solid fa-video"></i>
+                <span>الفيديوهات</span>
+            </a>
+        </li>
+
+        <!-- Nav Item - Ads -->
+        <li
             class="nav-item {{ areActiveRoutes(['dashboard.ads.index', 'dashboard.ads.create', 'dashboard.ads.edit']) }}">
             <a class="nav-link" href="{{ route('dashboard.ads.index') }}">
                 <i class="fa-solid fa-rectangle-ad"></i>
