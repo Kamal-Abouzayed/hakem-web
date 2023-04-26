@@ -57,6 +57,9 @@
                         <h6 class="collapse-header">المقالات:</h6>
                         <a class="collapse-item {{ areActiveRoutes(['dashboard.articles.index', 'dashboard.articles.create', 'dashboard.articles.edit']) && request()->sectionSlug == $section->slug ? 'active' : '' }}"
                             href="{{ route('dashboard.articles.index', $section->slug) }}">المقالات</a>
+                        <h6 class="collapse-header">النصائح:</h6>
+                        <a class="collapse-item {{ areActiveRoutes(['dashboard.advices.index', 'dashboard.advices.create', 'dashboard.advices.edit']) && request()->sectionSlug == $section->slug ? 'active' : '' }}"
+                            href="{{ route('dashboard.advices.index', $section->slug) }}">النصائح</a>
                     </div>
                 </div>
             </li>

@@ -32,4 +32,9 @@ class Section extends Model
     {
         return $this->hasMany(Category::class);
     }
+
+    public function advices()
+    {
+        return $this->hasMany(Advice::class);
+    }
 }
