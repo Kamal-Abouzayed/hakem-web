@@ -26,22 +26,22 @@ class OrganRequest extends FormRequest
         switch (request()->method()) {
             case 'PATCH':
                 return [
-                    'name_ar'     => 'required|string|max:255',
-                    'name_en'     => 'required|string|max:255',
-                    'desc_ar'     => 'required|string',
-                    'desc_en'     => 'required|string',
-                    'img'         => 'nullable',
+                    'name_ar'        => 'required|string|max:255',
+                    'name_en'        => 'required|string|max:255',
+                    'desc_ar'        => 'required|string',
+                    'desc_en'        => 'required|string',
+                    'img'            => 'nullable',
                     'body_system_id' => 'required',
                 ];
                 break;
 
             default:
                 return [
-                    'name_ar'     => 'required|string|max:255',
-                    'name_en'     => 'required|string|max:255',
-                    'desc_ar'     => 'required|string',
-                    'desc_en'     => 'required|string',
-                    'img'         => 'required',
+                    'name_ar'        => 'required|string|max:255',
+                    'name_en'        => 'required|string|max:255',
+                    'desc_ar'        => 'required|string',
+                    'desc_en'        => 'required|string',
+                    'img'            => 'required',
                     'body_system_id' => 'required',
                 ];
                 break;

@@ -3,7 +3,7 @@
 @section('content')
     <form class="card shadow mb-4"
         action="{{ route('dashboard.sub-categories.update', ['sectionSlug' => request()->sectionSlug, 'sub_category' => $category->slug]) }}"
-        method="POST" enctype="multipart/form-data" id="updateSectionForm">
+        method="POST" enctype="multipart/form-data" id="updateSubCategoryForm">
         @csrf
         @method('PATCH')
         <div class="card-header py-3">
@@ -88,7 +88,7 @@
     </form>
 
     @push('js')
-        <script src="{{ asset('admin/js/validation/sectionValidation.js') }}"></script>
+        <script src="{{ asset('admin/js/validation/subCategoryValidation.js') }}"></script>
         <script src="{{ asset('admin/js/custom/preview-image.js') }}"></script>
     @endpush
 @endsection

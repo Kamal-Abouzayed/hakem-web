@@ -2,7 +2,7 @@
 
 @section('content')
     <form class="card shadow mb-4" action="{{ route('dashboard.categories.store', request()->sectionSlug) }}" method="POST"
-        enctype="multipart/form-data" id="createServiceForm">
+        enctype="multipart/form-data" id="createCategoryForm">
         @csrf
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">{{ $pageTitle }}</h6>
@@ -68,7 +68,7 @@
     </form>
 
     @push('js')
-        <script src="{{ asset('admin/js/validation/serviceValidation.js') }}"></script>
+        <script src="{{ asset('admin/js/validation/categoryValidation.js') }}"></script>
         <script src="{{ asset('admin/js/custom/preview-image.js') }}"></script>
     @endpush
 @endsection

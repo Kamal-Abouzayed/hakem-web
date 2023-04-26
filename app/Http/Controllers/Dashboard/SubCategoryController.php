@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\SubCategoryRequest;
 use App\Repositories\Contract\CategoryRepositoryInterface;
 use App\Repositories\Contract\SectionRepositoryInterface;
 use Illuminate\Http\Request;
@@ -58,7 +59,7 @@ class SubCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $sectionSlug)
+    public function store(SubCategoryRequest $request, $sectionSlug)
     {
         $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
 
@@ -116,7 +117,7 @@ class SubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $sectionSlug, $slug)
+    public function update(SubCategoryRequest $request, $sectionSlug, $slug)
     {
         // $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
 
