@@ -169,7 +169,8 @@ return [
         'answer_en'      => 'Answer in english',
         'img'            => 'Image',
         'category_id'    => 'Category',
-        'body_system_id' => 'Body System'
+        'body_system_id' => 'Body System',
+        'url'            => 'Url'
     ],
 
 ];
