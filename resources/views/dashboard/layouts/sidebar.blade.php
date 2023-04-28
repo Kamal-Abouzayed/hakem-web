@@ -92,12 +92,21 @@
             </a>
         </li>
 
-        <!-- Nav Item - Ads -->
+        <!-- Nav Item - Videos -->
         <li
             class="nav-item {{ areActiveRoutes(['dashboard.videos.index', 'dashboard.videos.create', 'dashboard.videos.edit']) }}">
             <a class="nav-link" href="{{ route('dashboard.videos.index') }}">
                 <i class="fa-solid fa-video"></i>
                 <span>الفيديوهات</span>
+            </a>
+        </li>
+
+        <!-- Nav Item - Images -->
+        <li
+            class="nav-item {{ areActiveRoutes(['dashboard.images.index', 'dashboard.images.create', 'dashboard.images.edit']) }}">
+            <a class="nav-link" href="{{ route('dashboard.images.index') }}">
+                <i class="fa-solid fa-images"></i>
+                <span>معرض الصور</span>
             </a>
         </li>
 

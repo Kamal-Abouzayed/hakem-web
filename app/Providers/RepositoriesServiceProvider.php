@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+        use App\Repositories\Sql\ImageRepository;
+        use App\Repositories\Contract\ImageRepositoryInterface;
+
         use App\Repositories\Sql\AdviceRepository;
         use App\Repositories\Contract\AdviceRepositoryInterface;
         use App\Repositories\Sql\VideoRepository;
@@ -67,6 +70,8 @@ class RepositoriesServiceProvider extends ServiceProvider
 {
 
     public function register(){
+
+        $this->app->bind(ImageRepositoryInterface::class, ImageRepository::class);
 
         $this->app->bind(AdviceRepositoryInterface::class, AdviceRepository::class);
         $this->app->bind(VideoRepositoryInterface::class, VideoRepository::class);

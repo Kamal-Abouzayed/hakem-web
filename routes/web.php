@@ -77,6 +77,9 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
         // Videos
         Route::resource('videos', 'VideoController')->names('videos');
 
+        // Images
+        Route::resource('images', 'ImageController')->names('images');
+
         // Pregnancy Stages
         Route::resource('pregnancy-stages', 'PregnancyStageController')->names('pregnancy-stages');
 
