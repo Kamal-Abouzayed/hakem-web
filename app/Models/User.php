@@ -19,14 +19,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'fname',
+        'lname',
         'email',
-        'password',
-        'isAdmin',
-        'image',
         'phone',
-        'education',
-        'subject',
+        'country_id',
+        'password',
+        'gender',
+        'birthday',
+        'image',
     ];
 
     /**
@@ -47,4 +48,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getFullNameAttribute()
+    {
+        return $this->fname . ' ' . $this->lname;
+    }
 }

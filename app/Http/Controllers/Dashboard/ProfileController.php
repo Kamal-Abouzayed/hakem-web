@@ -33,7 +33,7 @@ class ProfileController extends Controller
         }
 
         if ($request->password) {
-            $data['password'] = \bcrypt($request->password);
+            $data['password'] = bcrypt($request->password);
         } else {
             $data['password'] = $user->password;
         }

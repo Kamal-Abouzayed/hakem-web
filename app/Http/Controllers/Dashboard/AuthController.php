@@ -18,7 +18,8 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         //attempt to log admin
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'isAdmin' => 1])) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+
             return redirect()->intended(route('dashboard.home'))->with('success', 'تم تسجيل الدخول بنجاح');
         }
 
@@ -50,20 +51,16 @@ class AuthController extends Controller
             $user->update(['code' => $code]);
 
             $data = [
-                'link' => route('admin.changePassword' , $code)
+                'link' => route('admin.changePassword', $code)
             ];
 
             Mail::to($user->email)->send(new ResetPassword($data));
 
-            return redirect()->back()->with('success' , __('models.link_sent'));
+            return redirect()->back()->with('success', __('models.link_sent'));
+        } else {
 
-        } else
-        {
-
-            return redirect()->back()->with('error' , __('models.email_not_found'));
-
+            return redirect()->back()->with('error', __('models.email_not_found'));
         }
-
     }
 
     public function changePassword($code)
@@ -72,11 +69,10 @@ class AuthController extends Controller
         $user = $this->userRepository->getWhere(['code' => $code])->first();
 
         if ($user) {
-            return view('dashboard.auth.changePassword' , \compact('code'));
+            return view('dashboard.auth.changePassword', \compact('code'));
         } else {
             return \view('dashboard.auth.error');
         }
-
     }
 
     public function updatePassword(ResetRequest $request)
@@ -87,7 +83,6 @@ class AuthController extends Controller
         if ($user->isVerified == 1) {
 
             $newPassword = $user->update(['password' => bcrypt($request->password)]);
-
         }
 
         if ($newPassword) {
@@ -97,7 +92,6 @@ class AuthController extends Controller
             $user->update(['code' => null]);
 
             return \redirect(\route('admin.home'))->with('success', __('models.pass_changed'));
-
         } else {
             return redirect()->back()->with('error', __('models.pass_error'));
         }

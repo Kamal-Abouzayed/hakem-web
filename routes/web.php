@@ -14,15 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 Route::namespace('Web')->name('web.')->group(function () {
     // Route::get('/', 'HomeController@index')->name('home');
-
-    Route::view('/', 'welcome');
+    Route::view('/', 'welcome')->name('home');
 });
 
 
@@ -40,6 +34,7 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
     Route::middleware(['auth', 'role:admin'])->group(function () {
 
         Route::get('ckeditor', 'CkeditorController@index');
+
         Route::post('ckeditor/upload', 'CkeditorController@upload')->name('ckeditor.upload');
 
         Route::get('/', 'HomeController@index')->name('home');

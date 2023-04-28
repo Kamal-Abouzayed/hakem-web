@@ -15,30 +15,13 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $admin = User::create([
-            'name' => 'ADMIN',
-            'email' => 'admin@gmail.com',
-            'phone' => '0123466789',
-            'password' => bcrypt('password'),
-            'isAdmin' => 1,
+            'fname'             => 'ADMIN',
+            'lname'             => 'ADMIN',
+            'email'             => 'admin@gmail.com',
+            'email_verified_at' => now(),
+            'password'          => bcrypt('password'),
         ]);
 
         $admin->assignRole('admin');
-
-        // Students
-
-        // $students = User::factory()->count(10)->student()->create();
-
-        // foreach ($students as $key => $student) {
-        //     $student->assignRole('student');
-        // }
-
-
-        // // Teachers
-
-        // $teachers = User::factory()->count(10)->teacher()->create();
-
-        // foreach ($teachers as $key => $teacher) {
-        //     $teacher->assignRole('teacher');
-        // }
-    }
+    }   
 }
