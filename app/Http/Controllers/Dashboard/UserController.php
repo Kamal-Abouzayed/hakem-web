@@ -4,16 +4,23 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Repositories\Contract\UserRepositoryInterface;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    protected $userRepo;
+
+    public function __construct(UserRepositoryInterface $userRepo)
+    {
+        $this->userRepo = $userRepo;
+    }
 
     public function index()
     {
         $pageTitle = 'المستخدمين';
 
-        $users = User::all();
+        $users = $this->userRepo->getWhere([['id', '!=', 1]]);
 
         return view('dashboard.users.index', compact('users', 'pageTitle'));
     }

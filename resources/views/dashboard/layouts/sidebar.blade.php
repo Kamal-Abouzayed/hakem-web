@@ -17,13 +17,13 @@
                 <span>لوحة التحكم</span></a>
         </li>
 
-        {{-- <!-- Nav Item - Users -->
+        <!-- Nav Item - Users -->
         <li
             class="nav-item {{ areActiveRoutes(['dashboard.users.index', 'dashboard.users.create', 'dashboard.users.edit']) }}">
             <a class="nav-link" href="{{ route('dashboard.users.index') }}">
                 <i class="fas fa-fw fa-users"></i>
                 <span>المستخدمين</span></a>
-        </li> --}}
+        </li>
 
         <!-- Nav Item - Sections -->
         <li
@@ -136,12 +136,12 @@
                 <span>رسائل التواصل</span></a>
         </li>
 
-        <!-- Nav Item - Mail Lists -->
+        {{-- <!-- Nav Item - Mail Lists -->
         <li class="nav-item {{ isActiveRoute('dashboard.mail.index') }}">
             <a class="nav-link" href="{{ route('dashboard.mail.index') }}">
                 <i class="fa-solid fa-envelope"></i>
                 <span>القائمة البريدية</span></a>
-        </li>
+        </li> --}}
 
         <!-- Nav Item - Settings -->
         <li class="nav-item {{ isActiveRoute('dashboard.settings.create') }}">

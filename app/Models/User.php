@@ -47,10 +47,16 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'birthday'          => 'date',
     ];
 
     public function getFullNameAttribute()
     {
         return $this->fname . ' ' . $this->lname;
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
 }
