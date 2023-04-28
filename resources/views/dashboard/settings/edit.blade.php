@@ -5,7 +5,7 @@
         enctype="multipart/form-data" novalidate>
         @csrf
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">الإعدادات</h6>
+            <h6 class="m-0 font-weight-bold text-center text-primary">الإعدادات</h6>
         </div>
         <div class="card-body">
 
@@ -175,5 +175,7 @@
         {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdarVlRZOccFIGWJiJ2cFY8-Sr26ibiyY&libraries=places&callback=initAutocomplete&language=ar
                                                                 async defer"></script> --}}
         <script src="{{ asset('admin/js/custom/preview-image.js') }}"></script>
+        <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+        <script src="{{ asset('admin/js/custom/settingsCkeditor.js') }}"></script>
     @endpush
 @endsection
