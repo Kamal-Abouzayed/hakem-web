@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositoriesServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Jorenvh\Share\Providers\ShareServiceProvider::class,
 
     ],
 
@@ -231,7 +232,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Share' => Jorenvh\Share\ShareFacade::class,
     ],
 
 ];
