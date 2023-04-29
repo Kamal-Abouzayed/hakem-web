@@ -1,35 +1,23 @@
 <!DOCTYPE html>
 
-<html dir="rtl">
+<html>
 
 <head>
-
     @include('web.layouts.style')
-
 </head>
 
-<body class="no-trans">
+<body>
 
-    <div class="loading">
-        <div class="loader text-center">
-            <img src="images/main/logo.png" alt="logo">
+    <!-- welcome  :) -->
 
-            <div class="loader-dots">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
-            <div class="loader-text">loading ...</div>
-        </div>
 
-    </div>
+    <!-- start loading -->
 
-    <div data-scroll-container>
+    <!-- end lodding -->
 
-        @include('web.layouts.sidebar')
 
-        <div data-scroll-section>
+    <!-- welcome -->
 
-            @include('web.layouts.nav')
+    <div class="body_page  d-flex flex-column justify-content-between">
+
+        @include('web.layouts.nav')

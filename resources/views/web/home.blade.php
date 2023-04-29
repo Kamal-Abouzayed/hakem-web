@@ -1,149 +1,270 @@
 @extends('web.layouts.app')
 
 @section('content')
-    <!-- start main-slider
-                                             ================ -->
-    <section class="main-slider">
-        <div class="container">
-            <div class="row">
-                <div class="col-12" data-scroll>
-                    <div class="first-company">
-                        <img src="{{ url('web') }}/images/main/first.svg" alt="first">
-
-                    </div>
-                    <div class="main-slider-content">
-
-                        @foreach ($products as $product)
-                            <!--start item-->
-                            <div class="main-item">
-                                <div class="slider-caption bold-text">
-                                    {{-- <h3 class="dark-text">خزانات مياه</h3> --}}
-                                    <p class="first_color">
-                                        {{ $product->title }}
-                                    </p>
-                                </div>
-                                <div class="main-slider-img">
-                                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}" />
-                                </div>
+    <!-- start article-index  ===
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ========= -->
+    <section class="article-index mr-section">
+        <div class="main-container">
+            <div class="main-article-index">
+                @forelse ($articles->chunk(3) as $articleChunks)
+                    @foreach ($articleChunks as $chunk)
+                        {{-- chunk = article --}}
+                        @if (
+                            $chunk->section->slug == 'medicine-and-health' ||
+                                $chunk->section->slug == 'health-and-beauty' ||
+                                $chunk->section->slug == 'pregnancy-and-birth')
+                            <div class="sub-article-index" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
+                                <a href="article-details.html">
+                                    <img src="{{ asset('storage/' . $chunk->img) }}" alt="{{ $chunk->name }}">
+                                    <div class="text-article-index">
+                                        <h3>{{ $chunk->section->name }}</h3>
+                                        <p>{!! strip_tags(Str::limit($chunk->desc, 50)) !!}</p>
+                                    </div>
+                                </a>
                             </div>
-                            <!--end item-->
+                        @endif
+                    @endforeach
+                @empty
+                    <div class="sub-article-index" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
+                        <img src="{{ url('web') }}/images/no-articles.png" alt="">
+                    </div>
+                @endforelse
+            </div>
+        </div>
+    </section>
+    <!-- end  article-index  ===
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ========= -->
+
+
+    <!-- start more-section === -->
+    <section class="more-section mr-section">
+        <div class="main-container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
+                    <a href="pregnancy-calculator.html">
+                        <div class="sub-more-section">
+                            <div class="img-more-section">
+                                <img src="images/s1.png" alt="">
+                            </div>
+                            <h2>حاسبة الحمل</h2>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
+                    <a href="calorie-calculator-details.html">
+                        <div class="sub-more-section">
+                            <div class="img-more-section">
+                                <img src="images/s2.png" alt="">
+                            </div>
+                            <h2>حاسبة السعرات الحرارية</h2>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
+                    <a href="videos.html">
+                        <div class="sub-more-section">
+                            <div class="img-more-section">
+                                <img src="images/s3.png" alt="">
+                            </div>
+                            <h2>فيديو </h2>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
+                    <a href="all-calculators.html">
+                        <div class="sub-more-section">
+                            <div class="img-more-section">
+                                <img src="images/s4.png" alt="">
+                            </div>
+                            <h2>جميع الحاسبات</h2>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end more-section === -->
+
+
+    <!-- start new-article-index === -->
+    <section class="new-article-index mr-section">
+        <div class="main-container">
+            <div class="title-start">
+                <h2> {{ __('New in Hakem Web') }} </h2>
+                <span></span>
+            </div>
+            <div class="slider-new-article">
+                <div class="owl-carousel owl-theme maincarousel" id="slider-article">
+                    @foreach ($articles->chunk(6) as $key => $newChunks)
+                        <div class="item">
+                            <div class="row">
+                                @foreach ($newChunks as $chunk)
+                                    {{-- chunk = article --}}
+                                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-easing="linear"
+                                        data-aos-duration="700">
+                                        <a href="article-details.html">
+                                            <div class="sub-slider-new-article">
+                                                <div class="img-slider-new-article">
+                                                    <img src="{{ asset('storage/' . $chunk->img) }}"
+                                                        alt="{{ $chunk->name }}">
+                                                </div>
+                                                <div class="text-slider-new-article">
+                                                    <h3> {{ $chunk->section->name }} ,<span>
+                                                            {{ $chunk->created_at }}
+                                                        </span></h3>
+                                                    <p>{!! strip_tags(Str::limit($chunk->desc, 50)) !!}</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end new-article-index === -->
+
+
+    <section class="read-article-index mr-section">
+        <div class="main-container">
+            <div class="title-start">
+                <h2>الأكثر قراءة</h2>
+                <span></span>
+            </div>
+            <div class="row">
+
+                @php
+                    $mostReadArticles = $articles->sortByDesc('views')->take(6);
+                @endphp
+
+                @if ($mostReadArticles->count() > 0)
+                    <div class="col-lg-8" data-aos="fade-left" data-aos-easing="linear" data-aos-duration="700">
+                        <div class="big-read-article-index">
+                            <div class="img-big-article-index">
+                                <img src="{{ asset('storage/' . $mostReadArticles->first()->img) }}"
+                                    alt="{{ $mostReadArticles->first()->name }}">
+                            </div>
+                            <div class="text-big-article-index">
+                                <h3 class="date-article"> {{ $mostReadArticles->first()->section->name }} , <span>
+                                        {{ $mostReadArticles->first()->created_at }}
+                                    </span></h3>
+                                <h2> {{ $mostReadArticles->first()->name }} </h2>
+                                <p>{!! strip_tags(Str::limit($mostReadArticles->first()->desc, 740)) !!}. </p>
+                            </div>
+                            <a href="article-details.html" class="ctm-link"> {{ __('Read More') }} <i
+                                    class="bi bi-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                @endif
+
+                @if ($mostReadArticles->count() > 1)
+                    <div class="col-lg-4" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="700">
+                        @foreach ($mostReadArticles->slice(1) as $article)
+                            <a href="article-details.html">
+                                <div class="sub-read-article-index">
+                                    <div class="img-read-article-index">
+                                        <img src="{{ asset('storage/' . $article->img) }}" alt="{{ $article->name }}">
+                                    </div>
+                                    <div class="text-read-article-index">
+                                        <h3 class="date-article"> {{ $article->section->name }} , <span>
+                                                {{ $article->created_at }}
+                                            </span></h3>
+                                        <p>{!! strip_tags(Str::limit($article->desc, 50)) !!}. </p>
+                                    </div>
+                                </div>
+                            </a>
                         @endforeach
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </section>
-    <!--end main slider-->
 
-    {{-- <!-- start about-sec
-                                         ================ -->
-    <section class="about-sec margin-div has_border_top">
-        <div class="pattern" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-50"></div>
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="about-desc-grid col-lg-6 col-md-9 order-md-1 order-2" data-scroll data-scroll-speed="1">
-                    <div class="about-desc" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-1">
-                        <h2 class="first_color bold-text">من نحن</h2>
-                        <div>
-                            يُعد مصنع إبراهيم الحسيني أول مصنع خزانات مياه فايبرجلاس وبولي إيثيلين في
-                            المملكة، والذي كان له دور فعّال في تغيير مفهوم الخزانات آنذاك من الخزانات
-                            الخرسانية إلى الخزانات الصحيّة والتي تتميز بسهولة تركيبها ونقلها.
-                            <br>
-                            كما تتميز خزانات الحسيني بقوتها وصلابتها حيث تنفرد بأعلى سماكة في المملكة، مما
-                            يمنحها عمر افتراضي أطول مقارنة بمثيلاتها في الأسواق، قارن بنفسك قبل الشراء
-                            فالفرق واضح.
-                            كما ينتج مصنع الحسيني للبلاستيك حواجز الطرق البلاستيكية وهي البديل الآمن للحواجز
-                            الخرسانية بالإضافة إلى أغطية غرف التفتيش والمصنعة من الفايبرجلاس.
-                        </div>
+
+    <section class="read-also-article-index mr-section">
+        <div class="main-container">
+            <div class="title-start">
+                <h2>{{ __('Also read') }}</h2>
+                <span></span>
+            </div>
+
+
+            <div class="main-read-also-article">
+                @foreach ($articles->sortBy('created_at')->take(5) as $article)
+                    {{-- chunk = article --}}
+                    <div class="sub-read-also-article" data-aos="fade-down" data-aos-easing="linear"
+                        data-aos-duration="700">
+                        <a href="article-details.html">
+                            <div class="img-read-also-article">
+                                <img src="{{ asset('storage/' . $article->img) }}" alt="{{ $article->name }}">
+                            </div>
+                            <div class="text-read-also-article">
+                                <h3 class="date-article"> {{ $article->section->name }} , <span>
+                                        {{ $article->created_at }}
+                                    </span></h3>
+                                <p>{!! strip_tags(Str::limit($article->desc, 50)) !!}</p>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="about-desc-logo col-lg-6 col-md-3 text-left-dir  order-md-1 order-1" data-scroll
-                    data-scroll-speed="1">
-                    <div class="about-logo text-right-dir">
-                        <div class="first-company big-first" data-scroll data-scroll-direction="horizontal"
-                            data-scroll-speed="3">
+                @endforeach
 
-                            <img src="images/main/first.svg" alt="first">
+                {{-- <div class="sub-read-also-article" data-aos="fade-down" data-aos-easing="linear"
+                    data-aos-duration="700">
+                    <a href="article-details.html">
+                        <div class="img-read-also-article">
+                            <img src="images/a1.png" alt="">
                         </div>
-
-                    </div>
+                        <div class="text-read-also-article">
+                            <h3 class="date-article"> الصحة والجمال , <span> مارس 14 , 2023 </span></h3>
+                            <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة لقد
+                                تم توليد هذا النص من مولد النص العربى .. </p>
+                        </div>
+                    </a>
                 </div>
+                <div class="sub-read-also-article" data-aos="fade-down" data-aos-easing="linear"
+                    data-aos-duration="700">
+                    <a href="article-details.html">
+                        <div class="img-read-also-article">
+                            <img src="images/a1.png" alt="">
+                        </div>
+                        <div class="text-read-also-article">
+                            <h3 class="date-article"> الصحة والجمال , <span> مارس 14 , 2023 </span></h3>
+                            <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة لقد
+                                تم توليد هذا النص من مولد النص العربى .. </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="sub-read-also-article" data-aos="fade-down" data-aos-easing="linear"
+                    data-aos-duration="700">
+                    <a href="article-details.html">
+                        <div class="img-read-also-article">
+                            <img src="images/a2.png" alt="">
+                        </div>
+                        <div class="text-read-also-article">
+                            <h3 class="date-article"> الصحة والجمال , <span> مارس 14 , 2023 </span></h3>
+                            <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة لقد
+                                تم توليد هذا النص من مولد النص العربى .. </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="sub-read-also-article" data-aos="fade-down" data-aos-easing="linear"
+                    data-aos-duration="700">
+                    <a href="article-details.html">
+                        <div class="img-read-also-article">
+                            <img src="images/a3.png" alt="">
+                        </div>
+                        <div class="text-read-also-article">
+                            <h3 class="date-article"> الصحة والجمال , <span> مارس 14 , 2023 </span></h3>
+                            <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة لقد
+                                تم توليد هذا النص من مولد النص العربى .. </p>
+                        </div>
+                    </a>
+                </div> --}}
             </div>
         </div>
     </section>
-    <!--end about-sec-->
-    <!-- start products
-                                         ================ -->
-    <section class="products  has_border_top  sm-center" id="products-scroll">
-        <div class="pattern" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-50"></div>
-        <div class="container">
-            <div class="col-12 text-center">
-                <h2 class="section-title first_color bold-text" data-scroll>منتجاتنا</h2>
-            </div>
-            <div class="row">
-
-                <!--start products-grid-->
-                <div class="products-grid col-6">
-                    <a href="product-details.html">
-                        <div class="products-div" data-scroll>
-                            <h3 class="first_color bold-text" data-scroll data-scroll-speed="-1.2">
-                                خزانات مياه
-                                <br>
-                                بولي إيثيلين
-                            </h3>
-                            <div data-scroll data-scroll-speed="-2"><img src="images/products/1.png" alt="product">
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!--end products-grid-->
-
-                <!--start products-grid-->
-                <div class="products-grid col-6">
-                    <a href="product-details.html">
-                        <div class="products-div" data-scroll>
-                            <h3 class="first_color  bold-text" data-scroll data-scroll-speed="-1.2">
-                                خزانات مياه
-                                <br>
-                                فايبر جلاس
-                            </h3>
-                            <div data-scroll data-scroll-speed="-2"><img src="images/products/2.png" alt="product">
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!--end products-grid-->
-
-                <!--start products-grid-->
-                <div class="products-grid col-6">
-                    <a href="product-details.html">
-                        <div class="products-div" data-scroll>
-                            <h3 class="first_color bold-text" data-scroll data-scroll-speed="-1.2">
-                                حواجز الطرق البلاستيكية
-                            </h3>
-                            <div data-scroll data-scroll-speed="-2"><img src="images/products/3.png" alt="product">
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!--end products-grid-->
-
-                <!--start products-grid-->
-                <div class="products-grid col-6">
-                    <a href="product-details.html">
-                        <div class="products-div" data-scroll>
-                            <h3 class="first_color bold-text" data-scroll data-scroll-speed="-1.2">
-                                أغطية الفايبر جلاس
-
-                            </h3>
-                            <div data-scroll data-scroll-speed="-2"><img src="images/products/4.png" alt="product">
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!--end products-grid-->
-            </div>
-        </div>
-    </section>
-    <!--end products--> --}}
 @endsection

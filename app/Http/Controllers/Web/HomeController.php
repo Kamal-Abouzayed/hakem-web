@@ -3,22 +3,23 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Contract\ArticleRepositoryInterface;
 use App\Repositories\Contract\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    protected $productRepo;
+    protected $articleRepo;
 
-    public function __construct(ProductRepositoryInterface $productRepo)
+    public function __construct(ArticleRepositoryInterface $articleRepo)
     {
-        $this->productRepo = $productRepo;
+        $this->articleRepo = $articleRepo;
     }
 
     public function index()
     {
-        $products = $this->productRepo->limit(4);
+        $articles = $this->articleRepo->limit(12);
 
-        return view('web.home', compact('products'));
+        return view('web.home', compact('articles'));
     }
 }

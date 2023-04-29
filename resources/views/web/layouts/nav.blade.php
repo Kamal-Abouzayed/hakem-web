@@ -1,60 +1,82 @@
-<!-- start header
-         ================ -->
-<header dir="rtl">
-    <div class="container">
-        <div class="row align-items-center">
-            <!--start col-->
-            <div class="col-lg-3 col-sm-6 col-5 text-right-dir menu-icon-grid">
-                <div class="menu-icon open-menu-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+        <!-- start header =====
+        ============ -->
+        <header class="header active">
+            <div class="sub-header" style="background-image: url({{ url('web') }}/images/bg1.png);">
+                <div class="main-container">
+                    <div class="top-par">
+                        <div class="logo">
+                            <a href="index.html">
+                                <img src="{{ asset('storage/' . getSetting('logo')) }}" alt="">
+                            </a>
+                        </div>
 
-                <!--start language-->
-                <div class="language-div white-text">
-                    <span class="language-choose first_color"><i class="fa fa-caret-down"></i> En </span>
-                    <div class="lang-choose">
-                        <a href="#">En</a>
-                        <a href="#">عربي</a>
+                        <div class="sub-top-par">
+                            <a href="login.html" class="login"> دخول </a>
+                            <a href="register.html" class="signin"> تسجيل </a>
+                            <div class="language">
+                                <a href=""><i class="bi bi-globe"></i> ع </a>
+                            </div>
+
+                            <div class="menu-div">
+                                <div class="content" id="times-ican">
+                                    <a href="#" title="Navigation menu" class="navicon" aria-label="Navigation">
+                                        <span class="navicon__item"></span>
+                                        <span class="navicon__item"></span>
+                                        <span class="navicon__item"></span>
+                                        <span class="navicon__item"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="title-page">
+                        <h2> , {{ __('Welcome to the Hakeem Web site') }} <br>
+                            {{ __('All the information that you can trust') }} .</h2>
+                    </div>
+
+
+                    <div class="search-header">
+                        <form action="">
+                            <input type="text" placeholder=" ابحث هنا .." class="form-control">
+                            <button><img src="{{ url('web') }}/images/search.png" alt=""></button>
+                        </form>
                     </div>
                 </div>
-                <!--end language-->
             </div>
-            <!--end col-->
 
 
+            <div class="element mr-section">
+                <div class="main-container">
+                    <div class="row">
 
-            <!--start col-->
-            <div class="col-md-6 text-center-dir menu-grid d-none d-lg-block">
-                <!--start big-menu-->
-                <div class="big-menu">
-                    <ul class="list-inline">
-                        <li class="active"><a href="index.html">الرئيسية </a></li>
-                        <li><a href="about.html"> من نحن </a></li>
-                        <li><a href="#products-scroll" data-scroll-to>منتجاتنا </a></li>
-                        <li><a href="contact.html">تواصل معنا </a></li>
+                        @foreach ($homeSections as $section)
+                            <div class="col-lg-2" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
+                                <a href="medicine-health.html">
+                                    <div class="sub-element">
+                                        <div class="img-element">
+                                            <img src="{{ asset('storage/' . $section->img) }}" alt="">
+                                        </div>
+                                        <h2> {{ $section->name }} </h2>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
 
-                    </ul>
+                        <div class="col-lg-2" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
+                            <a href="" id="menu-e">
+                                <div class="sub-element">
+                                    <div class="img-element">
+                                        <img src="{{ url('web') }}/images/e6.png" alt="">
+                                    </div>
+                                    <h2>{{ __('All Categories') }}</h2>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <!--end big-menu-->
             </div>
-            <!--end col-->
 
-            <!--start col-->
-            <div class="col-lg-3 col-sm-6 col-7 logo-grid text-left-dir">
-                <!--start main-logo-->
-                <div class="main-logo">
-                    <a href="index.html">
-                        <object data="images/main/logo.svg" type="image/svg+xml">
-                            <img src="images/main/logo.png" alt="logo">
-                        </object>
-                    </a>
-                </div>
-                <!--end main-logo-->
-            </div>
-            <!--end col-->
-        </div>
-    </div>
-</header>
-<!--end header-->
+        </header>
+        <!-- end header =====
+        ============== -->

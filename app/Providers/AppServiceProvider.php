@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('*', function ($view) {
             $view->with('sections', Section::all());
+            $view->with('homeSections', Section::where('slug', '!=', 'medicines')->get());
         });
     }
 }

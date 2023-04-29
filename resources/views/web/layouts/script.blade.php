@@ -1,16 +1,14 @@
-<!-- scripts
-================ -->
-<script type="text/javascript" src="{{ url('web') }}/js/html5shiv.min.js"></script>
-<script type="text/javascript" src="{{ url('web') }}/js/respond.min.js"></script>
-<script type="text/javascript" src="{{ url('web') }}/js/popper.min.js"></script>
-<script type="text/javascript" src="{{ url('web') }}/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ url('web') }}/js/aos.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/tippy.js@2.5.4/dist/tippy.all.min.js"></script>
-<script type="text/javascript" src="{{ url('web') }}/js/sweetalert2.all.min.js"></script>
-<script type="text/javascript" src="{{ url('web') }}/js/custom.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="{{ url('web') }}/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="{{ url('web') }}/js/anime.min.js"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="{{ url('web') }}/js/owl.carousel.min.js"></script>
+<script src="{{ url('web') }}/js/lightgallery.min.js"></script>
 
-<!--for this page only-->
-<script type="text/javascript" src="{{ url('web') }}/js/locomotive-scroll.min.js"></script>
-<script type="text/javascript" src="{{ url('web') }}/js/slick.min.js"></script>
-<script type="text/javascript" src="{{ url('web') }}/js/anime.min.js"></script>
-<script type="text/javascript" src="{{ url('web') }}/js/index.js"></script>
+<script src="{{ url('web') }}/js/custom.js"></script>

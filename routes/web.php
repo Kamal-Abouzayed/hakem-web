@@ -14,9 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::namespace('Web')->name('web.')->group(function () {
-    // Route::get('/', 'HomeController@index')->name('home');
-    Route::view('/', 'welcome')->name('home');
+// Localization Routes
+Route::get('language/{locale}', function ($locale) {
+
+    app()->setLocale($locale);
+
+    session()->put('locale', $locale);
+
+    return redirect()->back();
+})->name('language');
+
+Route::namespace('Web')->name('web.')->middleware('localization')->group(function () {
+    Route::get('/', 'HomeController@index')->name('home');
 });
 
 
