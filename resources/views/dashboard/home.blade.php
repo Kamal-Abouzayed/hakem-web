@@ -114,7 +114,7 @@
 
                 <div class="card-body row">
                     <!-- main categories -->
-                    <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="col-xl-4 col-md-6 mb-4">
                         <div class="card border-right-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -138,33 +138,8 @@
                         </div>
                     </div>
 
-                    <!-- main categories -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-right-success shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-l font-weight-bold text-uppercase mb-1">
-                                            <a class="text-success"
-                                                href="{{ route('dashboard.sub-categories.index', ['sectionSlug' => $section->slug]) }}">
-                                                الأقسام الفرعية
-                                            </a>
-
-                                        </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            {{ count($section->categories->where('parent_id', '!=', null)) }}
-                                        </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fa-solid fa-cubes fa-2x" style="color: #1cc88a"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- articles -->
-                    <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="col-xl-4 col-md-6 mb-4">
                         <div class="card border-right-danger shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -189,7 +164,7 @@
                     </div>
 
                     <!-- advices -->
-                    <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="col-xl-4 col-md-6 mb-4">
                         <div class="card border-right-warning shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">

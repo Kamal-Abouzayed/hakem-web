@@ -32,7 +32,7 @@ class CategoryController extends Controller
 
         $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
 
-        $categories = $this->catRepo->getWhere([['section_id', $section->id], ['parent_id', null]]);
+        $categories = $this->catRepo->getWhere([['section_id', $section->id]]);
 
         return view('dashboard.categories.index', compact('pageTitle', 'categories'));
     }

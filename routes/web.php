@@ -63,8 +63,8 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
         // categories
         Route::resource('section/{sectionSlug}/categories', 'CategoryController')->names('categories');
 
-        // sub categories
-        Route::resource('section/{sectionSlug}/sub-categories', 'SubCategoryController')->names('sub-categories');
+        // // sub categories
+        // Route::resource('section/{sectionSlug}/sub-categories', 'SubCategoryController')->names('sub-categories');
 
         // Advices
         Route::resource('section/{sectionSlug}/advices', 'AdviceController')->names('advices');

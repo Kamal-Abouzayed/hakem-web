@@ -49,10 +49,9 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">الأقسام:</h6>
                         <a class="collapse-item {{ areActiveRoutes(['dashboard.categories.index', 'dashboard.categories.create', 'dashboard.categories.edit']) && request()->sectionSlug == $section->slug ? 'active' : '' }}"
-                            href="{{ route('dashboard.categories.index', $section->slug) }}">الأقسام
-                            الرئيسية</a>
-                        <a class="collapse-item {{ areActiveRoutes(['dashboard.sub-categories.index', 'dashboard.sub-categories.create', 'dashboard.sub-categories.edit']) && request()->sectionSlug == $section->slug ? 'active' : '' }}"
-                            href="{{ route('dashboard.sub-categories.index', $section->slug) }}">الأقسام الفرعية</a>
+                            href="{{ route('dashboard.categories.index', $section->slug) }}">الأقسام</a>
+                        {{-- <a class="collapse-item {{ areActiveRoutes(['dashboard.sub-categories.index', 'dashboard.sub-categories.create', 'dashboard.sub-categories.edit']) && request()->sectionSlug == $section->slug ? 'active' : '' }}"
+                            href="{{ route('dashboard.sub-categories.index', $section->slug) }}">الأقسام الفرعية</a> --}}
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">المقالات:</h6>
                         <a class="collapse-item {{ areActiveRoutes(['dashboard.articles.index', 'dashboard.articles.create', 'dashboard.articles.edit']) && request()->sectionSlug == $section->slug ? 'active' : '' }}"

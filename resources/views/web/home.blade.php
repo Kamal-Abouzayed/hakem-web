@@ -211,59 +211,6 @@
                         </a>
                     </div>
                 @endforeach
-
-                {{-- <div class="sub-read-also-article" data-aos="fade-down" data-aos-easing="linear"
-                    data-aos-duration="700">
-                    <a href="article-details.html">
-                        <div class="img-read-also-article">
-                            <img src="images/a1.png" alt="">
-                        </div>
-                        <div class="text-read-also-article">
-                            <h3 class="date-article"> الصحة والجمال , <span> مارس 14 , 2023 </span></h3>
-                            <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة لقد
-                                تم توليد هذا النص من مولد النص العربى .. </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="sub-read-also-article" data-aos="fade-down" data-aos-easing="linear"
-                    data-aos-duration="700">
-                    <a href="article-details.html">
-                        <div class="img-read-also-article">
-                            <img src="images/a1.png" alt="">
-                        </div>
-                        <div class="text-read-also-article">
-                            <h3 class="date-article"> الصحة والجمال , <span> مارس 14 , 2023 </span></h3>
-                            <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة لقد
-                                تم توليد هذا النص من مولد النص العربى .. </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="sub-read-also-article" data-aos="fade-down" data-aos-easing="linear"
-                    data-aos-duration="700">
-                    <a href="article-details.html">
-                        <div class="img-read-also-article">
-                            <img src="images/a2.png" alt="">
-                        </div>
-                        <div class="text-read-also-article">
-                            <h3 class="date-article"> الصحة والجمال , <span> مارس 14 , 2023 </span></h3>
-                            <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة لقد
-                                تم توليد هذا النص من مولد النص العربى .. </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="sub-read-also-article" data-aos="fade-down" data-aos-easing="linear"
-                    data-aos-duration="700">
-                    <a href="article-details.html">
-                        <div class="img-read-also-article">
-                            <img src="images/a3.png" alt="">
-                        </div>
-                        <div class="text-read-also-article">
-                            <h3 class="date-article"> الصحة والجمال , <span> مارس 14 , 2023 </span></h3>
-                            <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة لقد
-                                تم توليد هذا النص من مولد النص العربى .. </p>
-                        </div>
-                    </a>
-                </div> --}}
             </div>
         </div>
     </section>

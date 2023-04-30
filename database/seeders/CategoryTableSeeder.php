@@ -21,22 +21,21 @@ class CategoryTableSeeder extends Seeder
                 'name_en'    => 'Main Category',
                 'desc_ar'    => 'قسم رئيسى',
                 'desc_en'    => 'Main Category',
-                'parent_id'  => null,
                 'section_id' => 1,
                 'slug'       => 'main-category',
                 'img'        => 'categories/img-1.png'
             ],
-            [
-                'id'         => 2,
-                'name_ar'    => 'قسم فرعى',
-                'name_en'    => 'Sub Category',
-                'desc_ar'    => 'قسم فرعى',
-                'desc_en'    => 'Sub Category',
-                'parent_id'  => 1,
-                'section_id' => 1,
-                'slug'       => 'sub-category',
-                'img'        => 'sub-categories/img-1.png'
-            ],
+            // [
+            //     'id'         => 2,
+            //     'name_ar'    => 'قسم فرعى',
+            //     'name_en'    => 'Sub Category',
+            //     'desc_ar'    => 'قسم فرعى',
+            //     'desc_en'    => 'Sub Category',
+            //     'parent_id'  => 1,
+            //     'section_id' => 1,
+            //     'slug'       => 'sub-category',
+            //     'img'        => 'sub-categories/img-1.png'
+            // ],
         ]);
     }
 }

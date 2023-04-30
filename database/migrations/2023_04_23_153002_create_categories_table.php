@@ -22,7 +22,7 @@ class CreateCategoriesTable extends Migration
             $table->string('img');
             // $table->sluggable();
             $table->string('slug');
-            $table->unsignedBigInteger('parent_id')->nullable();
+            // $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreignId('section_id')->nullable()->constrained('sections')->cascadeOnDelete();
             $table->timestamps();
         });

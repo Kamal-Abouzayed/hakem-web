@@ -53,7 +53,7 @@ class ArticleController extends Controller
 
         $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
 
-        $categories = $this->catRepo->getWhere([['parent_id', '!=', null], ['section_id', $section->id]]);
+        $categories = $this->catRepo->getWhere([['section_id', $section->id]]);
 
         return view('dashboard.articles.create', compact('pageTitle', 'categories'));
     }
@@ -108,7 +108,7 @@ class ArticleController extends Controller
 
         $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
 
-        $categories = $this->catRepo->getWhere([['section_id', $section->id], ['parent_id', '!=', null]]);
+        $categories = $this->catRepo->getWhere([['section_id', $section->id]]);
 
         return view('dashboard.articles.edit', compact('article', 'pageTitle', 'categories'));
     }
