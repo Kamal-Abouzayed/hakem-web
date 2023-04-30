@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="form-group col-6">
                     <label for="answer_ar">الإجابة بالعربية</label>
-                    <textarea class="form-control" name="answer_ar" id="" cols="30" rows="10" required>{{ old('answer_ar') }}</textarea>
+                    <textarea class="form-control" name="answer_ar" id="answer_ar" cols="30" rows="10" required>{{ old('answer_ar') }}</textarea>
 
                     @error('answer_ar')
                         <small class="text-danger">{{ $message }}</small>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="form-group col-6">
                     <label for="answer_en">الإجابة بالإنجليزية</label>
-                    <textarea class="form-control" name="answer_en" id="" cols="30" rows="10" required>{{ old('answer_en') }}</textarea>
+                    <textarea class="form-control" name="answer_en" id="answer_en" cols="30" rows="10" required>{{ old('answer_en') }}</textarea>
 
                     @error('answer_en')
                         <small class="text-danger">{{ $message }}</small>
@@ -58,7 +58,17 @@
     @push('js')
         <script src="{{ asset('admin/js/validation/faqValidation.js') }}"></script>
         <script src="{{ asset('admin/js/custom/preview-image.js') }}"></script>
-        <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
-        <script src="{{ asset('admin/js/custom/faqCkeditor.js') }}"></script>
+        {{-- <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+        <script src="{{ asset('admin/js/custom/faqCkeditor.js') }}"></script> --}}
+        <script>
+            $(document).ready(function() {
+                $('#answer_ar').summernote({
+                    lang: 'ar-Eg'
+                });
+                $('#answer_en').summernote({
+                    lang: 'en-US'
+                });
+            });
+        </script>
     @endpush
 @endsection

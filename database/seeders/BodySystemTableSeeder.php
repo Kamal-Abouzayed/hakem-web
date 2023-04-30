@@ -48,14 +48,6 @@ class BodySystemTableSeeder extends Seeder
                 'img'        => 'body-systems/img-1.png'
             ],
             [
-                'name_ar'    => 'الجهاز اللمفاوى',
-                'name_en'    => 'Lymphatic system',
-                'desc_ar'    => 'في مكان واحد ، نوفر لك كل ما تحتاجه لدروسك في الثانوية والجامعة مع أفضل المعلمين. هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة',
-                'desc_en'    => 'In one place we provide you everything you need for your high school and university lessons with the best teachers. This text is an example of text that can be replaced in the same space This text is an example of text that can be replaced in the same space',
-                'slug'       => 'lymphatic-system',
-                'img'        => 'body-systems/img-1.png'
-            ],
-            [
                 'name_ar'    => 'الغدد الصماء',
                 'name_en'    => 'Endocrine',
                 'desc_ar'    => 'في مكان واحد ، نوفر لك كل ما تحتاجه لدروسك في الثانوية والجامعة مع أفضل المعلمين. هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة',

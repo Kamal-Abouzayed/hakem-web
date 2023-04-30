@@ -18,8 +18,10 @@ class HomeController extends Controller
 
     public function index()
     {
+        $pageTitle = __('Home');
+
         $articles = $this->articleRepo->limit(12);
 
-        return view('web.home', compact('articles'));
+        return view('web.home', compact('articles', 'pageTitle'));
     }
 }

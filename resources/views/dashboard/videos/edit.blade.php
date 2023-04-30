@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="form-group col-6">
                     <label for="desc_ar">الإجابة بالعربية</label>
-                    <textarea class="form-control" name="desc_ar" id="" cols="30" rows="10" required>{{ old('desc_ar', $video->desc_ar) }}</textarea>
+                    <textarea class="form-control" name="desc_ar" id="desc_ar" cols="30" rows="10" required>{{ old('desc_ar', $video->desc_ar) }}</textarea>
 
                     @error('desc_ar')
                         <small class="text-danger">{{ $message }}</small>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="form-group col-6">
                     <label for="desc_en">الإجابة بالإنجليزية</label>
-                    <textarea class="form-control" name="desc_en" id="" cols="30" rows="10" required>{{ old('desc_en', $video->desc_en) }}</textarea>
+                    <textarea class="form-control" name="desc_en" id="desc_en" cols="30" rows="10" required>{{ old('desc_en', $video->desc_en) }}</textarea>
 
                     @error('desc_en')
                         <small class="text-danger">{{ $message }}</small>
@@ -71,7 +71,18 @@
     @push('js')
         <script src="{{ asset('admin/js/validation/videoValidation.js') }}"></script>
         <script src="{{ asset('admin/js/custom/preview-image.js') }}"></script>
-        <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
-        <script src="{{ asset('admin/js/custom/ckeditor.js') }}"></script>
+        {{-- <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+        <script src="{{ asset('admin/js/custom/ckeditor.js') }}"></script> --}}
+
+        <script>
+            $(document).ready(function() {
+                $('#desc_ar').summernote({
+                    lang: 'ar-Eg'
+                });
+                $('#desc_en').summernote({
+                    lang: 'en-US'
+                });
+            });
+        </script>
     @endpush
 @endsection

@@ -96,7 +96,18 @@
     @push('js')
         <script src="{{ asset('admin/js/validation/articleValidation.js') }}"></script>
         <script src="{{ asset('admin/js/custom/preview-image.js') }}"></script>
-        <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
-        <script src="{{ asset('admin/js/custom/ckeditor.js') }}"></script>
+        {{-- <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+        <script src="{{ asset('admin/js/custom/ckeditor.js') }}"></script> --}}
+
+        <script>
+            $(document).ready(function() {
+                $('#desc_ar').summernote({
+                    lang: 'ar-Eg'
+                });
+                $('#desc_en').summernote({
+                    lang: 'en-US'
+                });
+            });
+        </script>
     @endpush
 @endsection

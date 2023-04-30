@@ -26,6 +26,9 @@ Route::get('language/{locale}', function ($locale) {
 
 Route::namespace('Web')->name('web.')->middleware('localization')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
+
+    // section
+    Route::get('{sectionSlug}/categories', 'SectionController@index')->name('section-categories');
 });
 
 

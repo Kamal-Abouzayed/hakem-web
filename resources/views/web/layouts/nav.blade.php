@@ -52,7 +52,7 @@
 
                         @foreach ($homeSections as $section)
                             <div class="col-lg-2" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
-                                <a href="medicine-health.html">
+                                <a href="{{ route('web.section-categories', $section->slug) }}">
                                     <div class="sub-element">
                                         <div class="img-element">
                                             <img src="{{ asset('storage/' . $section->img) }}" alt="">
