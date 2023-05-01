@@ -33,6 +33,11 @@ class Category extends Model
         return $this->{'desc_' . app()->getLocale()};
     }
 
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+
     // public function parent()
     // {
     //     return $this->belongsTo(Category::class, 'parent_id');

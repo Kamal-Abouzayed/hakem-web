@@ -4,7 +4,8 @@
         ================================
         ============== --
         -->
-<main id="app">
+
+<main id="app" class="{{ Route::currentRouteName() != 'web.home' ? 'pg-section' : '' }}">
     @yield('content')
 </main>
 

@@ -32,6 +32,12 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
 
     // body system
     Route::get('{sectionSlug}/body-system/{bodySystemSlug}', 'SectionController@bodySystem')->name('body-system');
+
+    // category details
+    Route::get('{sectionSlug}/category-details/{slug}', 'SectionController@categoryDetails')->name('category-details');
+
+    // article details
+    Route::get('{sectionSlug}/article-details/{slug}', 'SectionController@articleDetails')->name('article-details');
 });
 
 

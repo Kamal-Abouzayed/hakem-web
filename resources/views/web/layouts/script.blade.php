@@ -12,3 +12,47 @@
 <script src="{{ url('web') }}/js/lightgallery.min.js"></script>
 
 <script src="{{ url('web') }}/js/custom.js"></script>
+
+@stack('js')
+
+@if (session()->has('success'))
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 4000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: "{{ session()->get('success') }}"
+        })
+    </script>
+@endif
+
+@if (session()->has('error'))
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 4000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'error',
+            title: "{{ session()->get('error') }}"
+        })
+    </script>
+@endif

@@ -1,6 +1,6 @@
 <!-- start footer ==============================
         ============================== -->
-<footer class="footer" style="background-image: url(images/bg3.png);">
+<footer class="footer" style="background-image: url({{ url('web') }}/images/bg3.png);">
     <div class="main-container">
         <div class="row">
             <div class="col-lg-5">
