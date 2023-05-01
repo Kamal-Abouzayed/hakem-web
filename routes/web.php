@@ -29,6 +29,9 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
 
     // section
     Route::get('{sectionSlug}/categories', 'SectionController@index')->name('section-categories');
+
+    // body system
+    Route::get('{sectionSlug}/body-system/{bodySystemSlug}', 'SectionController@bodySystem')->name('body-system');
 });
 
 

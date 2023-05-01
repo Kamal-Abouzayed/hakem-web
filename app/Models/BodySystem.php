@@ -30,4 +30,9 @@ class BodySystem extends Model
     {
         return $this->{'desc_' . app()->getLocale()};
     }
+
+    public function organs()
+    {
+        return $this->hasMany(Organ::class);
+    }
 }

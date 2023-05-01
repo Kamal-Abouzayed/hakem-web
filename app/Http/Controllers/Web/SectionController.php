@@ -32,4 +32,17 @@ class SectionController extends Controller
 
         return view('web.section', compact('categories', 'pageTitle', 'section', 'bodySystems', 'bodySystemsChunks'));
     }
+
+    public function bodySystem($sectionSlug, $bodySystemSlug)
+    {
+        $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
+
+        $pageTitle = $section->name;
+
+        $categories = $section->categories;
+
+        $bodySystem = $this->bodySystemRepo->findWhere([['slug', $bodySystemSlug]]);
+
+        return view('web.body-system', compact('pageTitle', 'section', 'bodySystem'));
+    }
 }

@@ -8,7 +8,8 @@
             <ul>
                 @foreach ($bodySystemsChunks[0] as $chunk)
                     <li>
-                        <a href="human-organ-categories.html">
+                        <a
+                            href="{{ route('web.body-system', ['sectionSlug' => request()->sectionSlug, 'bodySystemSlug' => $chunk->slug]) }}">
                             <div class="img-sub-human-body">
                                 <img src="{{ asset('storage/' . $chunk->img) }}" alt="{{ $chunk->name }}">
                             </div>
@@ -27,7 +28,8 @@
 
                 @foreach ($bodySystemsChunks[1] as $chunk)
                     <li>
-                        <a href="human-organ-categories.html">
+                        <a
+                            href="{{ route('web.body-system', ['sectionSlug' => request()->sectionSlug, 'bodySystemSlug' => $chunk->slug]) }}">
                             <div class="img-sub-human-body">
                                 <img src="{{ asset('storage/' . $chunk->img) }}" alt="{{ $chunk->name }}">
                             </div>
