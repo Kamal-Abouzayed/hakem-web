@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Contract\ArticleRepositoryInterface;
 use App\Repositories\Contract\BodySystemRepositoryInterface;
 use App\Repositories\Contract\CategoryRepositoryInterface;
+use App\Repositories\Contract\PregnancyStageRepositoryInterface;
 use App\Repositories\Contract\SectionRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -15,17 +16,20 @@ class SectionController extends Controller
     protected $bodySystemRepo;
     protected $categoryRepo;
     protected $articleRepo;
+    protected $stageRepo;
 
     public function __construct(
         SectionRepositoryInterface $sectionRepo,
         BodySystemRepositoryInterface $bodySystemRepo,
         CategoryRepositoryInterface $categoryRepo,
-        ArticleRepositoryInterface $articleRepo
+        ArticleRepositoryInterface $articleRepo,
+        PregnancyStageRepositoryInterface $stageRepo
     ) {
         $this->sectionRepo    = $sectionRepo;
         $this->bodySystemRepo = $bodySystemRepo;
         $this->categoryRepo   = $categoryRepo;
         $this->articleRepo    = $articleRepo;
+        $this->stageRepo      = $stageRepo;
     }
 
     public function index($sectionSlug)
@@ -40,7 +44,9 @@ class SectionController extends Controller
 
         $bodySystemsChunks = $bodySystems->chunk(6);
 
-        return view('web.section', compact('categories', 'pageTitle', 'section', 'bodySystems', 'bodySystemsChunks'));
+        $pregnancyStages = $this->stageRepo->getWhere([['parent_id', null]], ['column' => 'id', 'dir' => 'ASC']);
+
+        return view('web.section', compact('categories', 'pageTitle', 'section', 'bodySystems', 'bodySystemsChunks', 'pregnancyStages'));
     }
 
     public function bodySystem($sectionSlug, $bodySystemSlug)
@@ -76,5 +82,16 @@ class SectionController extends Controller
         $pageTitle = $article->name;
 
         return view('web.article-details', compact('pageTitle', 'section', 'article'));
+    }
+
+    public function pregnancyStage($sectionSlug, $slug)
+    {
+        $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
+
+        $stage = $this->stageRepo->findWhere([['slug', $slug]]);
+
+        $pageTitle = $stage->name;
+
+        return view('web.pregnancy-stage-details', compact('pageTitle', 'section', 'stage'));
     }
 }

@@ -30,8 +30,9 @@
 
             @if ($section->slug == 'medicine-and-health')
                 @include('web.includes.human-body')
+            @elseif ($section->slug == 'pregnancy-and-birth')
+                @include('web.includes.pregnancy-stages')
             @endif
-
 
         </div>
     </section>
