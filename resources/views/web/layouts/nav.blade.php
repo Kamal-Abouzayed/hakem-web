@@ -36,12 +36,8 @@
                     </div>
 
 
-                    <div class="search-header">
-                        <form action="">
-                            <input type="text" placeholder=" ابحث هنا .." class="form-control">
-                            <button><img src="{{ url('web') }}/images/search.png" alt=""></button>
-                        </form>
-                    </div>
+                    @include('web.includes.articles-search-field')
+
                 </div>
             </div>
 

@@ -61,6 +61,8 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
 
     Route::get('faqs', 'FaqController@index')->name('faqs');
     Route::get('faqs/faq-details/{slug}', 'FaqController@faqDetails')->name('faq-details');
+
+    Route::post('search-articles', 'HomeController@searchArticles')->name('search-articles');
 });
 
 
