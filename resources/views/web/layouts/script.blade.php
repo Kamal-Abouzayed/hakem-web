@@ -13,6 +13,8 @@
 
 <script src="{{ url('web') }}/js/custom.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 @stack('js')
 
 @if (session()->has('success'))

@@ -131,7 +131,7 @@
     <section class="read-article-index mr-section">
         <div class="main-container">
             <div class="title-start">
-                <h2>الأكثر قراءة</h2>
+                <h2>{{ __('Most Read') }}</h2>
                 <span></span>
             </div>
             <div class="row">

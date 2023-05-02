@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 use App\Repositories\Contract\ArticleRepositoryInterface;
 use App\Repositories\Contract\BodySystemRepositoryInterface;
 use App\Repositories\Contract\CategoryRepositoryInterface;
@@ -93,5 +94,21 @@ class SectionController extends Controller
         $pageTitle = $stage->name;
 
         return view('web.pregnancy-stage-details', compact('pageTitle', 'section', 'stage'));
+    }
+
+    public function searchDiseases(Request $request, $sectionSlug)
+    {
+        $pageTitle = __('Search Results');
+
+        $searchTerm = $request->searchTerm;
+
+        $articles = Article::where('section_id', 4)
+            ->where('name_ar', 'LIKE', "%{$searchTerm}%")
+            ->orWhere('name_en', 'LIKE', "%{$searchTerm}%")
+            ->orWhere('desc_ar', 'LIKE', "%{$searchTerm}%")
+            ->orWhere('desc_en', 'LIKE', "%{$searchTerm}%")
+            ->get();
+
+        return view('web.search-diseases', compact('pageTitle', 'articles'));
     }
 }

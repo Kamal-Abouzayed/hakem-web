@@ -1,11 +1,14 @@
-<section class="main-medicine-health">
+<!-- start diseases  ===== -->
+<section class="diseases">
     <div class="main-container">
-        <div class="main-health-beauty">
-            <div class="title-start">
-                <h2>{{ $category->name }}</h2>
-                <span></span>
-            </div>
+        <div class="title-start">
+            <h2>{{ $category->name }}</h2>
+            <span></span>
+        </div>
 
+        @include('web.includes.diseases-search-field')
+
+        <div class="main-diseases">
             <div class="row">
 
                 @foreach ($category->articles as $article)
@@ -24,12 +27,12 @@
                     </div>
                 @endforeach
 
-                {{-- <div class="col-lg-12">
+                {{--
+                <div class="col-lg-12">
                     <div class="btn-health-beauty">
                         <a href="" class="ctm-link"> المزيد <i class="bi-arrow-left"></i></a>
                     </div>
                 </div> --}}
-
 
                 @if ($section->advices->isNotEmpty())
                     <div class="silder-advice">
@@ -50,6 +53,7 @@
             </div>
         </div>
 
-
     </div>
 </section>
+
+<!-- end diseases  ===== -->

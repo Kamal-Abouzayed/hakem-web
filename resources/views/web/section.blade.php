@@ -7,6 +7,7 @@
                 <h2>{{ $section->name }}</h2>
                 <span></span>
             </div>
+
             <div class="main-medicine-health">
                 <div class="row">
 

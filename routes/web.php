@@ -41,6 +41,9 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
 
     // pregnancy stage details
     Route::get('{sectionSlug}/pregnancy-stage/{slug}', 'SectionController@pregnancyStage')->name('pregnancy-stage');
+
+    // pregnancy stage details
+    Route::post('{sectionSlug}/diseases/search-diseases', 'SectionController@searchDiseases')->name('search-diseases');
 });
 
 
