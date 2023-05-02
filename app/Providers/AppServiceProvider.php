@@ -36,6 +36,8 @@ class AppServiceProvider extends ServiceProvider
 
             if ($section) {
                 $view->with('relatedContent', Article::where('section_id', $section->id)->get());
+            } else {
+                $view->with('relatedContent', Article::get());
             }
         });
     }

@@ -24,7 +24,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $video->name }}</td>
-                                <td>{!! Str::limit($video->desc, 70) !!}</td>
+                                <td>{!! strip_tags(Str::limit($video->desc, 70)) !!}</td>
                                 @php
                                     $url = $video->url;
                                     $url_components = parse_url($url);

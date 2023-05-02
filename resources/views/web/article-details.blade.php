@@ -32,13 +32,16 @@
                         </div>
 
                         <div class="share-article">
-                            <h3><i class="bi bi-share"></i> مشاركة : </h3>
-                            <ul>
+                            <h3><i class="bi bi-share"></i> {{ __('Share') }} : </h3>
+
+                            {!! $share !!}
+
+                            {{-- <ul>
                                 <li><a href=""><img src="images/facebook-logo.png" alt=""></a></li>
                                 <li><a href=""><img src="images/twitter.png" alt=""></a></li>
                                 <li><a href=""><img src="images/instagram.png" alt=""></a></li>
                                 <li><a href=""><img src="images/Snapchat.png" alt=""></a></li>
-                            </ul>
+                            </ul> --}}
                         </div>
                     </div>
                 </div>

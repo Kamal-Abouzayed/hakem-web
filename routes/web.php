@@ -25,7 +25,15 @@ Route::get('language/{locale}', function ($locale) {
 })->name('language');
 
 Route::namespace('Web')->name('web.')->middleware('localization')->group(function () {
+
+    // Home
     Route::get('/', 'HomeController@index')->name('home');
+
+    // About Us
+    Route::get('about-us', 'StaticPageController@about')->name('about');
+
+    // Terms of Use
+    Route::get('terms-of-use', 'StaticPageController@terms')->name('terms');
 
     // section
     Route::get('{sectionSlug}/categories', 'SectionController@index')->name('section-categories');
@@ -43,7 +51,12 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
     Route::get('{sectionSlug}/pregnancy-stage/{slug}', 'SectionController@pregnancyStage')->name('pregnancy-stage');
 
     // pregnancy stage details
-    Route::post('{sectionSlug}/diseases/search-diseases', 'SectionController@searchDiseases')->name('search-diseases');
+    Route::post('{sectionSlug}/search-diseases', 'SectionController@searchDiseases')->name('search-diseases');
+
+
+    Route::get('videos', 'VideoController@index')->name('videos');
+    Route::get('video-details/{slug}', 'VideoController@videoDetails')->name('video-details');
+    Route::post('videos/search-videos', 'VideoController@searchVideos')->name('search-videos');
 });
 
 

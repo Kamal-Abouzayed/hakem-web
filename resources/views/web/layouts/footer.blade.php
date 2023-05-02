@@ -6,34 +6,35 @@
             <div class="col-lg-5">
                 <div class="sub-footer">
                     <div class="logo-footer">
-                        <a href="index.html">
-                            <img src="images/logo.png" alt="">
+                        <a href="{{ route('web.home') }}">
+                            <img src="{{ asset('storage/' . getSetting('logo')) }}" alt="">
                         </a>
                     </div>
-                    <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص
-                        العربى، حيث يمكنك أن تولد مثل هذا النص
-                        . أو العديد من النصوص الأخرى </p>
+                    <p>{!! strip_tags(Str::limit(getSetting('about', app()->getLocale()), 300)) !!}</p>
                 </div>
             </div>
 
             <div class="col-lg-3">
                 <div class="element-footer">
-                    <h2> روابط سريعة : </h2>
+                    <h2> {{ __('Quick Links') }} : </h2>
                     <ul>
-                        <li><a href="aboutsus.html">من نحن </a></li>
-                        <li><a href="contactus.html">اتصل بنا</a></li>
-                        <li><a href="contactus.html">أعلن معنا</a></li>
-                        <li><a href="terms.html">شروط الاستخدام</a></li>
+                        <li><a href="{{ route('web.about') }}">{{ __('About Us') }} </a></li>
+                        <li><a href="contactus.html">{{ __('Contact Us') }}</a></li>
+                        {{-- <li><a href="contactus.html">أعلن معنا</a></li> --}}
+                        <li><a href="{{ route('web.terms') }}">{{ __('Terms of Use') }}</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="element-footer el-f2">
-                    <h2> تواصل معنا: </h2>
+                    <h2> {{ __('Contact Us') }}: </h2>
                     <ul>
-                        <li><a href=""> <i class="bi bi-phone"></i> 096234467899+ </a></li>
-                        <li><a href=""> <i class="bi bi-envelope"></i> hakemweb@gmail.com</a></li>
-                        <li><a href=""> <i class="bi bi-geo-alt"></i> الرياض , المملكة العربية السعودية</a></li>
+                        <li><a href="tel:{{ getSetting('phone') }}"> <i class="bi bi-phone"></i>
+                                {{ getSetting('phone') }} </a></li>
+                        <li><a href="mailTo:{{ getSetting('email') }}"> <i class="bi bi-envelope"></i>
+                                {{ getSetting('email') }}</a></li>
+
+                        <li><a href="#"><i class="bi bi-geo-alt"></i> {{ getSetting('address') }}</a></li>
                     </ul>
                 </div>
             </div>
@@ -42,13 +43,13 @@
         </div>
 
         <div class="end-page">
-            <p> جميع الحقوق محفوظة &copy; 2022 لموقع حكيم ويب </p>
+            <p> {{ __('All rights reserved') }} &copy; {{ Date('Y') }} {{ __('for Hakem Web Website') }} </p>
             <div class="media-footer">
                 <ul>
-                    <li><a href=""><i class="bi bi-facebook"></i> </a></li>
-                    <li><a href=""><i class="bi bi-telegram"></i></a></li>
-                    <li><a href=""><i class="bi bi-instagram"></i></a></li>
-                    <li><a href=""><i class="bi bi-twitter"></i></a></li>
+                    <li><a href="{{ getSetting('facebook') }}"><i class="bi bi-facebook"></i> </a></li>
+                    <li><a href="{{ getSetting('telegram') }}"><i class="bi bi-telegram"></i></a></li>
+                    <li><a href="{{ getSetting('instagram') }}"><i class="bi bi-instagram"></i></a></li>
+                    <li><a href="{{ getSetting('twitter') }}"><i class="bi bi-twitter"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -73,62 +74,39 @@
     </div>
     <div class="element_menu">
         <ul>
-            <li>
-                <a class="click-element-mune" href=""> <img src="images/m01.png" alt=""> الطب والصحة </a>
-                <div class="dropdowm-element-mune">
-                    <ul>
-                        <li><a href="categories-medicine-health.html">أجهزة الجسم </a></li>
-                        <li><a href="categories-medicine-health.html"> صحة الأسنان </a></li>
-                        <li><a href="categories-medicine-health.html">الطب البديل</a></li>
-                        <li><a href="categories-medicine-health.html">الصحة النفسية</a></li>
-                        <li><a href="categories-medicine-health.html"> الطب البديل</a></li>
-                        <li><a href="categories-medicine-health.html"> صحة المرأة </a></li>
-                    </ul>
-                </div>
 
-            </li>
+            @foreach ($sections->take(3) as $section)
+                <li>
+                    <a class="click-element-mune" href="{{ route('web.section-categories', $section->slug) }}"> <img
+                            src="{{ asset('storage/' . $section->img) }}" alt="{{ $section->name }}">
+                        {{ $section->name }}
+                    </a>
+                    <div class="dropdowm-element-mune">
+                        <ul>
+                            @foreach ($section->categories as $category)
+                                <li><a
+                                        href="{{ route('web.category-details', ['sectionSlug' => $section->slug, 'slug' => $category->slug]) }}">{{ $category->name }}
+                                    </a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+
+                </li>
+            @endforeach
+
+
             <li>
-                <a class="click-element-mune" href=""> <img src="images/m02.png" alt=""> الصحة والجمال
+                <a class="click-element-mune" href=""> <img src="{{ url('web') }}/images/m04.png" alt=""> {{ __('Tools and Media') }}
                 </a>
                 <div class="dropdowm-element-mune">
                     <ul>
-                        <li><a href="categeries-health-beauty.html">الريجيم وتخفيف الوزن</a></li>
-                        <li><a href="categeries-health-beauty.html">التغذية السليمة</a></li>
-                        <li><a href="categeries-health-beauty.html">الرياضة والرشاقة</a></li>
-                        <li><a href="categeries-health-beauty.html">جودة الحياة</a></li>
-                        <li><a href="categeries-health-beauty.html">الجيل الدهبي</a></li>
-                        <li><a href="categeries-health-beauty.html">العناية بالشعر</a></li>
-                    </ul>
-                </div>
-
-            </li>
-            <li>
-                <a class="click-element-mune" href=""> <img src="images/m03.png" alt=""> الحمل والولادة
-                </a>
-                <div class="dropdowm-element-mune">
-                    <ul>
-                        <li><a href="categories-pregnancy-childbirth.html">تخطيط الحمل</a></li>
-                        <li><a href="categories-pregnancy-childbirth.html">الولادة</a></li>
-                        <li><a href="categories-pregnancy-childbirth.html">الأطفال الرضع</a></li>
-                        <li><a href="categories-pregnancy-childbirth.html">الحمل</a></li>
-                        <li><a href="categories-pregnancy-childbirth.html">رعاية الأطفال</a></li>
-                        <li><a href="categories-pregnancy-childbirth.html">نمو وتطور الطفل</a></li>
-                    </ul>
-                </div>
-
-            </li>
-            <li>
-                <a class="click-element-mune" href=""> <img src="images/m04.png" alt=""> أدوات وميديا
-                </a>
-                <div class="dropdowm-element-mune">
-                    <ul>
-                        <li><a href="videos.html">فيديو</a></li>
+                        <li><a href="{{ route('web.videos') }}">فيديو</a></li>
                         <li><a href="all-calculators.html">حاسبات</a></li>
 
                     </ul>
                 </div>
-
             </li>
+
             <li>
                 <a class="click-element-mune" href=""> <img src="images/m05.png" alt=""> عام </a>
                 <div class="dropdowm-element-mune">
@@ -190,16 +168,16 @@
                         <li>
                             <a href="medications.html">الأدوية</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="index.html">تطعيمات</a>
-                        </li>
+                        </li> --}}
 
                         <li>
                             <a href="q&a.html">أسئلة وأجوبة</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="index.html">فحوصات</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
 
