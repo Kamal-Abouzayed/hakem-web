@@ -1,7 +1,6 @@
 <div class="search-two">
     <div class="search-header">
-        <form action="{{ route('web.search-diseases', ['sectionSlug' => request()->sectionSlug]) }}" method="POST">
-            @csrf
+        <form action="{{ route('web.search-diseases', ['sectionSlug' => request()->sectionSlug]) }}" method="GET">
             <input type="text" placeholder="{{ __('Find a disease') }} .. " name="searchTerm" class="form-control">
             <button><img src="{{ url('web') }}/images/search.png" alt=""></button>
         </form>

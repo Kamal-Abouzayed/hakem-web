@@ -14,7 +14,13 @@
                             <a href="login.html" class="login"> دخول </a>
                             <a href="register.html" class="signin"> تسجيل </a>
                             <div class="language">
-                                <a href=""><i class="bi bi-globe"></i> ع </a>
+
+                                @if (app()->getLocale() == 'ar')
+                                    <a href="{{ route('language', 'en') }}"><i class="bi bi-globe"></i> en </a>
+                                @else
+                                    <a href="{{ route('language', 'ar') }}"><i class="bi bi-globe"></i> ع </a>
+                                @endif
+
                             </div>
 
                             <div class="menu-div">

@@ -51,18 +51,18 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
     Route::get('{sectionSlug}/pregnancy-stage/{slug}', 'SectionController@pregnancyStage')->name('pregnancy-stage');
 
     // pregnancy stage details
-    Route::post('{sectionSlug}/search-diseases', 'SectionController@searchDiseases')->name('search-diseases');
+    Route::get('{sectionSlug}/search-diseases', 'SectionController@searchDiseases')->name('search-diseases');
 
 
     Route::get('videos', 'VideoController@index')->name('videos');
     Route::get('video-details/{slug}', 'VideoController@videoDetails')->name('video-details');
-    Route::post('videos/search-videos', 'VideoController@searchVideos')->name('search-videos');
+    Route::get('videos/search-videos', 'VideoController@searchVideos')->name('search-videos');
 
 
     Route::get('faqs', 'FaqController@index')->name('faqs');
     Route::get('faqs/faq-details/{slug}', 'FaqController@faqDetails')->name('faq-details');
 
-    Route::post('search-articles', 'HomeController@searchArticles')->name('search-articles');
+    Route::get('search-articles', 'HomeController@searchArticles')->name('search-articles');
 });
 
 
