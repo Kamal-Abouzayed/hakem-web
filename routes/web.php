@@ -53,6 +53,8 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
     // pregnancy stage details
     Route::get('{sectionSlug}/search-diseases', 'SectionController@searchDiseases')->name('search-diseases');
 
+    Route::get('{sectionSlug}/search-calories', 'SectionController@searchCalories')->name('search-calories');
+
 
     Route::get('videos', 'VideoController@index')->name('videos');
     Route::get('video-details/{slug}', 'VideoController@videoDetails')->name('video-details');

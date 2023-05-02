@@ -46,13 +46,12 @@ class VideoController extends Controller
 
         $searchTerm = $request->searchTerm;
 
-        $videos = Video::where('name_ar', 'LIKE', "%{$searchTerm}%")
-            ->orWhere('name_en', 'LIKE', "%{$searchTerm}%")
-            ->orWhere('desc_ar', 'LIKE', "%{$searchTerm}%")
-            ->orWhere('desc_en', 'LIKE', "%{$searchTerm}%")
-            ->get();
-
-        // dd($videos);
+        $videos = Video::query()->where(function ($q) use ($searchTerm) {
+            $q->where('name_ar', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('name_en', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('desc_ar', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('desc_en', 'LIKE', "%{$searchTerm}%");
+        })->get();
 
         return view('web.search-videos', compact('pageTitle', 'videos'));
     }

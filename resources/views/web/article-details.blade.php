@@ -7,7 +7,7 @@
                 <div class="col-lg-8">
                     <div class="sub-article-details">
                         <div class="img-article-details">
-                            <img src="images/a01.png" alt="">
+                            <img src="{{ asset('storage/' . $article->img) }}" alt="{{ $article->name }}">
                         </div>
 
 

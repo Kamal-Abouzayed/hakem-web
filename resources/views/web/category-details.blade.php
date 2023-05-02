@@ -5,6 +5,8 @@
         @include('web.pages.medicine-and-health')
     @elseif (request()->sectionSlug == 'diseases')
         @include('web.pages.diseases')
+        @elseif (request()->sectionSlug == 'calories')
+        @include('web.pages.calories')
     @else
         @include('web.pages.health-and-beauty')
     @endif

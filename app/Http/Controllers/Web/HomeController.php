@@ -32,11 +32,12 @@ class HomeController extends Controller
 
         $searchTerm = $request->searchTerm;
 
-        $articles = Article::where('name_ar', 'LIKE', "%{$searchTerm}%")
-            ->orWhere('name_en', 'LIKE', "%{$searchTerm}%")
-            ->orWhere('desc_ar', 'LIKE', "%{$searchTerm}%")
-            ->orWhere('desc_en', 'LIKE', "%{$searchTerm}%")
-            ->get();
+        $articles = Article::query()->where(function ($q) use ($searchTerm) {
+            $q->where('name_ar', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('name_en', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('desc_ar', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('desc_en', 'LIKE', "%{$searchTerm}%");
+        })->get();
 
         return view('web.search-articles', compact('pageTitle', 'articles'));
     }
