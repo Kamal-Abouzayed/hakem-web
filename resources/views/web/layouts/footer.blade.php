@@ -96,11 +96,12 @@
 
 
             <li>
-                <a class="click-element-mune" href=""> <img src="{{ url('web') }}/images/m04.png" alt=""> {{ __('Tools and Media') }}
+                <a class="click-element-mune" href=""> <img src="{{ url('web') }}/images/m04.png"
+                        alt=""> {{ __('Tools and Media') }}
                 </a>
                 <div class="dropdowm-element-mune">
                     <ul>
-                        <li><a href="{{ route('web.videos') }}">فيديو</a></li>
+                        <li><a href="{{ route('web.videos') }}">{{ __('Videos') }}</a></li>
                         <li><a href="all-calculators.html">حاسبات</a></li>
 
                     </ul>
@@ -108,15 +109,17 @@
             </li>
 
             <li>
-                <a class="click-element-mune" href=""> <img src="images/m05.png" alt=""> عام </a>
+                <a class="click-element-mune" href=""> <img src="{{ url('web') }}/images/m05.png"
+                        alt="">
+                    {{ __('General') }} </a>
                 <div class="dropdowm-element-mune">
                     <ul>
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="diseases.html">الأمراض</a></li>
-                        <li><a href="medications.html">الأدوية</a></li>
-                        <li><a href="aboutsus.html">من نحن </a></li>
-                        <li><a href="q&a.html">أسئلة وأجوبة</a></li>
-                        <li><a href="contactus.html">اتصل بنا</a></li>
+                        <li><a href="{{ route('web.home') }}">{{ __('Home') }}</a></li>
+                        <li><a href="{{ url('diseases/categories') }}">{{ __('Diseases') }}</a></li>
+                        <li><a href="{{ url('medicines/categories') }}">{{ __('Medicines') }}</a></li>
+                        <li><a href="{{ route('web.about') }}">{{ __('About Us') }} </a></li>
+                        <li><a href="{{ route('web.faqs') }}">{{ __('Questions and Answers') }}</a></li>
+                        <li><a href="contactus.html">{{ __('Contact Us') }}</a></li>
                     </ul>
                 </div>
 
