@@ -147,36 +147,57 @@
 
     <div class="element_menu_responsive">
         <ul>
-            <li><a href="medicine-health.html"> <img src="images/e1.png" alt=""> الطب والصحة </a></li>
-            <li><a href="health-beauty.html"><img src="images/e2.png" alt=""> الصحة والجمال</a></li>
-            <li><a href="pregnancy-childbirth.html"> <img src="images/e3.png" alt="">الحمل والولادة</a></li>
-            <li><a href="diseases.html"><img src="images/e4.png" alt=""> الأمراض </a></li>
-            <li><a href="calories.html"><img src="images/e5.png" alt=""> السعرات الحرارية </a></li>
-            <li><a href="medications.html"><img src="images/e5.png" alt=""> الأدوية </a></li>
-            <li><a href="register.html"><img src="images/e6.png" alt=""> تسجيل </a></li>
 
-            <li><a href="login.html"><img src="images/e6.png" alt=""> دخول </a></li>
+            @foreach ($sections as $section)
+                <li><a href="{{ route('web.section-categories', $section->slug) }}"> <img
+                            src="{{ asset('storage/' . $section->img) }}" alt="{{ $section->name }}">
+                        {{ $section->name }} </a></li>
+            @endforeach
+
+            @auth
+                <li>
+                    <a href="{{ route('web.logout') }}"><img src="{{ url('web') }}/images/e6.png" alt="">
+                        {{ __('Logout') }} </a>
+                </li>
+                @role('admin')
+                    <li><a href="{{ route('dashboard.home') }}"><img src="{{ url('web') }}/images/e6.png" alt="">
+                            {{ __('Dashboard') }} </a></li>
+                @endrole
+            @else
+                <li>
+                    <a href="{{ route('web.register') }}"><img src="{{ url('web') }}/images/e6.png" alt="">
+                        {{ __('Register') }} </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('web.login') }}"><img src="{{ url('web') }}/images/e6.png" alt="">
+                        {{ __('Login') }}
+                    </a>
+                </li>
+            @endauth
+
 
             <li>
-                <a class="click-element-mune" href=""> <img src="images/e6.png" alt=""> جميع الأقسام
+                <a class="click-element-mune" href=""> <img src="{{ url('web') }}/images/e6.png"
+                        alt=""> {{ __('All Categories') }}
                 </a>
                 <div class="dropdowm-element-mune">
                     <ul>
                         <li>
-                            <a href="index.html">الرئيسية</a>
+                            <a href="{{ route('web.home') }}">{{ __('Home') }}</a>
                         </li>
                         <li>
-                            <a href="diseases.html">الأمراض</a>
+                            <a href="{{ url('diseases/categories') }}">{{ __('Diseases') }}</a>
                         </li>
                         <li>
-                            <a href="medications.html">الأدوية</a>
+                            <a href="{{ url('medicines/categories') }}">{{ __('Medicines') }}</a>
                         </li>
                         {{-- <li>
                             <a href="index.html">تطعيمات</a>
                         </li> --}}
 
                         <li>
-                            <a href="q&a.html">أسئلة وأجوبة</a>
+                            <a href="{{ route('web.faqs') }}">{{ __('Questions and Answers') }}</a>
                         </li>
                         {{-- <li>
                             <a href="index.html">فحوصات</a>
@@ -192,8 +213,8 @@
                         alt=""> {{ __('Language') }}</a>
                 <div class="dropdowm-language-mune">
                     <ul>
-                        <li><a href="">عربي</a> </li>
-                        <li><a href=""> English</a> </li>
+                        <li><a href="{{ route('language', 'ar') }}">عربي</a> </li>
+                        <li><a href="{{ route('language', 'en') }}"> English</a> </li>
                     </ul>
                 </div>
 
