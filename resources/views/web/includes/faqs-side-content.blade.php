@@ -21,6 +21,22 @@
 
     </div>
 
+    <div class="img-ads">
+
+        @if ($ads->isNotEmpty())
+
+            @foreach ($ads as $ad)
+                <a href="{{ $ad->link }}">
+                    <img src="{{ asset('storage/' . $ad->img) }}" alt="">
+                </a>
+            @endforeach
+        @else
+            <a href="">
+                <img src="{{ url('web') }}/images/Ads.png" alt="">
+            </a>
+        @endif
+
+    </div>
 
     <div class="more-q-A-datails">
         <div class="title-related-topics">

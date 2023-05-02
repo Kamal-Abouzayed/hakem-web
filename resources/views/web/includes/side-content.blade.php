@@ -6,7 +6,7 @@
         </div>
 
         @foreach ($faqs->take(3) as $faq)
-            <a href="q&a-details.html">
+            <a href="{{ route('web.faq-details', $faq->slug) }}">
                 <div class="sub-more-questions">
                     <p>{{ $faq->question }}</p>
                 </div>

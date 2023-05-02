@@ -57,6 +57,10 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
     Route::get('videos', 'VideoController@index')->name('videos');
     Route::get('video-details/{slug}', 'VideoController@videoDetails')->name('video-details');
     Route::post('videos/search-videos', 'VideoController@searchVideos')->name('search-videos');
+
+
+    Route::get('faqs', 'FaqController@index')->name('faqs');
+    Route::get('faqs/faq-details/{slug}', 'FaqController@faqDetails')->name('faq-details');
 });
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Ad;
 use App\Models\Article;
 use App\Models\Faq;
 use App\Models\Section;
@@ -33,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('sections', Section::all());
             $view->with('homeSections', Section::where('slug', '!=', 'medicines')->get());
             $view->with('faqs', Faq::all());
+            $view->with('ads', Ad::all());
 
             if ($section) {
                 $view->with('relatedContent', Article::where('section_id', $section->id)->get());
