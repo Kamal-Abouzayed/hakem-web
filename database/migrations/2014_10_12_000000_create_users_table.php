@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->enum('gender', ['male', 'female'])->nullable();
             $table->date('birthday')->nullable();
             $table->string('image')->nullable();
+            $table->string('code')->nullable();
+            $table->boolean('isActive')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -26,6 +26,16 @@ Route::get('language/{locale}', function ($locale) {
 
 Route::namespace('Web')->name('web.')->middleware('localization')->group(function () {
 
+    // Authentication
+    Route::get('register', 'AuthController@registerFrom')->name('register');
+    Route::post('register-submit', 'AuthController@registerSubmit')->name('register-submit');
+    // Route::get('verify-account', 'AuthController@verifyAccount')->name('verify-account');
+    Route::get('login', 'AuthController@loginForm')->name('login');
+    Route::post('login-submit', 'AuthController@loginSubmit')->name('login-submit');
+    Route::get('logout', 'AuthController@logout')->name('logout');
+
+
+
     // Home
     Route::get('/', 'HomeController@index')->name('home');
 

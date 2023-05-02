@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+        use App\Repositories\Sql\CountryRepository;
+        use App\Repositories\Contract\CountryRepositoryInterface;
+
         use App\Repositories\Sql\ImageRepository;
         use App\Repositories\Contract\ImageRepositoryInterface;
 
@@ -70,6 +73,8 @@ class RepositoriesServiceProvider extends ServiceProvider
 {
 
     public function register(){
+
+        $this->app->bind(CountryRepositoryInterface::class, CountryRepository::class);
 
         $this->app->bind(ImageRepositoryInterface::class, ImageRepository::class);
 
