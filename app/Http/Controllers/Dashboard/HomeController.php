@@ -16,16 +16,16 @@ class HomeController extends Controller
     {
         $pageTitle = 'لوحة التحكم';
 
-        $users     = count(User::where('id', '!=', 1)->get());
+        $users = count(User::where('id', '!=', 1)->get());
 
-        $videos    = count(Video::get());
+        $videos = count(Video::get());
 
-        $images    = count(Image::get());
+        $images = count(Image::get());
 
-        $ads       = count(Ad::get());
+        $adsCount = count(Ad::get());
 
-        $sections  = Section::with(['categories', 'advices'])->get();
+        $sections = Section::with(['categories', 'advices'])->get();
 
-        return view('dashboard.home', compact('pageTitle', 'users', 'videos', 'images', 'ads', 'sections'));
+        return view('dashboard.home', compact('pageTitle', 'users', 'videos', 'images', 'adsCount', 'sections'));
     }
 }

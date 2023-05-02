@@ -13,7 +13,9 @@
                             <th>#</th>
                             <th>الإسم بالكامل</th>
                             <th>البريد الإلكترونى</th>
+                            <th>الجوال</th>
                             <th>الرسالة</th>
+                            <th>تم الرد</th>
                             <th>الإجراءات</th>
                         </tr>
                     </thead>
@@ -23,7 +25,15 @@
                                 <td>{{ $contact->id }}</td>
                                 <td>{{ $contact->name }}</td>
                                 <td><a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></td>
+                                <td><a href="tel:{{ $contact->phone }}">{{ $contact->phone }}</a></td>
                                 <td>{{ $contact->msg }}</td>
+                                <td>
+                                    @if ($contact->isReply == 1)
+                                        <span class="badge badge-success">نعم</span>
+                                    @else
+                                        <span class="badge badge-danger">لا</span>
+                                    @endif
+                                </td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Second group">
                                         <a href="{{ route('dashboard.contacts.show', $contact->id) }}"

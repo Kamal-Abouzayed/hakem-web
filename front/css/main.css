@@ -1912,7 +1912,7 @@ iframe {
 }
 
 .sub-calculators:hover .text-sub-calculators h2,
-.sub-health-beaut:hover .text-health-beaut h2 , 
+.sub-health-beaut:hover .text-health-beaut h2 ,
 .sub-videos:hover .text-sub-videos h2{
   color: var(--color-white);
 }

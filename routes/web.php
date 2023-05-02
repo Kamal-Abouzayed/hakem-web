@@ -65,6 +65,9 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
     Route::get('faqs/faq-details/{slug}', 'FaqController@faqDetails')->name('faq-details');
 
     Route::get('search-articles', 'HomeController@searchArticles')->name('search-articles');
+
+    Route::get('contact-us', 'ContactController@showForm')->name('contact-us');
+    Route::post('contact-us/store', 'ContactController@sendContact')->name('send-contact');
 });
 
 

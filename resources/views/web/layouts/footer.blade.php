@@ -19,8 +19,8 @@
                     <h2> {{ __('Quick Links') }} : </h2>
                     <ul>
                         <li><a href="{{ route('web.about') }}">{{ __('About Us') }} </a></li>
-                        <li><a href="contactus.html">{{ __('Contact Us') }}</a></li>
-                        {{-- <li><a href="contactus.html">أعلن معنا</a></li> --}}
+                        <li><a href="{{ route('web.contact-us') }}">{{ __('Contact Us') }}</a></li>
+                        {{-- <li><a href="{{ route('web.contact-us') }}">أعلن معنا</a></li> --}}
                         <li><a href="{{ route('web.terms') }}">{{ __('Terms of Use') }}</a></li>
                     </ul>
                 </div>
@@ -70,7 +70,7 @@
 </div>
 <div class="menu" id="menu-div1">
     <div class="logo-menu">
-        <img src="images/logo.png" alt="">
+        <img src="{{ asset('storage/' . getSetting('logo')) }}" alt="">
     </div>
     <div class="element_menu">
         <ul>
@@ -119,7 +119,7 @@
                         <li><a href="{{ url('medicines/categories') }}">{{ __('Medicines') }}</a></li>
                         <li><a href="{{ route('web.about') }}">{{ __('About Us') }} </a></li>
                         <li><a href="{{ route('web.faqs') }}">{{ __('Questions and Answers') }}</a></li>
-                        <li><a href="contactus.html">{{ __('Contact Us') }}</a></li>
+                        <li><a href="{{ route('web.contact-us') }}">{{ __('Contact Us') }}</a></li>
                     </ul>
                 </div>
 
@@ -188,7 +188,8 @@
 
 
             <li>
-                <a class="click-dropdown-mune" href=""><img src="images/e7.png" alt=""> اللغة</a>
+                <a class="click-dropdown-mune" href=""><img src="{{ url('web') }}/images/e7.png"
+                        alt=""> {{ __('Language') }}</a>
                 <div class="dropdowm-language-mune">
                     <ul>
                         <li><a href="">عربي</a> </li>

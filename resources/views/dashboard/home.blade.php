@@ -91,7 +91,7 @@
                                             الإعلانات
                                         </a>
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $ads }}</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $adsCount }}</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fa-solid fa-rectangle-ad fa-2x" style="color: #f6c23e;"></i>

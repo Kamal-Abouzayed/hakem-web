@@ -4,7 +4,8 @@
     <div class="card shadow mb-4">
         <div class="card-header">
             <h4 class="card-title text-primary">{{ $contact->name }}</h4>
-            <a href="mailto:{{ $contact->email }}" class="card-subtitle text-muted mb-2">{{ $contact->email }}</a>
+            <a href="mailto:{{ $contact->email }}" class="card-subtitle text-muted mb-2">{{ $contact->email }}</a> -
+            <a href="tel:{{ $contact->phone }}" class="card-subtitle text-muted mb-2">{{ $contact->phone }}</a>
         </div>
         <div class="card-body">
             <p class="card-text">{{ $contact->msg }}</p>

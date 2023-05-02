@@ -59,6 +59,8 @@ class ContactController extends Controller
 
             Mail::to($contact->email)->send(new ReplyContact($data));
 
+            $contact->update(['isReply' => 1]);
+
             return redirect()->route('dashboard.contacts.show', $contact->id)->with('success', 'تم ارسال الرد الخاص بك ');
         }
     }

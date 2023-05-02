@@ -1,8 +1,10 @@
 {
     "The largest encyclopedia of diseases in the Arabic language! Discover the comprehensive encyclopedia of diseases from A to Z. Definition of diseases, their symptoms, diagnosis and methods of treatment, in Web Medicine. The only disease guide for trusted medical information. Here you can search for a disease in both Arabic and English, or search by common diseases, or by category. Enter the name of the disease in the search field"                      : "اكبر موسوعة للامراض في اللغة العربية ! اكتشفوا الموسوعة الشاملة للامراض من الالف الى الياء. تعريف الامراض, اعراضها, تشخيصها وطرق علاجها, في ويب طب. مرشد الامراض الوحيد للمعلومات الطبية الموثوق منها. هنا يمكنكم البحث عن المرض باللغتين العربية والانجليزية, أو البحث حسب الامراض الشائعة, أو حسب الفئة. ادخلوا اسم المرض في حقل التفتيش",
+    "This form is intended only for directing and contacting the management of the Hakeem Web site and company in administrative and commercial matters only. Please do not ask medical questions or advice here"                      : "هذه الاستمارة معدة فقط للتوجه والاتصال بادارة موقع وشركة حكيم ويب في مواضيع ادارية وتجارية فقط. رجاءا عدم طرح اسئلة أو استشارات طبية هنا",
     "Enter the name of the food item to find its nutritional and calorie value":"أدخل اسم العنصر الغذائي للعثور على القيمة الغذائية والسعرات الحرارية الخاصة به",
     "Example: bananas, chicken seasoning, eggs":"مثال : الموز , توابل الدجاج , البيض",
     "Find out the calories and nutritional values of the":"اكتشفوا السعرات الحرارية والقيم الغذائية للـ",
+    "Send us all your questions and suggestions":"أرسل لنا جميع استفساراتك ومقترحاتك",
 
 
     "Hakem Web"                             : "حكيم ويب",
@@ -41,5 +43,13 @@
     "GenerDiseasesal"                       : "الأمراض",
     "Medicines"                             : "الأدوية",
     "Categories of nutrients"               : "تصنيفات العناصر الغذائية",
+    "Message sent successfully"             : "تم ارسال الرسالة بنجاح",
+    "Language"                              : "اللغة",
+    "Full Name"                             : "الإسم بالكامل",
+    "Phone"                                 : "الجوال",
+    "Email"                                 : "البريد الإلكتروني",
+    "Address"                               : "الموقع الحالي",
+    "Message"                               : "الرسالة",
+    "Send"                               : "إرسال",
     ""                                      : ""
 }
