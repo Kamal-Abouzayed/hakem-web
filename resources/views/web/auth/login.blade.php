@@ -22,9 +22,9 @@
                         <i class="bi bi-lock"></i>
                     </div>
 
-                    <div class="forget-password">
+                    {{-- <div class="forget-password">
                         <a href=""> {{ __('Forgot your password ?') }}</a>
-                    </div>
+                    </div> --}}
 
                     <div class="btn-login">
                         <button>{{ __('Login') }}</button>
