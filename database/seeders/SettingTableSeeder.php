@@ -128,10 +128,10 @@ class SettingTableSeeder extends Seeder
                 'value'    => 'https://www.facebook.com/',
             ],
             [
-                'key'      => 'snapchat',
-                'neckname' => 'سناب شات',
+                'key'      => 'telegram',
+                'neckname' => 'تليجرام',
                 'type'     => 'url',
-                'value'    => 'https://www.snapchat.com/',
+                'value'    => 'https://www.snapchat.org/',
             ],
             [
                 'key'      => 'instagram',

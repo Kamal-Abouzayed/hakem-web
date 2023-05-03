@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Mail\VerificationMail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -60,5 +62,29 @@ class User extends Authenticatable
     public function country()
     {
         return $this->belongsTo(Country::class);
+    }
+
+    private function activationCode()
+    {
+        // return 1234;
+        return mt_rand(1111, 9999);
+    }
+
+    public function sendMailVerificationCode()
+    {
+
+        $this->update([
+            'code' => $this->activationCode(),
+        ]);
+
+        $data = [
+            'name' => $this->fname . ' ' . $this->lname,
+            'msg'  => __('Your account activation code'),
+            'code' => $this->code
+        ];
+
+        // Mail::to($this->email)->send(new VerificationMail($data));
+
+        return true;
     }
 }

@@ -6,7 +6,7 @@
 
 <div style="text-align: center" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 @component('mail::panel')
-{{ $data['msg'] }}
+{{ $data['msg'] . ' : ' .  $data['code'] }}
 @endcomponent
 </div>
 

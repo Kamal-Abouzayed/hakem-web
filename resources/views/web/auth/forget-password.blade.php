@@ -11,17 +11,17 @@
             <h2>{{ $pageTitle }}</h2>
 
             <div class="form-login-page  form-register-page">
-                <form action="{{ route('web.verify-submit', ['type' => request()->type]) }}" method="POST" id="verifyForm"
+                <form action="{{ route('web.check-user') }}" method="POST" id="verifyForm"
                     autocomplete="off">
                     @csrf
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-input">
-                                <input type="text" placeholder="{{ __('Verification Code') }}" class="form-control"
-                                    name="code" required>
+                                <input type="email" placeholder="{{ __('Email') }}" class="form-control"
+                                    name="email" required>
                                 <i class="bi bi-braces-asterisk"></i>
 
-                                @error('code')
+                                @error('email')
                                     <small class="error">{{ $message }}</small>
                                 @enderror
                             </div>

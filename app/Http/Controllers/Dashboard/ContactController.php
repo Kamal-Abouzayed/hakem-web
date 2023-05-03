@@ -55,7 +55,10 @@ class ContactController extends Controller
 
         if ($contact) {
 
-            $data = $request->input('reply');
+            $data = [
+                'msg' => $request->input('reply'),
+                'name' => $contact->fname . ' ' . $contact->lname
+            ];
 
             Mail::to($contact->email)->send(new ReplyContact($data));
 

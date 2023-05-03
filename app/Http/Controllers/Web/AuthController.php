@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Web\ChangePasswordRequest;
 use App\Http\Requests\Web\RegisterRequest;
 use App\Repositories\Contract\CountryRepositoryInterface;
 use App\Repositories\Contract\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -33,35 +35,70 @@ class AuthController extends Controller
     {
         $data = $request->except('_token', 'check');
 
+        if ($request->has('password')) {
+            $data['password'] = bcrypt($request->password);
+        }
+
         $user = $this->userRepo->create($data);
 
-        session('email', $user->email);
+        Session::put('email', $user->email);
 
-        Auth::login($user);
+        // Auth::login($user);
 
-        return redirect()->intended(route('web.home'))->with('success', __('Registration completed successfully'));
+        $user->sendMailVerificationCode();
+
+        return redirect()->route('web.verify-account', ['type' => 'active-account'])->with('success', __('A verification code has been sent to your email'));
     }
 
-    // public function verifyAccount()
-    // {
-    //     $pageTitle = __('Account Confirmation');
+    public function verifyAccount()
+    {
+        $pageTitle = __('Account Confirmation');
 
-    //     return view('web.auth.verify', compact('pageTitle'));
-    // }
+        return view('web.auth.verify', compact('pageTitle'));
+    }
 
-    // public function verifySubmit(Request $request)
-    // {
+    public function verifySubmit(Request $request, $type)
+    {
 
-    //     $code = $request->code;
+        $code = $request->code;
 
-    //     $user = $this->userRepo->findWhere([['code', $code], ['email' , session('email')]]);
+        $user = $this->userRepo->findWhere([['code', $code], ['email', session('email')]]);
 
-    //     if ($user) {
-    //         # code...
-    //     }
+        // dd($type);
 
-    //     return view('web.auth.verify', compact('pageTitle'));
-    // }
+        if ($user) {
+
+            if ($type == 'active-account') {
+                $user->update(['code' => null, 'isActive' => 1, 'email_verified_at' => now()]);
+
+                Auth::login($user);
+
+                return redirect()->intended(route('web.home'))->with('success', __('Registration completed successfully'));
+            } else if ($type == 'forget-password') {
+
+                // dd($type);
+
+                Session::put('email', $user->email);
+
+                $user->update(['code' => null]);
+
+                return redirect()->route('web.change-password');
+            } else {
+                return redirect()->route('web.home');
+            }
+        } else {
+            return redirect()->back()->with('error', __('The verification code is incorrect, please check the code and try again'));
+        }
+    }
+
+    public function resendCode()
+    {
+        $user = $this->userRepo->findWhere([['email', session('email')]]);
+
+        $user->sendMailVerificationCode();
+
+        return redirect()->back()->with('success', __('A verification code has been sent to your email'));
+    }
 
     public function loginForm()
     {
@@ -81,7 +118,55 @@ class AuthController extends Controller
         return redirect()->back()->withInput($request->only('email', 'remember'))->with('error', __('The email or password is incorrect'));
     }
 
-    public function logout(Request $request)
+    public function forgetPassword()
+    {
+        $pageTitle = __('Forget Password');
+
+        return view('web.auth.forget-password', compact('pageTitle'));
+    }
+
+    public function checkUser(Request $request)
+    {
+        $user = $this->userRepo->findWhere([['email', $request->email]]);
+
+        if ($user) {
+
+            Session::put('email', $user->email);
+
+            $user->sendMailVerificationCode();
+
+            return redirect()->route('web.verify-account', ['type' => 'forget-password'])->with('success', __('A verification code has been sent to your email'));
+        } else {
+            return redirect()->back()->with('error', __('A verification code has been sent to your email'));
+        }
+    }
+
+    public function changePassword()
+    {
+        $pageTitle = __('Change Password');
+
+        return view('web.auth.change-password', compact('pageTitle'));
+    }
+
+    public function changePasswordSubmit(ChangePasswordRequest $request)
+    {
+        $user = $this->userRepo->findWhere([['email', session('email')]]);
+
+        $data = $request->except('_token');
+
+        if ($user) {
+
+            if ($request->has('password')) {
+                $data['password'] = bcrypt($request->password);
+            }
+
+            $user->update($data);
+
+            return redirect()->route('web.login')->with('success', __('Password changed successfully'));
+        }
+    }
+
+    public function logout()
     {
         Auth::logout();
         // $request->session()->invalidate();

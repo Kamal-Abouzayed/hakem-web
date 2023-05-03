@@ -29,8 +29,13 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
     // Authentication
     Route::get('register', 'AuthController@registerFrom')->name('register');
     Route::post('register-submit', 'AuthController@registerSubmit')->name('register-submit');
-    // Route::get('verify-account', 'AuthController@verifyAccount')->name('verify-account');
+    Route::get('verify-account/{type}', 'AuthController@verifyAccount')->name('verify-account');
+    Route::post('verify-submit/{type}', 'AuthController@verifySubmit')->name('verify-submit');
     Route::get('login', 'AuthController@loginForm')->name('login');
+    Route::get('forget-password', 'AuthController@forgetPassword')->name('forget-password');
+    Route::post('check-user', 'AuthController@checkUser')->name('check-user');
+    Route::get('change-password', 'AuthController@changePassword')->name('change-password');
+    Route::post('change-password-submit', 'AuthController@changePasswordSubmit')->name('change-password-submit');
     Route::post('login-submit', 'AuthController@loginSubmit')->name('login-submit');
     Route::get('logout', 'AuthController@logout')->name('logout');
 

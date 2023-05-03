@@ -98,7 +98,9 @@
                                 </div>
                             </form>
 
-                            <div id="result"></div>
+                            <div id="result">
+                                
+                            </div>
                         </div>
 
                         {{-- <div class="text-details">

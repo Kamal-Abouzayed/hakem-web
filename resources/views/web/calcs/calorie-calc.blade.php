@@ -41,6 +41,19 @@
                                                 class="form-control" required>
                                         </div>
                                     </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="input-calculator">
+                                            <select id="activity" class="form-control" required>
+                                                <option value="1.2">{{ __('Sedentary (little or no exercise)') }}</option>
+                                                <option value="1.375">{{ __('Lightly Active (light exercise or sports 1-3 days a week)') }}</option>
+                                                <option value="1.55">{{ __('Moderately Active (moderate exercise or sports 3-5 days a week)') }}</option>
+                                                <option value="1.725">{{ __('Very Active (hard exercise or sports 6-7 days a week)') }}</option>
+                                                {{-- <option value="1.9">{{ __('Super Active (very hard exercise or sports, physical job or training twice a day)') }}</option> --}}
+                                            </select>
+                                        </div>
+                                    </div>
+
                                     <div class="col-lg-6">
                                         <div class="input-calculator">
                                             <select id="gender" class="form-control" required>
