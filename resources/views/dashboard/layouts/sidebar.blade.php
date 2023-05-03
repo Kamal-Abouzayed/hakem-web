@@ -100,14 +100,14 @@
             </a>
         </li>
 
-        <!-- Nav Item - Images -->
+{{--         <!-- Nav Item - Images -->
         <li
             class="nav-item {{ areActiveRoutes(['dashboard.images.index', 'dashboard.images.create', 'dashboard.images.edit']) }}">
             <a class="nav-link" href="{{ route('dashboard.images.index') }}">
                 <i class="fa-solid fa-images"></i>
                 <span>معرض الصور</span>
             </a>
-        </li>
+        </li> --}}
 
         <!-- Nav Item - Ads -->
         <li

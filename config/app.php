@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositoriesServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
-        // Jorenvh\Share\Providers\ShareServiceProvider::class,
+        Jorenvh\Share\Providers\ShareServiceProvider::class,
 
     ],
 
