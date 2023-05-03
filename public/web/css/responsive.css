@@ -54,25 +54,15 @@
         flex-wrap: wrap;
     }
 
-    .number-calorie ul li {
-        font-size: 17px;
-        width: 100%;
-        border-bottom: 3px solid #FCD161;
-    }
-
-    .number-calorie ul {
-        border-bottom: none;
-    }
 
     .need-calorie h3 {
-        color: #3B666A;
+        color: #3b666a;
         font-size: 17px;
         line-height: 33px;
     }
 
     .need-calorie {
         padding: 50px 20px;
-
     }
 
     .title-pregnancy-calculator p {
@@ -83,7 +73,6 @@
 
     .page-contents ul li {
         width: 29%;
-
     }
 
     .img-health-beaut {
@@ -97,8 +86,6 @@
         width: 100%;
     }
 }
-
-
 
 @media (max-width: 1400px) {
     .img-more-section {
@@ -227,7 +214,6 @@
 
     .text-medicine-health h2 {
         font-size: 17px;
-
     }
     .date-pregnancy p {
         font-size: 14px;
@@ -277,7 +263,6 @@
     }
 
     .top-par {
-
         align-items: center;
     }
 
@@ -287,7 +272,6 @@
 
     .sub-article-index:nth-of-type(1),
     .main-article-index {
-
         height: 440px;
     }
 }
@@ -305,6 +289,14 @@
     .sub-more-section {
         height: 120px;
         margin: 5px 0;
+    }
+    .number-calorie ul li {
+        font-size: 17px;
+        width: 100%;
+        border-bottom: 3px solid #fcd161;
+    }
+    .number-calorie ul {
+        border-bottom: none;
     }
 
     .language,
@@ -395,7 +387,6 @@
 
     .search-two input {
         font-size: 14px;
-
     }
 
     .search-two input::placeholder {
@@ -445,7 +436,7 @@
     .sub-human-body li a h3 {
         padding-right: 0px;
     }
-    
+
     .sub-human-body li a h3::after {
         display: none;
     }
@@ -474,13 +465,13 @@
     .date-pregnancy p {
         font-size: 18px;
     }
-    
+
     .img-calculator-details h2 {
         font-size: 19px;
         text-align: center;
         line-height: 24px;
         padding-left: 65px;
-    }    
+    }
     .text-calculator-details {
         margin: 0px 0;
     }
@@ -494,7 +485,7 @@
     .question h3 {
         font-size: 18px;
         margin-top: 20px;
-        color: #B9D35E;
+        color: #b9d35e;
         line-height: 28px;
     }
     .answer h3 {
@@ -519,6 +510,8 @@
         margin: 20px 0;
         font-size: 17px;
     }
+
+
 }
 
 @media (max-width: 576px) {
@@ -551,9 +544,7 @@
     }
 
     .title-start h2::after {
-
         background-position: right;
-
     }
 
     .text-details h2 {
@@ -569,8 +560,8 @@
     }
 
     .search-two input {
-        background-color: #DCF4F6 !important;
-        border: 1px solid #DCF4F6 !important;
+        background-color: #dcf4f6 !important;
+        border: 1px solid #dcf4f6 !important;
     }
 
     .main-videos,
@@ -682,8 +673,6 @@
         position: relative;
         margin: 10px 0;
     }
-
-
 }
 
 @media (max-width: 450px) {
@@ -714,7 +703,6 @@
     .search-header button {
         width: 38px;
         height: 38px;
-
     }
 
     .img-read-also-article {
@@ -724,5 +712,4 @@
     .text-read-also-article {
         width: 100%;
     }
-
 }
