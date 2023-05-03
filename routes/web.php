@@ -78,6 +78,13 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
 
     Route::get('contact-us', 'ContactController@showForm')->name('contact-us');
     Route::post('contact-us/store', 'ContactController@sendContact')->name('send-contact');
+
+    Route::get('all-calculators', 'CalculatorController@allCalculators')->name('all-calculators');
+    Route::get('calorie-calculator', 'CalculatorController@calorie')->name('calorie-calculator');
+    Route::get('pregnancy-calculator', 'CalculatorController@pregnancy')->name('pregnancy-calculator');
+    Route::get('bmi-calculator', 'CalculatorController@bmi')->name('bmi-calculator');
+    Route::get('heart-rate-calculator', 'CalculatorController@heartRate')->name('heart-rate-calculator');
+    Route::get('calorie-burn-calculator', 'CalculatorController@calorieBurnCalculator')->name('calorie-burn-calculator');
 });
 
 

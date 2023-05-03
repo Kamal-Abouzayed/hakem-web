@@ -102,7 +102,7 @@
                 <div class="dropdowm-element-mune">
                     <ul>
                         <li><a href="{{ route('web.videos') }}">{{ __('Videos') }}</a></li>
-                        <li><a href="all-calculators.html">حاسبات</a></li>
+                        <li><a href="{{ route('web.all-calculators') }}">{{ __('Calculators') }}</a></li>
 
                     </ul>
                 </div>
