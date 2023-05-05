@@ -99,7 +99,13 @@ class SectionController extends Controller
 
         $pageTitle = $stage->name;
 
-        return view('web.pregnancy-stage-details', compact('pageTitle', 'section', 'stage'));
+        $share = \Share::currentPage($stage->name)
+            ->facebook()
+            ->twitter()
+            ->linkedin()
+            ->whatsapp();
+
+        return view('web.pregnancy-stage-details', compact('pageTitle', 'section', 'stage', 'share'));
     }
 
     public function searchDiseases(Request $request, $sectionSlug)
