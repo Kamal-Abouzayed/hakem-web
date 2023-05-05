@@ -21,7 +21,7 @@
         </div>
 
         @foreach ($relatedContent->take(5) as $content)
-            <a href="">
+            <a href="{{ route('web.article-details', ['sectionSlug' => $content->section->slug, 'slug' => $content->slug]) }}">
                 <div class="sub-read-article-index">
                     <div class="img-read-article-index">
                         <img src="{{ asset('storage/' . $content->img) }}" alt="">
