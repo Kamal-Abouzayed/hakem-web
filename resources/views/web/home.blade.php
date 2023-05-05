@@ -102,7 +102,7 @@
                                     {{-- chunk = article --}}
                                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-easing="linear"
                                         data-aos-duration="700">
-                                        <a href="article-details.html">
+                                        <a href="{{ route('web.article-details', ['sectionSlug' => $chunk->section->slug, 'slug' => $chunk->slug]) }}">
                                             <div class="sub-slider-new-article">
                                                 <div class="img-slider-new-article">
                                                     <img src="{{ asset('storage/' . $chunk->img) }}"
@@ -154,7 +154,7 @@
                                 <h2> {{ $mostReadArticles->first()->name }} </h2>
                                 <p>{!! strip_tags(Str::limit($mostReadArticles->first()->desc, 740)) !!}. </p>
                             </div>
-                            <a href="article-details.html" class="ctm-link"> {{ __('Read More') }} <i
+                            <a href="{{ route('web.article-details', ['sectionSlug' => $mostReadArticles->first()->section->slug, 'slug' => $mostReadArticles->first()->slug]) }}" class="ctm-link"> {{ __('Read More') }} <i
                                     class="bi bi-arrow-left"></i>
                             </a>
                         </div>
@@ -164,7 +164,7 @@
                 @if ($mostReadArticles->count() > 1)
                     <div class="col-lg-4" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="700">
                         @foreach ($mostReadArticles->slice(1) as $article)
-                            <a href="article-details.html">
+                            <a href="{{ route('web.article-details', ['sectionSlug' => $article->section->slug, 'slug' => $article->slug]) }}">
                                 <div class="sub-read-article-index">
                                     <div class="img-read-article-index">
                                         <img src="{{ asset('storage/' . $article->img) }}" alt="{{ $article->name }}">
@@ -198,7 +198,7 @@
                     {{-- chunk = article --}}
                     <div class="sub-read-also-article" data-aos="fade-down" data-aos-easing="linear"
                         data-aos-duration="700">
-                        <a href="article-details.html">
+                        <a href="{{ route('web.article-details', ['sectionSlug' => $article->section->slug, 'slug' => $article->slug]) }}">
                             <div class="img-read-also-article">
                                 <img src="{{ asset('storage/' . $article->img) }}" alt="{{ $article->name }}">
                             </div>

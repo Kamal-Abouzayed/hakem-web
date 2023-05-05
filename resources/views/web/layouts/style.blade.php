@@ -32,4 +32,9 @@
 <link rel="stylesheet" href="{{ url('web') }}/css/footer.css">
 <link rel="stylesheet" href="{{ url('web') }}/css/main.css">
 <link rel="stylesheet" href="{{ url('web') }}/css/responsive.css">
-<link rel="stylesheet" href="{{ url('web') }}/css/ar.css">
+
+@if (app()->getLocale() == 'ar')
+    <link rel="stylesheet" href="{{ url('web') }}/css/ar.css">
+@else
+    <link rel="stylesheet" href="{{ url('web') }}/css/en.css">
+@endif

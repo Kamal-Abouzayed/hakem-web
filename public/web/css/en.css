@@ -4,3 +4,327 @@ body {
 }
   
 
+
+
+.text-article-index::after {
+
+  right: 0;
+  left: 25px;
+}
+
+.sub-more-section {
+  padding: 20px 10px 20px 20px;
+
+}
+
+
+
+
+
+.title-start h2::after,
+.title-center h2::after {
+  right: 0px;
+  left: 0px;
+    background-position: left;
+}
+
+
+
+
+
+.dropdowm-language-mune ul li a, .dropdowm-element-mune ul li {
+    padding-right: 0;
+    padding-left: 25px;
+
+}
+
+
+.dropdowm-language-mune ul li a::after, .dropdowm-element-mune ul li::after {
+    right: auto;
+    left: 0;
+}
+
+.text-article-details ul li {
+  padding-right: 0;
+  padding-left: 25px;
+
+}
+
+.text-article-details ul li::after {
+  right: auto;
+  left: 0;
+}
+
+
+.login-page::after {
+  background-position: left top;
+  right: auto;
+  left: 0;
+}
+
+
+.login-page::before {
+  left: auto;
+  right: 0;
+}
+
+
+
+.form-login-page .form-control {
+
+  padding-right: 0;
+  padding-left: 65px;
+}
+
+.form-input>i {
+  right: auto;
+  left: 30px;
+}
+
+
+
+
+
+
+.arrow-form::after {
+  left: auto;
+  right: 30px;
+}
+
+
+
+
+.cleck-terms label {
+  padding-right: 0;
+  padding-left: 30px;
+}
+
+.cleck-terms label::after {
+  right: auto;
+  left: 0;
+
+}
+
+.cleck-terms input:checked~label::before {
+  right: auto;
+  left: 2px;
+}
+
+
+
+
+.text-medicine-health h2 {
+  padding-right: 0;
+  padding-left: 15px;
+}
+
+.text-medicine-health h2::after {
+  right: auto;
+  left: 0;
+}
+
+
+.sub-human-body li a h3 {
+  padding-right: 0px;
+  padding-left: 15px;
+}
+
+.sub-human-body li a h3::after {
+  right: auto;
+  left: 0;
+}
+
+
+
+
+.humun2 {
+  direction: rtl;
+}
+
+
+.humun2.sub-human-body li a h3 {
+
+  padding-left: 15px !important;
+  padding-right: 0px !important;
+}
+
+.humun2.sub-human-body li a h3::after {
+  left: auto !important;
+  right: 0;
+}
+
+
+
+
+.silder-categories-medicine .owl-nav {
+  left: auto;
+  right: 0;
+}
+
+
+
+.silder-advice::after {
+  right: auto;
+  left: 0;
+}
+
+.silder-advice::before {
+  left: auto;
+  right: 0;
+}
+
+.sub-more-questions {
+  padding: 20px 10px 20px 20px;
+}
+
+.sub-more-questions::after {
+    right: auto;
+    transform: scale(-1);
+    left: 0;
+}
+
+
+
+.more-q-A-datails ul li a {
+  padding: 20px 20px 20px 30px;
+
+}
+
+
+
+.btn-more-q-A-datails {
+  text-align: right;
+}
+
+.btn-more-q-A-datails a {
+  justify-content: end;
+}
+
+
+.sub-calories a::after {
+  right: auto;
+  left: 0;
+}
+
+
+.page-contents ul li {
+  margin-right: auto;
+  margin-left: 5px;
+}
+
+
+
+.text-calories-details h2,
+.text-calories-details h1,
+.text-calories-details h3,
+.text-calories-details h4 {
+  padding-right: auto;
+  padding-left: 30px;
+}
+
+.text-calories-details h2::after,
+.text-calories-details h1::after,
+.text-calories-details h3::after,
+.text-calories-details h4::after {
+  right: auto;
+  left: 0;
+}
+
+
+
+
+
+
+
+
+table tr td:first-child {
+  direction: ltr;
+}
+
+
+table tr th:first-child {
+  text-align: left;
+}
+
+
+.sub-pregnancy-calculator h2 {
+  padding-right: 0px;
+  padding-left: 20px;
+}
+
+.sub-pregnancy-calculator h2::after {
+  right: auto;
+  left: 0;
+}
+
+
+
+.img-calculator-details h2 {
+  padding-left: 65px;
+  padding-right: 0;
+}
+
+
+
+
+
+.search-header input {
+  padding-left: 15px;
+  padding-right: 70px;
+}
+
+
+
+
+
+.search-header button {
+  right: 6px;
+  left: auto;
+}
+
+.menu {
+  right: auto;
+  left: 0;
+}
+
+
+
+
+.remove-mune1 {
+  right: auto;
+  left: 10px;
+}
+
+
+
+
+.footer::after {
+  right: auto;
+  left: 0;
+}
+
+
+.element-footer ul li a::after {
+  right: auto;
+  left: 0;
+}
+
+
+.remove-mune {
+  right: auto;
+  left: 30px;
+}
+
+
+
+
+
+.menu {
+    transform: translateX(-102%);
+}
+
+
+
+
+
+

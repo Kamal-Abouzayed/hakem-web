@@ -1937,3 +1937,17 @@ iframe {
 .error{
     color: red;
 }
+
+.sections-human-organ-categories ul li a {
+    height: auto;
+    min-height: 55px;
+    padding: 10px 20px;
+}
+
+.sections-human-organ-categories ul {
+    align-items: self-start;
+}
+
+.click-element-mune img {
+    filter: brightness(0) invert(1);
+}

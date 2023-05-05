@@ -3,3 +3,290 @@ body {
     direction: rtl;
 }
 
+
+
+
+.text-article-index::after {
+
+  right: 25px;
+}
+
+.sub-more-section {
+  padding: 20px 20px 20px 10px;
+  justify-content: start;
+
+}
+
+
+
+
+
+.title-start h2::after,
+.title-center h2::after {
+  right: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+.text-article-details ul li {
+  padding-right: 25px;
+
+}
+
+.text-article-details ul li::after {
+  right: 0;
+}
+
+
+.login-page::after {
+  background-position: right top;
+  right: 0;
+}
+
+
+.login-page::before {
+  left: 0;
+}
+
+
+
+.form-login-page .form-control {
+
+  padding-right: 65px;
+}
+
+.form-input>i {
+  right: 30px;
+}
+
+
+
+
+
+
+.arrow-form::after {
+  left: 30px;
+}
+
+
+
+
+.cleck-terms label {
+  padding-right: 30px;
+}
+
+.cleck-terms label::after {
+  right: 0;
+
+}
+
+.cleck-terms input:checked~label::before {
+  right: 2px;
+}
+
+
+
+
+.text-medicine-health h2 {
+  padding-right: 15px;
+}
+
+.text-medicine-health h2::after {
+  right: 0;
+}
+
+
+.sub-human-body li a h3 {
+  padding-right: 15px;
+}
+
+.sub-human-body li a h3::after {
+  right: 0;
+}
+
+
+
+
+.humun2 {
+  direction: ltr;
+}
+
+
+.humun2.sub-human-body li a h3 {
+
+  padding-left: 15px !important;
+}
+
+.humun2.sub-human-body li a h3::after {
+  left: 0 !important;
+  right: auto;
+}
+
+
+
+
+.silder-categories-medicine .owl-nav {
+  left: 0;
+}
+
+
+
+.silder-advice::after {
+  top: 0;
+  right: 0;
+}
+
+.silder-advice::before {
+  left: 0;
+}
+
+.sub-more-questions {
+  padding: 20px 20px 20px 10px;
+}
+
+
+.sub-more-questions::after {
+  background-position: right;
+  right: 0;
+
+}
+
+
+
+
+.more-q-A-datails ul li a {
+  padding: 20px 30px 20px 20px;
+
+}
+
+
+
+.btn-more-q-A-datails {
+  text-align: left;
+}
+
+.btn-more-q-A-datails a {
+  justify-content: end;
+}
+
+
+.sub-calories a::after {
+  right: 0;
+}
+
+
+.page-contents ul li {
+  margin-right: 5px;
+}
+
+
+
+.text-calories-details h2,
+.text-calories-details h1,
+.text-calories-details h3,
+.text-calories-details h4 {
+  padding-right: 30px;
+}
+
+.text-calories-details h2::after,
+.text-calories-details h1::after,
+.text-calories-details h3::after,
+.text-calories-details h4::after {
+  right: 0;
+}
+
+
+
+
+
+
+
+
+table tr td:first-child {
+  direction: rtl;
+}
+
+
+table tr th:first-child {
+  text-align: right;
+}
+
+
+.sub-pregnancy-calculator h2 {
+  padding-right: 20px;
+}
+
+.sub-pregnancy-calculator h2::after {
+  right: 0;
+}
+
+
+
+.img-calculator-details h2 {
+  padding-left: 65px;
+}
+
+
+
+
+
+.search-header input {
+  padding-left: 70px;
+}
+
+
+
+
+
+.search-header button {
+  left: 6px;
+}
+
+.menu {
+  right: 0;
+}
+
+
+
+
+.remove-mune1 {
+  right: 10px;
+}
+
+
+
+
+.footer::after {
+  right: 0;
+}
+
+
+.element-footer ul li a::after {
+  right: 0;
+}
+
+
+.remove-mune {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
