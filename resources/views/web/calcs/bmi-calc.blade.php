@@ -7,7 +7,7 @@
                 <div class="col-lg-8">
                     <div class="main-pregnancy-calculator">
                         <div class="img-article-details">
-                            <img src="{{ url('web') }}/images/a01.png" alt="">
+                            <img src="{{ url('web') }}/images/bmi.jpg" alt="">
                         </div>
 
                         <div class="title-pregnancy-calculator">

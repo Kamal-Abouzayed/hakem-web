@@ -14,14 +14,16 @@
                             {!! $bodySystem->desc !!}
                         </div>
 
-                        <div class="sections-human-organ-categories">
-                            <h2> {{ __('Body System Organs') }} :</h2>
-                            <ul>
-                                @foreach ($bodySystem->organs as $organ)
-                                    <li><a href=""> {{ $organ->name }} </a></li>
-                                @endforeach
-                            </ul>
-                        </div>
+                        @if ($bodySystem->organs->isNotEmpty())
+                            <div class="sections-human-organ-categories">
+                                <h2> {{ __('Body System Organs') }} :</h2>
+                                <ul>
+                                    @foreach ($bodySystem->organs as $organ)
+                                        <li><a href=""> {{ $organ->name }} </a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
                         {{-- <div class="video-text">
                             <iframe width="100%" height="500" src="https://www.youtube.com/embed/C0DPdy98e4c"
