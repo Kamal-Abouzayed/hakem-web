@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="">
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-<link rel="shortcut icon" href="{{ url('web') }}/images/logo1.png">
+<link rel="shortcut icon" href="{{ asset('storage/' . getSetting('favicon')) }}">
 <meta name="msapplication-TileColor" content="">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
     integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">

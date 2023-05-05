@@ -14,7 +14,7 @@
                                 $chunk->section->slug == 'health-and-beauty' ||
                                 $chunk->section->slug == 'pregnancy-and-birth')
                             <div class="sub-article-index" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
-                                <a href="article-details.html">
+                                <a href="{{ route('web.article-details', ['sectionSlug' => $chunk->section->slug, 'slug' => $chunk->slug]) }}">
                                     <img src="{{ asset('storage/' . $chunk->img) }}" alt="{{ $chunk->name }}">
                                     <div class="text-article-index">
                                         <h3>{{ $chunk->section->name }}</h3>
@@ -41,42 +41,42 @@
         <div class="main-container">
             <div class="row">
                 <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
-                    <a href="pregnancy-calculator.html">
+                    <a href="{{ route('web.pregnancy-calculator') }}">
                         <div class="sub-more-section">
                             <div class="img-more-section">
-                                <img src="images/s1.png" alt="">
+                                <img src="{{ url('web') }}/images/s1.png" alt="">
                             </div>
-                            <h2>حاسبة الحمل</h2>
+                            <h2>{{ __('Pregnancy calculator') }}</h2>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
-                    <a href="calorie-calculator-details.html">
+                    <a href="{{ route('web.calorie-calculator') }}">
                         <div class="sub-more-section">
                             <div class="img-more-section">
-                                <img src="images/s2.png" alt="">
+                                <img src="{{ url('web') }}/images/s2.png" alt="">
                             </div>
-                            <h2>حاسبة السعرات الحرارية</h2>
+                            <h2>{{ __('Calorie calculator') }}</h2>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
-                    <a href="videos.html">
+                    <a href="{{ route('web.videos') }}">
                         <div class="sub-more-section">
                             <div class="img-more-section">
-                                <img src="images/s3.png" alt="">
+                                <img src="{{ url('web') }}/images/s3.png" alt="">
                             </div>
-                            <h2>فيديو </h2>
+                            <h2>{{ __('Videos') }} </h2>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
-                    <a href="all-calculators.html">
+                    <a href="{{ route('web.all-calculators') }}">
                         <div class="sub-more-section">
                             <div class="img-more-section">
-                                <img src="images/s4.png" alt="">
+                                <img src="{{ url('web') }}/images/s4.png" alt="">
                             </div>
-                            <h2>جميع الحاسبات</h2>
+                            <h2>{{ __('All calculators') }}</h2>
                         </div>
                     </a>
                 </div>

@@ -27,7 +27,7 @@
                             <a href="{{ route('web.calorie-calculator') }}">
                                 <div class="sub-calculators">
                                     <div class="img-sub-calculators">
-                                        <img src="{{ url('web') }}/images/b10.png" alt="{{ __('Calorie calculator') }}">
+                                        <img src="{{ url('web') }}/images/calorie.png" alt="{{ __('Calorie calculator') }}">
                                     </div>
                                     <div class="text-sub-calculators">
                                         <h2>{{ __('Calorie calculator') }}</h2>
@@ -40,7 +40,7 @@
                             <a href="{{ route('web.calorie-burn-calculator') }}">
                                 <div class="sub-calculators">
                                     <div class="img-sub-calculators">
-                                        <img src="{{ url('web') }}/images/b10.png" alt="{{ __('Calorie Burn calculator') }}">
+                                        <img src="{{ url('web') }}/images/calorie-burn.png" alt="{{ __('Calorie Burn calculator') }}">
                                     </div>
                                     <div class="text-sub-calculators">
                                         <h2>{{ __('Calorie Burn calculator') }}</h2>
@@ -53,7 +53,7 @@
                             <a href="{{ route('web.bmi-calculator') }}">
                                 <div class="sub-calculators">
                                     <div class="img-sub-calculators">
-                                        <img src="{{ url('web') }}/images/b10.png" alt="{{ __('Bmi calculator') }}">
+                                        <img src="{{ url('web') }}/images/bmi.png" alt="{{ __('Bmi calculator') }}">
                                     </div>
                                     <div class="text-sub-calculators">
                                         <h2>{{ __('Bmi calculator') }}</h2>
@@ -66,7 +66,7 @@
                             <a href="{{ route('web.pregnancy-calculator') }}">
                                 <div class="sub-calculators">
                                     <div class="img-sub-calculators">
-                                        <img src="{{ url('web') }}/images/b10.png"
+                                        <img src="{{ url('web') }}/images/pregnancy.png"
                                             alt="{{ __('Calorie calculator') }}">
                                     </div>
                                     <div class="text-sub-calculators">
@@ -80,7 +80,7 @@
                             <a href="{{ route('web.heart-rate-calculator') }}">
                                 <div class="sub-calculators">
                                     <div class="img-sub-calculators">
-                                        <img src="{{ url('web') }}/images/b10.png"
+                                        <img src="{{ url('web') }}/images/heart-rate.png"
                                             alt="{{ __('Heart Rate calculator') }}">
                                     </div>
                                     <div class="text-sub-calculators">
