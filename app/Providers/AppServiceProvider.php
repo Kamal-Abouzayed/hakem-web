@@ -35,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('homeSections', Section::where('slug', '!=', 'medicines')->get());
             $view->with('faqs', Faq::all());
             $view->with('ads', Ad::all());
+            $view->with('allArticles', Article::all());
 
             if ($section) {
                 $view->with('relatedContent', Article::where('section_id', $section->id)->get());

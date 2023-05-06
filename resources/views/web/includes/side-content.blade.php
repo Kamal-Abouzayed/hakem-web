@@ -21,7 +21,8 @@
         </div>
 
         @foreach ($relatedContent->take(5) as $content)
-            <a href="{{ route('web.article-details', ['sectionSlug' => $content->section->slug, 'slug' => $content->slug]) }}">
+            <a
+                href="{{ route('web.article-details', ['sectionSlug' => $content->section->slug, 'slug' => $content->slug]) }}">
                 <div class="sub-read-article-index">
                     <div class="img-read-article-index">
                         <img src="{{ asset('storage/' . $content->img) }}" alt="">
@@ -35,5 +36,64 @@
                 </div>
             </a>
         @endforeach
+    </div>
+
+    <div class="more-article-details">
+        <div class="title-related-topics">
+            <h2>{{ __('Most Read') }}</h2>
+        </div>
+
+        @php
+            $mostReadArticles = $allArticles->sortByDesc('views')->take(5);
+        @endphp
+
+        @foreach ($mostReadArticles as $article)
+            <a
+                href="{{ route('web.article-details', ['sectionSlug' => $article->section->slug, 'slug' => $article->slug]) }}">
+                <div class="sub-read-article-index">
+                    <div class="img-read-article-index">
+                        <img src="{{ asset('storage/' . $article->img) }}" alt="">
+                    </div>
+                    <div class="text-read-article-index">
+                        <h3 class="date-article"> {{ $article->section->name }} ,<span>
+                                {{ $article->created_at }}
+                            </span></h3>
+                        <p>{!! strip_tags(Str::limit($article->desc, 50)) !!}</p>
+                    </div>
+                </div>
+            </a>
+        @endforeach
+
+    </div>
+
+    <div class="more-article-details">
+        <div class="title-related-topics">
+            <h2>{{ __('New in Hakem Web') }}</h2>
+        </div>
+
+        @php
+            $newArticles = $allArticles
+                ->where('section_id', '!=', $section->id)
+                ->sortByDesc('id')
+                ->take(5);
+        @endphp
+
+        @foreach ($newArticles as $newArticle)
+            <a
+                href="{{ route('web.article-details', ['sectionSlug' => $newArticle->section->slug, 'slug' => $newArticle->slug]) }}">
+                <div class="sub-read-article-index">
+                    <div class="img-read-article-index">
+                        <img src="{{ asset('storage/' . $newArticle->img) }}" alt="">
+                    </div>
+                    <div class="text-read-article-index">
+                        <h3 class="date-article"> {{ $newArticle->section->name }} ,<span>
+                                {{ $newArticle->created_at }}
+                            </span></h3>
+                        <p>{!! strip_tags(Str::limit($newArticle->desc, 50)) !!}</p>
+                    </div>
+                </div>
+            </a>
+        @endforeach
+
     </div>
 </div>
