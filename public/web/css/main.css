@@ -1951,3 +1951,84 @@ iframe {
 .click-element-mune img {
     filter: brightness(0) invert(1);
 }
+.text-details li {
+    font-size: 20px;
+}
+
+
+.menu {
+    width: 100%;
+}
+.element_menu>ul {
+    margin: 0 auto 0 auto;
+    width: 80%;
+    flex-wrap: wrap;
+    gap: 10px;
+    display: flex;
+}
+
+
+.menu .element_menu ul li {
+    width: 49%;
+}
+
+.dropdowm-language-mune, .dropdowm-element-mune {
+    display: block !important;
+}
+
+.element_menu>ul {
+    margin: 0 auto 0 auto;
+    width: 80% !important;
+    flex-wrap: wrap;
+    gap: 10px;
+    display: flex;
+}
+
+.no-filter img {
+    filter:none;
+}
+
+
+
+
+
+.img-clac-section {
+    width: 100px;
+    align-items: center;
+    display: flex;
+    margin: 20px auto;
+    border-radius: 50%;
+    height: 100px;
+    justify-content: center;
+    background: #fda1e4;
+    transition: all .3s linear;
+}
+.img-clac-section img {
+    max-width:70%;
+    filter: brightness(0) invert(1);
+    object-fit: contain;
+    max-height:70%;
+}
+
+.sub-clac-section {
+    text-align: center;
+}
+
+.sub-clac-section:hover .img-clac-section img {
+    animation: swing 1s infinite both;
+    -webkit-animation: swing 1s infinite both;
+}
+.sub-clac-section:hover .img-clac-section  {
+    background:#cc86f8;
+
+}
+
+.sub-clac-section h2 {
+    color: var(--color-black);
+}
+
+
+
+
+
+

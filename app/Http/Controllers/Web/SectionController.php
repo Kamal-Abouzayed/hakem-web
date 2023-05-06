@@ -10,6 +10,7 @@ use App\Repositories\Contract\CategoryRepositoryInterface;
 use App\Repositories\Contract\PregnancyStageRepositoryInterface;
 use App\Repositories\Contract\SectionRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SectionController extends Controller
 {
@@ -81,6 +82,15 @@ class SectionController extends Controller
         $article = $this->articleRepo->findWhere([['slug', $slug], ['section_id', $section->id]]);
 
         $pageTitle = $article->name;
+
+        $view_key = 'article_' . $article->slug;
+        // Check if blog session key exists
+        // If not, update view_count and create session key
+        if (!Session::has($view_key)) {
+            $article->views += 1;
+            $article->save();
+            Session::put($view_key, 1);
+        }
 
         $share = \Share::currentPage($article->name)
             ->facebook()

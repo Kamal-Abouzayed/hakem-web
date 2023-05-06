@@ -116,6 +116,67 @@
                 </div>
 
                 @include('web.includes.pregnancy-stages')
+            @elseif ($section->slug == 'health-and-beauty')
+                <div class="clac-section mr-section health-calcs">
+                    <div class="title-start">
+                        <h2>{{ __('Health Calculators') }}</h2>
+                        <span></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <a href="{{ route('web.bmi-calculator') }}">
+                                <div class="sub-clac-section">
+                                    <div class="img-clac-section">
+                                        <img src="{{ url('web') }}/images/weight.png" alt="" />
+                                    </div>
+                                    <h2> {{ __('Body Mass Index (BMI) Calculator') }} </h2>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3">
+                            <a href="{{ route('web.calorie-calculator') }}">
+                                <div class="sub-clac-section">
+                                    <div class="img-clac-section">
+                                        <img src="{{ url('web') }}/images/calories-calculator.png" alt="" />
+                                    </div>
+                                    <h2> {{ __('Calculate the calorie level you need') }} </h2>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <a href="{{ route('web.heart-rate-calculator') }}">
+                                <div class="sub-clac-section">
+                                    <div class="img-clac-section">
+                                        <img src="{{ url('web') }}/images/stopwatch-heart.png" alt="" />
+                                    </div>
+                                    <h2> {{ __('Preferred heart rate calculator') }} </h2>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <a href="{{ route('web.calorie-burn-calculator') }}">
+                                <div class="sub-clac-section">
+                                    <div class="img-clac-section">
+                                        <img src="{{ url('web') }}/images/cutlery.png" alt="" />
+                                    </div>
+                                    <h2> {{ __('Calorie burn calculator') }} </h2>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-12">
+
+                            <div class="all-calc-btn">
+
+                                <a href="{{ route('web.all-calculators') }}"> {{ __('All calculators') }} <i
+                                        class="bi bi-chevron-left"></i> </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             @endif
 
         </div>

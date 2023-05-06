@@ -16,6 +16,12 @@
             </div>
             <div class="row">
 
+                <div class="col-lg-12">
+                    <p class="category-desc">
+                        {!! $category->desc !!}
+                    </p>
+                </div>
+
                 @foreach ($category->articles as $article)
                     <div class="col-lg-4">
                         <div class="sub-calories">

@@ -156,5 +156,10 @@
     "Current age (in months)"                                                          : "السن الحالى بالشهور",
     "Birth weight (in pounds)"                                                         : "الوزن عند الولادة (بالباوند)",
     "Birth weight (in ounces)"                                                         : "الوزن عند الولادة (بالأونصة)",
+    "Body Mass Index (BMI) Calculator"                                                 : "حاسبة مؤشر كتلة الجسم (BMI)",
+    "Calculate the calorie level you need"                                             : "احسب مستوى السعرات الذي تحتاجه",
+    "Preferred heart rate calculator"                                                  : "حاسبة معدل نبضات القلب المفضل",
+    "Calorie burn calculator"                                                          : "حاسبة حرق السعرات الحرارية",
+    "Health Calculators"                                                               : "حاسبات صحية",
     ""                                                                                 : ""
 }
