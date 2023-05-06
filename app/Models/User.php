@@ -32,6 +32,7 @@ class User extends Authenticatable
         'image',
         'code',
         'isActive',
+        'uid',
     ];
 
     /**

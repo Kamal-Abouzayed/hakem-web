@@ -1,7 +1,10 @@
 <?php
 
 use App\Models\Article;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +26,37 @@ Route::get('language/{locale}', function ($locale) {
 
     return redirect()->back();
 })->name('language');
+
+
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('/auth/callback', function () {
+    $user = Socialite::driver('google')->user();
+
+    $checkUser = User::where('uid', $user->id)->first();
+
+    if ($checkUser) {
+        Auth::login($checkUser);
+
+        return redirect()->route('web.home')->with('success', __('Logged in successfully'));
+    } else {
+        $newUser = User::create([
+            'uid'      => $user->id,
+            'fname'    => $user->user['given_name'],
+            'lname'    => $user->user['family_name'],
+            'email'    => $user->email,
+            'isActive' => 1,
+        ]);
+
+        Auth::login($newUser);
+
+        return redirect()->route('web.home')->with('success', __('Logged in successfully'));
+    }
+
+    // $user->token
+});
 
 Route::namespace('Web')->name('web.')->middleware('localization')->group(function () {
 

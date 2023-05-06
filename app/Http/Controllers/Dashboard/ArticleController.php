@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\ArticleRequest;
+use App\Mail\ArticleMail;
+use App\Models\User;
+use App\Notifications\ArticleNotify;
 use App\Repositories\Contract\ArticleRepositoryInterface;
 use App\Repositories\Contract\CategoryRepositoryInterface;
 use App\Repositories\Contract\SectionRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
@@ -78,7 +82,22 @@ class ArticleController extends Controller
         }
 
         // dd($data);
-        $this->articleRepo->create($data);
+        $article =  $this->articleRepo->create($data);
+
+        $users = User::where('isActive', 1)->get();
+
+
+        foreach ($users as $key => $user) {
+
+            $data = [
+                'username' => $user->fname . ' ' . $user->lname,
+                'article'  => $article->name,
+                'link'     => url($section->slug . '/article-details/' . $article->slug),
+                'msg'      => __('New Article From Hakem Web')
+            ];
+
+            Mail::to($user->email)->send(new ArticleMail($data));
+        }
 
         return redirect()->route('dashboard.articles.index', $sectionSlug)->with('success', 'تمت الإضافة بنجاح');
     }
