@@ -12,7 +12,27 @@
 
 
     <!-- start loading -->
-
+    <div class="loading">
+        <div class="wrapper">
+            <div class="loader">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
     <!-- end lodding -->
 
 
