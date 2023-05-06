@@ -90,6 +90,9 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
     Route::get('bmi-calculator', 'CalculatorController@bmi')->name('bmi-calculator');
     Route::get('heart-rate-calculator', 'CalculatorController@heartRate')->name('heart-rate-calculator');
     Route::get('calorie-burn-calculator', 'CalculatorController@calorieBurnCalculator')->name('calorie-burn-calculator');
+    Route::get('ovulation-period-calculator', 'CalculatorController@ovulationPeriodCalculator')->name('ovulation-period-calculator');
+    Route::get('baby-development-calculator', 'CalculatorController@babyDevelopmentCalculator')->name('baby-development-calculator');
+    Route::get('baby-growth-calculator', 'CalculatorController@babyGrowthCalculator')->name('baby-growth-calculator');
 
     Route::middleware(['auth'])->group(function () {
         Route::get('profile', 'AuthController@profile')->name('profile');

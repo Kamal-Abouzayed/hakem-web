@@ -54,4 +54,28 @@ class CalculatorController extends Controller
 
         return view('web.calcs.calorie-burn-calc', compact('pageTitle'));
     }
+
+    public function ovulationPeriodCalculator()
+    {
+
+        $pageTitle = __('Ovulation Period Calculator');
+
+        return view('web.calcs.ovulation-period-calc', compact('pageTitle'));
+    }
+
+    public function babyDevelopmentCalculator()
+    {
+
+        $pageTitle = __('Baby Development Calculator');
+
+        return view('web.calcs.baby-development-calc', compact('pageTitle'));
+    }
+
+    public function babyGrowthCalculator()
+    {
+
+        $pageTitle = __('Baby Growth Calculator');
+
+        return view('web.calcs.baby-growth-calc', compact('pageTitle'));
+    }
 }

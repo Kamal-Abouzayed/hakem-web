@@ -54,6 +54,67 @@
             @if ($section->slug == 'medicine-and-health')
                 @include('web.includes.human-body')
             @elseif ($section->slug == 'pregnancy-and-birth')
+                <div class="clac-section mr-section">
+                    <div class="title-start">
+                        <h2>{{ __('Pregnancy calculators') }}</h2>
+                        <span></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <a href="{{ route('web.pregnancy-calculator') }}">
+                                <div class="sub-clac-section">
+                                    <div class="img-clac-section">
+                                        <img src="{{ url('web') }}/images/trolley.png" alt="" />
+                                    </div>
+                                    <h2> {{ __('Date Of Birth') }} </h2>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3">
+                            <a href="{{ route('web.ovulation-period-calculator') }}">
+                                <div class="sub-clac-section">
+                                    <div class="img-clac-section">
+                                        <img src="{{ url('web') }}/images/stopwatch.png" alt="" />
+                                    </div>
+                                    <h2> {{ __('Ovulation period') }} </h2>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <a href="{{ route('web.baby-development-calculator') }}">
+                                <div class="sub-clac-section">
+                                    <div class="img-clac-section">
+                                        <img src="{{ url('web') }}/images/baby-boy.png" alt="" />
+                                    </div>
+                                    <h2> {{ __('Baby Development') }} </h2>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <a href="{{ route('web.baby-growth-calculator') }}">
+                                <div class="sub-clac-section">
+                                    <div class="img-clac-section">
+                                        <img src="{{ url('web') }}/images/toys.png" alt="" />
+                                    </div>
+                                    <h2> {{ __('Baby growth calculator') }} </h2>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-12">
+
+                            <div class="all-calc-btn">
+
+                                <a href="{{ route('web.all-calculators') }}"> {{ __('All calculators') }} <i
+                                        class="bi bi-chevron-left"></i> </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
                 @include('web.includes.pregnancy-stages')
             @endif
 

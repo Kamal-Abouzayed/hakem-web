@@ -67,10 +67,10 @@
                                 <div class="sub-calculators">
                                     <div class="img-sub-calculators">
                                         <img src="{{ url('web') }}/images/pregnancy.jpg"
-                                            alt="{{ __('Calorie calculator') }}">
+                                            alt="{{ __('Date Of Birth') }}">
                                     </div>
                                     <div class="text-sub-calculators">
-                                        <h2>{{ __('Pregnancy calculator') }}</h2>
+                                        <h2>{{ __('Date Of Birth') }}</h2>
                                     </div>
                                 </div>
                             </a>
@@ -85,6 +85,48 @@
                                     </div>
                                     <div class="text-sub-calculators">
                                         <h2>{{ __('Heart Rate calculator') }}</h2>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-4" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
+                            <a href="{{ route('web.heart-rate-calculator') }}">
+                                <div class="sub-calculators">
+                                    <div class="img-sub-calculators">
+                                        <img src="{{ url('web') }}/images/OvulationTool.jpg"
+                                            alt="{{ __('Ovulation period') }}">
+                                    </div>
+                                    <div class="text-sub-calculators">
+                                        <h2>{{ __('Ovulation period') }}</h2>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-4" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
+                            <a href="{{ route('web.heart-rate-calculator') }}">
+                                <div class="sub-calculators">
+                                    <div class="img-sub-calculators">
+                                        <img src="{{ url('web') }}/images/baby_development.jpg"
+                                            alt="{{ __('Baby Development') }}">
+                                    </div>
+                                    <div class="text-sub-calculators">
+                                        <h2>{{ __('Baby Development') }}</h2>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-4" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
+                            <a href="{{ route('web.heart-rate-calculator') }}">
+                                <div class="sub-calculators">
+                                    <div class="img-sub-calculators">
+                                        <img src="{{ url('web') }}/images/KidGrowth.jpg"
+                                            alt="{{ __('Baby growth calculator') }}">
+                                    </div>
+                                    <div class="text-sub-calculators">
+                                        <h2>{{ __('Baby growth calculator') }}</h2>
                                     </div>
                                 </div>
                             </a>
