@@ -126,5 +126,8 @@
     "Moderately Active (moderate exercise or sports 3-5 days a week)"                  : "نشط بشكل معتدل (تمرين معتدل أو ممارسة الرياضة 3-5 أيام في الأسبوع)",
     "Very Active (hard exercise or sports 6-7 days a week)"                            : "نشيط جدًا (تمارين شاقة أو رياضة 6-7 أيام في الأسبوع)",
     "Super Active (very hard exercise or sports, physical job or training twice a day)": "نشط للغاية (تمرين أو رياضة شاقة للغاية ، عمل بدني أو تدريب مرتين في اليوم)",
+    "Save"                                                                             : "حفظ",
+    "Profile"                                                                          : "الملف الشخصى",
+    "Profile information has been modified successfully"                               : "تم تعديل بيانات الملف الشخصى بنجاح",
     ""                                                                                 : ""
 }

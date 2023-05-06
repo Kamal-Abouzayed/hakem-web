@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\ChangePasswordRequest;
+use App\Http\Requests\Web\ProfileRequest;
 use App\Http\Requests\Web\RegisterRequest;
 use App\Repositories\Contract\CountryRepositoryInterface;
 use App\Repositories\Contract\UserRepositoryInterface;
@@ -171,5 +172,33 @@ class AuthController extends Controller
         Auth::logout();
         // $request->session()->invalidate();
         return redirect()->route('web.home')->with('success', __('Logged out successfully'));
+    }
+
+    public function profile()
+    {
+        $pageTitle = __('Profile');
+
+        $countries = $this->countryRepo->getAll(['column' => 'id', 'dir' => 'ASC']);
+
+        $user = auth()->user();
+
+        return view('web.profile', compact('pageTitle', 'countries', 'user'));
+    }
+
+    public function updateProfile(ProfileRequest $request)
+    {
+        $user = auth()->user();
+
+        $data = $request->except('_token', '_method');
+
+        if ($request->has('password')) {
+            $data['password'] = bcrypt($request->password);
+        } else {
+            $data['password'] = $user->password;
+        }
+
+        $user->update($data);
+
+        return redirect()->back()->with('success', __('Profile information has been modified successfully'));
     }
 }

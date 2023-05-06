@@ -12,8 +12,9 @@
 
                         <div class="sub-top-par">
 
-                            @auth
+                        @auth
                                 {{-- <div>{{ auth()->user()->fname . ' ' . auth()->user()->lname }}</div> --}}
+                                <a href="{{ route('web.profile') }}" class="login"> {{ __('Profile') }} </a>
                                 <a href="{{ route('web.logout') }}" class="login"> {{ __('Logout') }} </a>
                                 @role('admin')
                                     <a href="{{ route('dashboard.home') }}" class="signin"> {{ __('Dashboard') }} </a>

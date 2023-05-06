@@ -46,10 +46,11 @@
             <p> {{ __('All rights reserved') }} &copy; {{ Date('Y') }} {{ __('for Hakem Web Website') }} </p>
             <div class="media-footer">
                 <ul>
-                    <li><a href="{{ getSetting('facebook') }}"><i class="bi bi-facebook"></i> </a></li>
-                    <li><a href="{{ getSetting('telegram') }}"><i class="bi bi-telegram"></i></a></li>
-                    <li><a href="{{ getSetting('instagram') }}"><i class="bi bi-instagram"></i></a></li>
-                    <li><a href="{{ getSetting('twitter') }}"><i class="bi bi-twitter"></i></a></li>
+                    <li><a href="{{ getSetting('facebook') }}" target="_blank"><i class="bi bi-facebook"></i> </a></li>
+                    <li><a href="{{ getSetting('telegram') }}" target="_blank"><i class="bi bi-telegram"></i></a></li>
+                    <li><a href="{{ getSetting('instagram') }}" target="_blank"><i class="bi bi-instagram"></i></a>
+                    </li>
+                    <li><a href="{{ getSetting('twitter') }}" target="_blank"><i class="bi bi-twitter"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -155,6 +156,10 @@
             @endforeach
 
             @auth
+                <li>
+                    <a href="{{ route('web.profile') }}"><img src="{{ url('web') }}/images/e6.png" alt="">
+                        {{ __('Profile') }} </a>
+                </li>
                 <li>
                     <a href="{{ route('web.logout') }}"><img src="{{ url('web') }}/images/e6.png" alt="">
                         {{ __('Logout') }} </a>

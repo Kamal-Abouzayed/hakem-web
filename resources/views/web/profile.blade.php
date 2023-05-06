@@ -11,13 +11,17 @@
             <h2>{{ $pageTitle }}</h2>
 
             <div class="form-login-page  form-register-page">
-                <form action="{{ route('web.register-submit') }}" method="POST" id="registerForm" autocomplete="off">
+                <form action="{{ route('web.update-profile') }}" method="POST" id="registerForm" autocomplete="off">
                     @csrf
+                    @method('PATCH')
                     <div class="row">
+
+                        <input type="hidden" name="id" value="{{ $user->id }}">
+
                         <div class="col-lg-6">
                             <div class="form-input">
                                 <input type="text" placeholder="{{ __('First Name') }}" class="form-control"
-                                    name="fname" value="{{ old('fname') }}" required>
+                                    name="fname" value="{{ old('fname', $user->fname) }}" required>
                                 <i class="bi bi-person"></i>
 
                             </div>
@@ -29,7 +33,7 @@
 
                             <div class="form-input">
                                 <input type="text" placeholder="{{ __('Last Name') }}" class="form-control"
-                                    name="lname" value="{{ old('lname') }}" required>
+                                    name="lname" value="{{ old('lname', $user->lname) }}" required>
                                 <i class="bi bi-person"></i>
                             </div>
                             @error('lname')
@@ -43,7 +47,8 @@
 
                                     @foreach ($countries as $country)
                                         <option value="{{ $country->id }}"
-                                            {{ old('country_id') == $country->id ? 'selected' : '' }}>{{ $country->name }}
+                                            {{ old('country_id', $user->country ? $user->country->id : '') == $country->id ? 'selected' : '' }}>
+                                            {{ $country->name }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -56,8 +61,8 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-input">
-                                <input type="email" placeholder="{{ __('Email') }}" value="{{ old('email') }}"
-                                    class="form-control" name="email" required>
+                                <input type="email" placeholder="{{ __('Email') }}"
+                                    value="{{ old('email', $user->email) }}" class="form-control" name="email" required>
                                 <i class="bi bi-envelope"></i>
                             </div>
                             @error('email')
@@ -67,7 +72,7 @@
                         <div class="col-lg-6">
                             <div class="form-input">
                                 <input type="password" value="{{ old('password') }}" placeholder="{{ __('Password') }}"
-                                    class="form-control" name="password" required>
+                                    class="form-control" name="password" autocomplete="new-password">
                                 <i class="bi bi-lock"></i>
                             </div>
                             @error('password')
@@ -78,7 +83,7 @@
                             <div class="form-input">
                                 <input type="password" value="{{ old('password_confirmation') }}"
                                     placeholder="{{ __('Password Confirmation') }}" class="form-control"
-                                    name="password_confirmation" required>
+                                    name="password_confirmation" autocomplete="new-password">
                                 <i class="bi bi-lock"></i>
                             </div>
                             @error('password_confirmation')
@@ -87,7 +92,8 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-input">
-                                <input type="date" value="{{ old('birthday') }}"
+                                <input type="date"
+                                    value="{{ old('birthday', $user->birthday ? $user->birthday->format('Y-m-d') : '') }}"
                                     placeholder="{{ __('Birthdate (optional*)') }}" class="form-control" name="birthday">
                                 <i class="bi bi-calendar-date"></i>
                             </div>
@@ -100,9 +106,11 @@
                                 <div class="form-input arrow-form">
                                     <select class="form-select form-control " name="gender">
                                         <option value=""> {{ __('Select gender (optional*)') }} </option>
-                                        <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>
+                                        <option value="male"
+                                            {{ old('gender', $user->gender) == 'male' ? 'selected' : '' }}>
                                             {{ __('Male') }} </option>
-                                        <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>
+                                        <option value="female"
+                                            {{ old('gender', $user->gender) == 'female' ? 'selected' : '' }}>
                                             {{ __('Female') }} </option>
                                     </select>
                                     <i class="bi bi-person"></i>
@@ -113,24 +121,12 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-12">
-                            <div class="cleck-terms">
-                                <input type="checkbox" id="check-1" name="check" required>
-                                <label for="check-1"> {{ __('I agree to the Terms of Use') }} .</label>
-                                @error('check')
-                                    <small class="error">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
                     </div>
 
 
                     <div class="btn-login">
-                        <button>{{ __('Register') }}</button>
+                        <button>{{ __('Save') }}</button>
                     </div>
-
-
-
 
                 </form>
             </div>

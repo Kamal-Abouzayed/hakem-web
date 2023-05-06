@@ -90,6 +90,11 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
     Route::get('bmi-calculator', 'CalculatorController@bmi')->name('bmi-calculator');
     Route::get('heart-rate-calculator', 'CalculatorController@heartRate')->name('heart-rate-calculator');
     Route::get('calorie-burn-calculator', 'CalculatorController@calorieBurnCalculator')->name('calorie-burn-calculator');
+
+    Route::middleware(['auth'])->group(function () {
+        Route::get('profile', 'AuthController@profile')->name('profile');
+        Route::patch('update-profile', 'AuthController@updateProfile')->name('update-profile');
+    });
 });
 
 

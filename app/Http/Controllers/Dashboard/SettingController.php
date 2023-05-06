@@ -33,7 +33,7 @@ class SettingController extends Controller
         $logo = $this->settingRepository->getWhere([['key', 'logo']])->first()['value'];
         $footer_logo = $this->settingRepository->getWhere([['key', 'footer_logo']])->first()['value'];
         $favicon = $this->settingRepository->getWhere([['key', 'favicon']])->first()['value'];
-        // $about_image = $this->settingRepository->getWhere([['key', 'about_image']])->first()['value'];
+        $main_image = $this->settingRepository->getWhere([['key', 'main_image']])->first()['value'];
 
         if ($request->has('logo')) {
 
@@ -62,14 +62,14 @@ class SettingController extends Controller
             $attribute['favicon'] = $request->file('favicon')->store('setting');
         }
 
-        // if ($request->has('about_image')) {
+        if ($request->has('main_image')) {
 
-        //     // Delete old internal_image
-        //     Storage::delete($about_image);
+            // Delete old internal_image
+            Storage::delete($main_image);
 
-        //     // Upload new internal_image
-        //     $attribute['about_image'] = $request->file('about_image')->store('setting');
-        // }
+            // Upload new internal_image
+            $attribute['main_image'] = $request->file('main_image')->store('setting');
+        }
 
         $attribute['phone'] = $request->phone_key . $request->phone;
 
