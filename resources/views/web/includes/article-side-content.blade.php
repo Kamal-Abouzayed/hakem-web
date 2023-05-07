@@ -19,7 +19,6 @@
                 </div>
             </a>
         @endforeach
-
     </div>
 
 
@@ -49,18 +48,18 @@
             $mostReadArticles = $allArticles->sortByDesc('views')->take(5);
         @endphp
 
-        @foreach ($mostReadArticles as $article)
+        @foreach ($mostReadArticles as $mostReadArticle)
             <a
-                href="{{ route('web.article-details', ['sectionSlug' => $article->section->slug, 'slug' => $article->slug]) }}">
+                href="{{ route('web.article-details', ['sectionSlug' => $mostReadArticle->section->slug, 'slug' => $mostReadArticle->slug]) }}">
                 <div class="sub-read-article-index">
                     <div class="img-read-article-index">
-                        <img src="{{ asset('storage/' . $article->img) }}" alt="">
+                        <img src="{{ asset('storage/' . $mostReadArticle->img) }}" alt="">
                     </div>
                     <div class="text-read-article-index">
-                        <h3 class="date-article"> {{ $article->section->name }} ,<span>
-                                {{ $article->created_at }}
+                        <h3 class="date-article"> {{ $mostReadArticle->section->name }} ,<span>
+                                {{ $mostReadArticle->created_at }}
                             </span></h3>
-                        <p>{!! strip_tags(Str::limit($article->desc, 50)) !!}</p>
+                        <p>{!! strip_tags(Str::limit($mostReadArticle->desc, 50)) !!}</p>
                     </div>
                 </div>
             </a>
@@ -68,7 +67,7 @@
 
     </div>
 
-    <div class="more-article-details">
+    {{-- <div class="more-article-details">
         <div class="title-related-topics">
             <h2>{{ __('New in Hakem Web') }}</h2>
         </div>
@@ -97,7 +96,60 @@
             </a>
         @endforeach
 
-    </div>
+    </div> --}}
+
+    @if (request()->sectionSlug == 'diseases' && $article->medicines->isNotEmpty())
+        <div class="more-article-details">
+            <div class="title-related-topics">
+                <h2>{{ __('Related medications') }}</h2>
+            </div>
+
+            @foreach ($article->medicines as $medicines)
+                <a
+                    href="{{ route('web.article-details', ['sectionSlug' => $medicines->section->slug, 'slug' => $medicines->slug]) }}">
+                    <div class="sub-read-article-index">
+                        <div class="img-read-article-index">
+                            <img src="{{ asset('storage/' . $medicines->img) }}" alt="">
+                        </div>
+                        <div class="text-read-article-index">
+                            <h3 class="date-article"> {{ $medicines->section->name }} ,<span>
+                                    {{ $medicines->created_at }}
+                                </span></h3>
+                            <p>{!! strip_tags(Str::limit($medicines->desc, 50)) !!}</p>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
+
+        </div>
+    @endif
+
+    @if (request()->sectionSlug == 'medicines' && $article->diseases->isNotEmpty())
+        <div class="more-article-details">
+            <div class="title-related-topics">
+                <h2>{{ __('Related diseases') }}</h2>
+            </div>
+
+            @foreach ($article->diseases as $disease)
+                <a
+                    href="{{ route('web.article-details', ['sectionSlug' => $disease->section->slug, 'slug' => $disease->slug]) }}">
+                    <div class="sub-read-article-index">
+                        <div class="img-read-article-index">
+                            <img src="{{ asset('storage/' . $disease->img) }}" alt="">
+                        </div>
+                        <div class="text-read-article-index">
+                            <h3 class="date-article"> {{ $disease->section->name }} ,<span>
+                                    {{ $disease->created_at }}
+                                </span></h3>
+                            <p>{!! strip_tags(Str::limit($disease->desc, 50)) !!}</p>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
+
+        </div>
+    @endif
+
 
 
 </div>

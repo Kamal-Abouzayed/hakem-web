@@ -81,24 +81,29 @@ class SectionController extends Controller
 
         $article = $this->articleRepo->findWhere([['slug', $slug], ['section_id', $section->id]]);
 
-        $pageTitle = $article->name;
+        if ($article) {
+            $pageTitle = $article->name;
 
-        $view_key = 'article_' . $article->slug;
-        // Check if blog session key exists
-        // If not, update view_count and create session key
-        if (!Session::has($view_key)) {
-            $article->views += 1;
-            $article->save();
-            Session::put($view_key, 1);
+            $view_key = 'article_' . $article->slug;
+            // Check if blog session key exists
+            // If not, update view_count and create session key
+            if (!Session::has($view_key)) {
+                $article->views += 1;
+                $article->save();
+                Session::put($view_key, 1);
+            }
+
+            $share = \Share::currentPage($article->name)
+                ->facebook()
+                ->twitter()
+                ->linkedin()
+                ->whatsapp();
+
+
+            return view('web.article-details', compact('pageTitle', 'section', 'article', 'share'));
+        } else {
+            return redirect()->route('web.home');
         }
-
-        $share = \Share::currentPage($article->name)
-            ->facebook()
-            ->twitter()
-            ->linkedin()
-            ->whatsapp();
-
-        return view('web.article-details', compact('pageTitle', 'section', 'article', 'share'));
     }
 
     public function pregnancyStage($sectionSlug, $slug)

@@ -54,6 +54,27 @@
                 </div>
             </div>
 
+
+            @if (request()->sectionSlug == 'diseases')
+                <div class="row">
+                    <div class="form-group col-12">
+                        <label for="medicine_id">الأدوية</label>
+                        <select name="medicine_id[]" class="form-control" id="" multiple required>
+                            {{-- <option value="">اختر</option> --}}
+                            @foreach ($medicines as $medicine)
+                                <option value="{{ $medicine->id }}"
+                                    {{ old('medicine_id') == $medicine->id ? 'selected' : '' }}>
+                                    {{ $medicine->name }}</option>
+                            @endforeach
+                        </select>
+
+                        @error('medicine_id')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
+            @endif
+
             <div class="row">
                 <div class="form-group col-6">
                     <label for="name_ar">العنوان بالعربية</label>

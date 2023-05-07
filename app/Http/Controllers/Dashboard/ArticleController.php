@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\ArticleRequest;
 use App\Mail\ArticleMail;
+use App\Models\DiseaseMedicine;
 use App\Models\User;
 use App\Notifications\ArticleNotify;
 use App\Repositories\Contract\ArticleRepositoryInterface;
@@ -59,7 +60,9 @@ class ArticleController extends Controller
 
         $categories = $this->catRepo->getWhere([['section_id', $section->id]]);
 
-        return view('dashboard.articles.create', compact('pageTitle', 'categories'));
+        $medicines = $this->articleRepo->getWhere([['section_id', 5]]);
+
+        return view('dashboard.articles.create', compact('pageTitle', 'categories', 'medicines'));
     }
 
     /**
@@ -71,7 +74,7 @@ class ArticleController extends Controller
     public function store(ArticleRequest $request, $sectionSlug)
     {
 
-        $data = $request->except('_token', 'img');
+        $data = $request->except('_token', 'img', 'medicine_id');
 
         $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
 
@@ -84,20 +87,29 @@ class ArticleController extends Controller
         // dd($data);
         $article =  $this->articleRepo->create($data);
 
-        $users = User::where('isActive', 1)->get();
-
-
-        foreach ($users as $key => $user) {
-
-            $data = [
-                'username' => $user->fname . ' ' . $user->lname,
-                'article'  => $article->name,
-                'link'     => url($section->slug . '/article-details/' . $article->slug),
-                'msg'      => __('New Article From Hakem Web')
-            ];
-
-            Mail::to($user->email)->send(new ArticleMail($data));
+        if ($request->medicine_id) {
+            foreach ($request->medicine_id as $key => $medicine) {
+                DiseaseMedicine::create([
+                    'disease_id'  => $article->id,
+                    'medicine_id' => $medicine,
+                ]);
+            }
         }
+
+        // $users = User::where('isActive', 1)->get();
+
+
+        // foreach ($users as $key => $user) {
+
+        //     $data = [
+        //         'username' => $user->fname . ' ' . $user->lname,
+        //         'article'  => $article->name,
+        //         'link'     => url($section->slug . '/article-details/' . $article->slug),
+        //         'msg'      => __('New Article From Hakem Web')
+        //     ];
+
+        //     Mail::to($user->email)->send(new ArticleMail($data));
+        // }
 
         return redirect()->route('dashboard.articles.index', $sectionSlug)->with('success', 'تمت الإضافة بنجاح');
     }
@@ -129,7 +141,9 @@ class ArticleController extends Controller
 
         $categories = $this->catRepo->getWhere([['section_id', $section->id]]);
 
-        return view('dashboard.articles.edit', compact('article', 'pageTitle', 'categories'));
+        $medicines = $this->articleRepo->getWhere([['section_id', 5]]);
+
+        return view('dashboard.articles.edit', compact('article', 'pageTitle', 'categories', 'medicines'));
     }
 
     /**
@@ -143,7 +157,7 @@ class ArticleController extends Controller
     {
         $article = $this->articleRepo->findWhere([['slug', $slug]]);
 
-        $data = $request->except('_token', '_method', 'img');
+        $data = $request->except('_token', '_method', 'img', 'medicine_id');
 
         if ($request->hasFile('img')) {
 
@@ -155,6 +169,21 @@ class ArticleController extends Controller
         }
 
         $article->update($data);
+
+
+        if ($request->medicine_id) {
+
+            DiseaseMedicine::where('disease_id', $article->id)->get()->each->delete();
+
+            foreach ($request->medicine_id as $key => $medicine) {
+                DiseaseMedicine::create([
+                    'disease_id'  => $article->id,
+                    'medicine_id' => $medicine,
+                ]);
+                // dd('ss');
+            }
+        }
+
 
         return redirect()->route('dashboard.articles.index', $sectionSlug)->with('success', 'تم التعديل بنجاح');
     }

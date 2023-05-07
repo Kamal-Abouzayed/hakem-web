@@ -67,8 +67,21 @@ class Article extends Model
         return $this->belongsTo(Section::class);
     }
 
+    
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function diseases()
+    {
+        return $this->belongsToMany(Article::class, 'disease_medicines', 'medicine_id', 'disease_id')->where('section_id', 4)
+            ->withTimestamps();
+    }
+
+    public function medicines()
+    {
+        return $this->belongsToMany(Article::class, 'disease_medicines', 'disease_id', 'medicine_id')->where('section_id', 5)
+            ->withTimestamps();
     }
 }
