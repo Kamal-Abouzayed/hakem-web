@@ -12,7 +12,7 @@
 
                         <div class="sub-top-par">
 
-                        @auth
+                            @auth
                                 {{-- <div>{{ auth()->user()->fname . ' ' . auth()->user()->lname }}</div> --}}
                                 <a href="{{ route('web.profile') }}" class="login"> {{ __('Profile') }} </a>
                                 <a href="{{ route('web.logout') }}" class="login"> {{ __('Logout') }} </a>
@@ -86,8 +86,11 @@
                             </a>
                         </div>
                     </div>
+                    @yield('paging')
                 </div>
             </div>
+
+
 
         </header>
         <!-- end header =====

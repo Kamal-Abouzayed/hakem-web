@@ -1,5 +1,19 @@
 @extends('web.layouts.app')
 
+@section('paging')
+    <div class="navigation-header">
+        <a href="{{ route('web.home') }}"> <i class="bi bi-house-door"></i> {{ __('Home') }} </a>
+        <i class="bi bi-chevron-double-left"></i>
+        <a href="{{ route('web.section-categories', 'medicine-and-health') }}"> {{ __('Medicine and Health') }} </a>
+        <i class="bi bi-chevron-double-left"></i>
+        <a
+            href="{{ route('web.body-system', ['sectionSlug' => 'medicine-and-health', 'bodySystemSlug' => $article->bodySystem->slug]) }}">
+            {{ $article->bodySystem->name }} </a>
+        <i class="bi bi-chevron-double-left"></i>
+        <span>{{ $article->name }} </span>
+    </div>
+@endsection
+
 @section('content')
     <section class="article-details">
         <div class="main-container">

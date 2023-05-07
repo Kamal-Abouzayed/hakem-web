@@ -1,5 +1,15 @@
 @extends('web.layouts.app')
 
+@section('paging')
+    <div class="navigation-header">
+        <a href="{{ route('web.home') }}"> <i class="bi bi-house-door"></i> {{ __('Home') }} </a>
+        <i class="bi bi-chevron-double-left"></i>
+        <a href="{{ route('web.videos') }}"> {{ __('Videos') }} </a>
+        <i class="bi bi-chevron-double-left"></i>
+        <span>{{ $video->name }} </span>
+    </div>
+@endsection
+
 @section('content')
     @php
         $url = $video->url;

@@ -38,6 +38,11 @@ class Category extends Model
         return $this->hasMany(Article::class);
     }
 
+    public function section()
+    {
+        return $this->belongsTo(Section::class);
+    }
+
     // public function parent()
     // {
     //     return $this->belongsTo(Category::class, 'parent_id');

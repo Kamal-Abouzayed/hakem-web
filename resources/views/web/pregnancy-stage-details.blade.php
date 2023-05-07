@@ -1,5 +1,23 @@
 @extends('web.layouts.app')
 
+@section('paging')
+    <div class="navigation-header">
+        <a href="{{ route('web.home') }}"> <i class="bi bi-house-door"></i> {{ __('Home') }} </a>
+        <i class="bi bi-chevron-double-left"></i>
+        <a href="{{ route('web.section-categories', 'pregnancy-and-birth') }}"> {{ __('Pregnancy and Birth') }} </a>
+        <i class="bi bi-chevron-double-left"></i>
+
+        @if ($stage->parent)
+            <a
+                href="{{ route('web.pregnancy-stage', ['sectionSlug' => request()->sectionSlug, 'slug' => $stage->parent->slug]) }}">
+                {{ $stage->parent->name }} </a>
+            <i class="bi bi-chevron-double-left"></i>
+        @endif
+
+        <span>{{ $stage->name }} </span>
+    </div>
+@endsection
+
 @section('content')
     <section class="article-details">
         <div class="main-container">

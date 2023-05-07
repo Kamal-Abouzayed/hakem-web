@@ -22,7 +22,7 @@
                         <ul>
                             @foreach ($stage->children as $child)
                                 <li> <a
-                                        href="{{ route('web.pregnancy-stage', ['sectionSlug' => request()->sectionSlug, 'slug' => $stage->slug]) }}">
+                                        href="{{ route('web.pregnancy-stage', ['sectionSlug' => request()->sectionSlug, 'slug' => $child->slug]) }}">
                                         {{ $child->name }} </a> </li>
                             @endforeach
                         </ul>
