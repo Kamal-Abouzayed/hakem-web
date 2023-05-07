@@ -67,7 +67,7 @@ class Article extends Model
         return $this->belongsTo(Section::class);
     }
 
-    
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -82,6 +82,12 @@ class Article extends Model
     public function medicines()
     {
         return $this->belongsToMany(Article::class, 'disease_medicines', 'disease_id', 'medicine_id')->where('section_id', 5)
+            ->withTimestamps();
+    }
+
+    public function organs()
+    {
+        return $this->belongsToMany(Organ::class, 'disease_organs', 'disease_id', 'organ_id')
             ->withTimestamps();
     }
 }

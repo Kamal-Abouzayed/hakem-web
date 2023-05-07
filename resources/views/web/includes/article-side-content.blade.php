@@ -98,30 +98,91 @@
 
     </div> --}}
 
-    @if (request()->sectionSlug == 'diseases' && $article->medicines->isNotEmpty())
-        <div class="more-article-details">
-            <div class="title-related-topics">
-                <h2>{{ __('Related medications') }}</h2>
+    @if (request()->sectionSlug == 'diseases')
+
+        @if ($article->medicines->isNotEmpty())
+            <div class="more-article-details">
+                <div class="title-related-topics">
+                    <h2>{{ __('Related medications') }}</h2>
+                </div>
+
+                @foreach ($article->medicines as $medicines)
+                    <a
+                        href="{{ route('web.article-details', ['sectionSlug' => $medicines->section->slug, 'slug' => $medicines->slug]) }}">
+                        <div class="sub-read-article-index">
+                            <div class="img-read-article-index">
+                                <img src="{{ asset('storage/' . $medicines->img) }}" alt="">
+                            </div>
+                            <div class="text-read-article-index">
+                                <h3 class="date-article"> {{ $medicines->section->name }} ,<span>
+                                        {{ $medicines->created_at }}
+                                    </span></h3>
+                                <p>{!! strip_tags(Str::limit($medicines->desc, 50)) !!}</p>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+
             </div>
 
-            @foreach ($article->medicines as $medicines)
-                <a
-                    href="{{ route('web.article-details', ['sectionSlug' => $medicines->section->slug, 'slug' => $medicines->slug]) }}">
-                    <div class="sub-read-article-index">
-                        <div class="img-read-article-index">
-                            <img src="{{ asset('storage/' . $medicines->img) }}" alt="">
-                        </div>
-                        <div class="text-read-article-index">
-                            <h3 class="date-article"> {{ $medicines->section->name }} ,<span>
-                                    {{ $medicines->created_at }}
-                                </span></h3>
-                            <p>{!! strip_tags(Str::limit($medicines->desc, 50)) !!}</p>
-                        </div>
-                    </div>
-                </a>
-            @endforeach
+        @endif
 
-        </div>
+        @if ($article->organs->isNotEmpty())
+            <div class="more-article-details">
+                <div class="title-related-topics">
+                    <h2>{{ __('Related organs') }}</h2>
+                </div>
+
+                @foreach ($article->organs as $organ)
+                    <a
+                        href="{{ route('web.organ-details', ['sectionSlug' => 'medicine-and-health', 'slug' => $organ->slug]) }}">
+                        <div class="sub-read-article-index">
+                            <div class="img-read-article-index">
+                                <img src="{{ asset('storage/' . $organ->img) }}" alt="">
+                            </div>
+                            <div class="text-read-article-index">
+                                <h3 class="date-article"> {{ __('Medicine and Health') }} ,<span>
+                                        {{ $organ->created_at }}
+                                    </span></h3>
+                                <p>{!! strip_tags(Str::limit($organ->desc, 50)) !!}</p>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+
+            </div>
+        @endif
+
+    @endif
+
+    @if (request()->sectionSlug == 'medicine-and-health')
+
+        @if ($article->diseases->isNotEmpty())
+            <div class="more-article-details">
+                <div class="title-related-topics">
+                    <h2>{{ __('Related diseases') }}</h2>
+                </div>
+
+                @foreach ($article->diseases as $disease)
+                    <a
+                        href="{{ route('web.article-details', ['sectionSlug' => $disease->section->slug, 'slug' => $disease->slug]) }}">
+                        <div class="sub-read-article-index">
+                            <div class="img-read-article-index">
+                                <img src="{{ asset('storage/' . $disease->img) }}" alt="">
+                            </div>
+                            <div class="text-read-article-index">
+                                <h3 class="date-article"> {{ $disease->section->name }} ,<span>
+                                        {{ $disease->created_at }}
+                                    </span></h3>
+                                <p>{!! strip_tags(Str::limit($disease->desc, 50)) !!}</p>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+
+            </div>
+        @endif
+
     @endif
 
     @if (request()->sectionSlug == 'medicines' && $article->diseases->isNotEmpty())

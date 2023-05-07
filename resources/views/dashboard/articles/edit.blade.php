@@ -67,6 +67,24 @@
                         @enderror
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="form-group col-12">
+                        <label for="medicine_id">أعضاء الجسم</label>
+                        <select name="organ_id[]" class="form-control" id="" multiple required>
+                            {{-- <option value="">اختر</option> --}}
+                            @foreach ($organs as $organ)
+                                <option value="{{ $organ->id }}"
+                                    {{ old('organ_id') == $organ->id || $article->organs->contains('id', $organ->id) ? 'selected' : '' }}>
+                                    {{ $organ->name }}</option>
+                            @endforeach
+                        </select>
+
+                        @error('medicine_id')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
             @endif
 
             <div class="row">

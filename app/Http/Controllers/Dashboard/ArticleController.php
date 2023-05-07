@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\ArticleRequest;
 use App\Mail\ArticleMail;
 use App\Models\DiseaseMedicine;
+use App\Models\DiseaseOrgan;
 use App\Models\User;
 use App\Notifications\ArticleNotify;
 use App\Repositories\Contract\ArticleRepositoryInterface;
 use App\Repositories\Contract\CategoryRepositoryInterface;
+use App\Repositories\Contract\OrganRepositoryInterface;
 use App\Repositories\Contract\SectionRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -20,15 +22,18 @@ class ArticleController extends Controller
     protected $articleRepo;
     protected $sectionRepo;
     protected $catRepo;
+    protected $organRepo;
 
     public function __construct(
         ArticleRepositoryInterface $articleRepo,
         SectionRepositoryInterface $sectionRepo,
-        CategoryRepositoryInterface $catRepo
+        CategoryRepositoryInterface $catRepo,
+        OrganRepositoryInterface $organRepo
     ) {
         $this->articleRepo = $articleRepo;
         $this->sectionRepo = $sectionRepo;
-        $this->catRepo = $catRepo;
+        $this->catRepo     = $catRepo;
+        $this->organRepo   = $organRepo;
     }
 
     /**
@@ -62,7 +67,9 @@ class ArticleController extends Controller
 
         $medicines = $this->articleRepo->getWhere([['section_id', 5]]);
 
-        return view('dashboard.articles.create', compact('pageTitle', 'categories', 'medicines'));
+        $organs = $this->organRepo->getAll();
+
+        return view('dashboard.articles.create', compact('pageTitle', 'categories', 'medicines', 'organs'));
     }
 
     /**
@@ -92,6 +99,15 @@ class ArticleController extends Controller
                 DiseaseMedicine::create([
                     'disease_id'  => $article->id,
                     'medicine_id' => $medicine,
+                ]);
+            }
+        }
+
+        if ($request->organ_id) {
+            foreach ($request->organ_id as $key => $organ) {
+                DiseaseOrgan::create([
+                    'disease_id'  => $article->id,
+                    'organ_id' => $organ,
                 ]);
             }
         }
@@ -143,7 +159,9 @@ class ArticleController extends Controller
 
         $medicines = $this->articleRepo->getWhere([['section_id', 5]]);
 
-        return view('dashboard.articles.edit', compact('article', 'pageTitle', 'categories', 'medicines'));
+        $organs = $this->organRepo->getAll();
+
+        return view('dashboard.articles.edit', compact('article', 'pageTitle', 'categories', 'medicines', 'organs'));
     }
 
     /**
@@ -181,6 +199,18 @@ class ArticleController extends Controller
                     'medicine_id' => $medicine,
                 ]);
                 // dd('ss');
+            }
+        }
+
+        if ($request->organ_id) {
+
+            DiseaseOrgan::where('disease_id', $article->id)->get()->each->delete();
+
+            foreach ($request->organ_id as $key => $organ) {
+                DiseaseOrgan::create([
+                    'disease_id'  => $article->id,
+                    'organ_id' => $organ,
+                ]);
             }
         }
 

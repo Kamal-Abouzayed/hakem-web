@@ -19,7 +19,7 @@
                                 <h2> {{ __('Body System Organs') }} :</h2>
                                 <ul>
                                     @foreach ($bodySystem->organs as $organ)
-                                        <li><a href=""> {{ $organ->name }} </a></li>
+                                        <li><a href="{{ route('web.article-details', ['sectionSlug' => 'medicine-and-health', 'slug' => $organ->slug]) }}"> {{ $organ->name }} </a></li>
                                     @endforeach
                                 </ul>
                             </div>

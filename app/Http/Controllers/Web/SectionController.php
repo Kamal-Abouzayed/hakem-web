@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Repositories\Contract\ArticleRepositoryInterface;
 use App\Repositories\Contract\BodySystemRepositoryInterface;
 use App\Repositories\Contract\CategoryRepositoryInterface;
+use App\Repositories\Contract\OrganRepositoryInterface;
 use App\Repositories\Contract\PregnancyStageRepositoryInterface;
 use App\Repositories\Contract\SectionRepositoryInterface;
 use Illuminate\Http\Request;
@@ -19,19 +20,22 @@ class SectionController extends Controller
     protected $categoryRepo;
     protected $articleRepo;
     protected $stageRepo;
+    protected $organRepo;
 
     public function __construct(
         SectionRepositoryInterface $sectionRepo,
         BodySystemRepositoryInterface $bodySystemRepo,
         CategoryRepositoryInterface $categoryRepo,
         ArticleRepositoryInterface $articleRepo,
-        PregnancyStageRepositoryInterface $stageRepo
+        PregnancyStageRepositoryInterface $stageRepo,
+        OrganRepositoryInterface $organRepo
     ) {
         $this->sectionRepo    = $sectionRepo;
         $this->bodySystemRepo = $bodySystemRepo;
         $this->categoryRepo   = $categoryRepo;
         $this->articleRepo    = $articleRepo;
         $this->stageRepo      = $stageRepo;
+        $this->organRepo      = $organRepo;
     }
 
     public function index($sectionSlug)
@@ -157,5 +161,22 @@ class SectionController extends Controller
         })->where('section_id', $section->id)->get();
 
         return view('web.search-calories', compact('pageTitle', 'articles'));
+    }
+
+    public function organDetails($sectionSlug, $slug)
+    {
+        $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
+
+        $article = $this->organRepo->findWhere([['slug', $slug]]);
+
+        $pageTitle = $article->name;
+
+        $share = \Share::currentPage($article->name)
+            ->facebook()
+            ->twitter()
+            ->linkedin()
+            ->whatsapp();
+
+        return view('web.organ-details', compact('pageTitle', 'section', 'article', 'share'));
     }
 }

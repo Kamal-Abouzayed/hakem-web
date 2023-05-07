@@ -96,6 +96,9 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
     // article details
     Route::get('{sectionSlug}/article-details/{slug}', 'SectionController@articleDetails')->name('article-details');
 
+    // organ details
+    Route::get('{sectionSlug}/organ-details/{slug}', 'SectionController@organDetails')->name('organ-details');
+
     // pregnancy stage details
     Route::get('{sectionSlug}/pregnancy-stage/{slug}', 'SectionController@pregnancyStage')->name('pregnancy-stage');
 
