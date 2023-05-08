@@ -32,7 +32,7 @@
                 <i class="fas fa-fw fa-users"></i>
                 <span>المستخدمين</span></a>
         </li>
-
+        {{--
         <!-- Nav Item - Sections -->
         <li
             class="nav-item {{ areActiveRoutes(['dashboard.sections.index', 'dashboard.sections.create', 'dashboard.sections.edit']) }}">
@@ -40,7 +40,7 @@
                 <i class="fa-solid fa-cubes-stacked"></i>
                 <span>الصفحات الرئيسية</span>
             </a>
-        </li>
+        </li> --}}
     @endif
 
     @if (auth()->user()->hasPermissionTo('medicine_and_health'))
@@ -205,6 +205,28 @@
                         href="{{ route('dashboard.advices.index', 'calories') }}">النصائح</a>
                 </div>
             </div>
+        </li>
+    @endif
+
+    @if (auth()->user()->hasPermissionTo('checkups'))
+        <!-- Nav Item - BodySystems -->
+        <li
+            class="nav-item {{ areActiveRoutes(['dashboard.checkups.index', 'dashboard.checkups.create', 'dashboard.checkups.edit']) }}">
+            <a class="nav-link" href="{{ route('dashboard.checkups.index') }}">
+                <i class="fa-solid fa-hand-holding-medical"></i>
+                <span>الفحوصات</span>
+            </a>
+        </li>
+    @endif
+
+    @if (auth()->user()->hasPermissionTo('vaccinations'))
+        <!-- Nav Item - BodySystems -->
+        <li
+            class="nav-item {{ areActiveRoutes(['dashboard.vaccinations.index', 'dashboard.vaccinations.create', 'dashboard.vaccinations.edit']) }}">
+            <a class="nav-link" href="{{ route('dashboard.vaccinations.index') }}">
+                <i class="fa-solid fa-syringe"></i>
+                <span>التطعيمات</span>
+            </a>
         </li>
     @endif
 

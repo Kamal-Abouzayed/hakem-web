@@ -23,6 +23,7 @@ class CreateVaccinationsTable extends Migration
             // $table->sluggable();
             $table->string('slug');
             $table->integer('views')->default(0);
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

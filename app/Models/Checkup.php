@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Checkup extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
-    protected $fillable = ['name_ar', 'name_en', 'img', 'desc_ar', 'desc_en', 'views'];
+    protected $fillable = ['name_ar', 'name_en', 'img', 'desc_ar', 'desc_en', 'views', 'user_id'];
 
     // protected $sluggable = 'name_en';
 
@@ -64,5 +65,10 @@ class Checkup extends Model
     {
         return $this->belongsToMany(Article::class, 'article_checkups', 'checkup_id', 'article_id')
             ->withTimestamps();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

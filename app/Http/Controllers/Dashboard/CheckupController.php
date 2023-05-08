@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\CheckupRequest;
 use App\Models\ArticleCheckup;
+use App\Repositories\Contract\ArticleRepositoryInterface;
 use App\Repositories\Contract\CheckupRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -27,7 +28,7 @@ class CheckupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($sectionSlug)
+    public function index()
     {
         $pageTitle = 'الفحوصات';
 
@@ -41,7 +42,7 @@ class CheckupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($sectionSlug)
+    public function create()
     {
         $pageTitle = 'إضافة فحص جديد';
 
@@ -58,15 +59,18 @@ class CheckupController extends Controller
      */
     public function store(CheckupRequest $request)
     {
+        // dd($request->category_id);
 
         $data = $request->except('_token', 'img', 'article_id');
+
+        $data['user_id'] = auth()->user()->id;
 
         if ($request->hasFile('img')) {
             $data['img'] = $request->file('img')->store('checkups');
         }
 
         // dd($data);
-        $checkup =  $this->articleRepo->create($data);
+        $checkup =  $this->checkupRepo->create($data);
 
         if ($request->article_id) {
             foreach ($request->article_id as $key => $article) {

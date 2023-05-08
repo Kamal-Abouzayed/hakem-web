@@ -17,6 +17,7 @@
                             <th>العنوان</th>
                             <th>المحتوى</th>
                             <th>الصورة</th>
+                            <th>الكاتب</th>
                             <th>الإجراءات</th>
                         </tr>
                     </thead>
@@ -26,14 +27,14 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $checkup->name }}</td>
                                 <td>{!! Str::limit($checkup->desc, 70) !!}</td>
-                                <td>{{ $checkup->section->name }}</td>
                                 <td>
                                     @if ($checkup->img)
-                                        <img src="{{ asset('storage/' . $checkup->img) }}" width="100" height="100">
+                                    <img src="{{ asset('storage/' . $checkup->img) }}" width="100" height="100">
                                     @else
-                                        <img src="https://placehold.co/100">
+                                    <img src="https://placehold.co/100">
                                     @endif
                                 </td>
+                                <td>{{ $checkup->user->full_name }}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Second group">
                                         <a href="{{ route('dashboard.checkups.edit', $checkup->slug) }}"
