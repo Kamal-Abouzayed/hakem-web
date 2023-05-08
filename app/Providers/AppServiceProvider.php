@@ -6,6 +6,7 @@ use App\Models\Ad;
 use App\Models\Article;
 use App\Models\Faq;
 use App\Models\Section;
+use App\Models\Visitor;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -42,6 +43,8 @@ class AppServiceProvider extends ServiceProvider
             } else {
                 $view->with('relatedContent', Article::get());
             }
+
+            $view->with('visitors', count(Visitor::all()));
         });
     }
 }
