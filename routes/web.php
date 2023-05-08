@@ -135,6 +135,12 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
         Route::get('profile', 'AuthController@profile')->name('profile');
         Route::patch('update-profile', 'AuthController@updateProfile')->name('update-profile');
     });
+
+    Route::get('checkups', 'HomeController@checkups')->name('checkups');
+    Route::get('checkup-details/{slug}', 'HomeController@checkupDetails')->name('checkup-details');
+
+    Route::get('vaccinations', 'HomeController@vaccinations')->name('vaccinations');
+    Route::get('vaccination-details/{slug}', 'HomeController@vaccinationDetails')->name('vaccination-details');
 });
 
 

@@ -211,6 +211,108 @@
         </div>
     @endif
 
+    @if (isset($article->articles) && $article->articles->isNotEmpty())
+        <div class="more-article-details">
+            <div class="title-related-topics">
+                <h2>{{ __('Related articles') }}</h2>
+            </div>
+
+            @foreach ($article->articles as $relatedArticle)
+                <a
+                    href="{{ route('web.article-details', ['sectionSlug' => $relatedArticle->section->slug, 'slug' => $relatedArticle->slug]) }}">
+                    <div class="sub-read-article-index">
+                        <div class="img-read-article-index">
+                            <img src="{{ asset('storage/' . $relatedArticle->img) }}" alt="">
+                        </div>
+                        <div class="text-read-article-index">
+                            <h3 class="date-article"> {{ $relatedArticle->section->name }} ,<span>
+                                    {{ $relatedArticle->created_at }}
+                                </span></h3>
+                            <p>{!! strip_tags(Str::limit($relatedArticle->desc, 50)) !!}</p>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
+
+        </div>
+    @endif
+
+    @if (isset($article->checkups) && $article->checkups->isNotEmpty())
+        <div class="more-article-details">
+            <div class="title-related-topics">
+                <h2>{{ __('Related checkups') }}</h2>
+            </div>
+
+            @foreach ($article->checkups as $checkup)
+                <a href="{{ route('web.checkup-details', $checkup->slug) }}">
+                    <div class="sub-read-article-index">
+                        <div class="img-read-article-index">
+                            <img src="{{ asset('storage/' . $checkup->img) }}" alt="">
+                        </div>
+                        <div class="text-read-article-index">
+                            <h3 class="date-article"> {{ __('Checkups') }} ,<span>
+                                    {{ $checkup->created_at }}
+                                </span></h3>
+                            <p>{!! strip_tags(Str::limit($checkup->desc, 50)) !!}</p>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
+
+        </div>
+    @endif
+
+    @if (isset($vaccination->articles) && $vaccination->articles->isNotEmpty())
+        <div class="more-article-details">
+            <div class="title-related-topics">
+                <h2>{{ __('Related articles') }}</h2>
+            </div>
+
+            @foreach ($vaccination->articles as $vaccinationArticle)
+                <a
+                    href="{{ route('web.article-details', ['sectionSlug' => $vaccinationArticle->section->slug, 'slug' => $vaccinationArticle->slug]) }}">
+                    <div class="sub-read-article-index">
+                        <div class="img-read-article-index">
+                            <img src="{{ asset('storage/' . $vaccinationArticle->img) }}" alt="">
+                        </div>
+                        <div class="text-read-article-index">
+                            <h3 class="date-article"> {{ $vaccinationArticle->section->name }} ,<span>
+                                    {{ $vaccinationArticle->created_at }}
+                                </span></h3>
+                            <p>{!! strip_tags(Str::limit($vaccinationArticle->desc, 50)) !!}</p>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
+
+        </div>
+    @endif
+
+    @if (isset($article->vaccinations) && $article->vaccinations->isNotEmpty())
+        <div class="more-article-details">
+            <div class="title-related-topics">
+                <h2>{{ __('Related vaccinations') }}</h2>
+            </div>
+
+            @foreach ($article->vaccinations as $vaccination)
+                <a href="{{ route('web.vaccination-details', $vaccination->slug) }}">
+                    <div class="sub-read-article-index">
+                        <div class="img-read-article-index">
+                            <img src="{{ asset('storage/' . $vaccination->img) }}" alt="">
+                        </div>
+                        <div class="text-read-article-index">
+                            <h3 class="date-article"> {{ __('Vaccinations') }} ,<span>
+                                    {{ $vaccination->created_at }}
+                                </span></h3>
+                            <p>{!! strip_tags(Str::limit($vaccination->desc, 50)) !!}</p>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
+
+        </div>
+    @endif
+
 
 
 </div>

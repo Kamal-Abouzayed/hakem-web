@@ -18,6 +18,8 @@
                                 <a href="{{ route('web.logout') }}" class="login"> {{ __('Logout') }} </a>
                                 @role('admin')
                                     <a href="{{ route('dashboard.home') }}" class="signin"> {{ __('Dashboard') }} </a>
+                                    @elserole('employee')
+                                    <a href="{{ route('dashboard.home') }}" class="signin"> {{ __('Dashboard') }} </a>
                                 @endrole
                             @else
                                 <a href="{{ route('web.login') }}" class="login"> {{ __('Login') }} </a>

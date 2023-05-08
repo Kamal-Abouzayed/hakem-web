@@ -118,6 +118,8 @@
                         <li><a href="{{ route('web.home') }}">{{ __('Home') }}</a></li>
                         <li><a href="{{ url('diseases/categories') }}">{{ __('Diseases') }}</a></li>
                         <li><a href="{{ url('medicines/categories') }}">{{ __('Medicines') }}</a></li>
+                        <li><a href="{{ route('web.checkups') }}">{{ __('Checkups') }}</a></li>
+                        <li><a href="{{ route('web.vaccinations') }}">{{ __('Vaccinations') }}</a></li>
                         <li><a href="{{ route('web.about') }}">{{ __('About Us') }} </a></li>
                         <li><a href="{{ route('web.faqs') }}">{{ __('Questions and Answers') }}</a></li>
                         <li><a href="{{ route('web.contact-us') }}">{{ __('Contact Us') }}</a></li>
