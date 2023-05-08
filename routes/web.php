@@ -160,6 +160,9 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
         // Users
         Route::resource('users', 'UserController')->names('users');
 
+        // Employees
+        Route::resource('employees', 'EmployeeController')->names('employees');
+
         // Sections
         Route::resource('sections', 'SectionController')->names('sections');
 
