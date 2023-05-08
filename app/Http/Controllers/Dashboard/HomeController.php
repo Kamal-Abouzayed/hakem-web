@@ -17,7 +17,9 @@ class HomeController extends Controller
 
         $pageTitle = 'لوحة التحكم';
 
-        $users = count(User::where('id', '!=', 1)->get());
+        $users = count(User::whereDoesntHave('roles')->get());
+
+        $employees = count(User::role(['employee'])->get());
 
         $videos = count(Video::get());
 
@@ -27,6 +29,6 @@ class HomeController extends Controller
 
         $sections = Section::with(['categories', 'advices'])->get();
 
-        return view('dashboard.home', compact('pageTitle', 'users', 'videos', 'images', 'adsCount', 'sections'));
+        return view('dashboard.home', compact('pageTitle', 'users', 'videos', 'images', 'adsCount', 'sections', 'employees'));
     }
 }

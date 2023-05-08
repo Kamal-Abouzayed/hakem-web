@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $pageTitle = 'المستخدمين';
 
-        $users = $this->userRepo->getWhere([['id', '!=', 1]]);
+        $users = User::whereDoesntHave('roles')->get();
 
         return view('dashboard.users.index', compact('users', 'pageTitle'));
     }
