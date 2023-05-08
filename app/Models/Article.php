@@ -11,7 +11,7 @@ class Article extends Model
 {
     use HasFactory, Sluggable;
 
-    protected $fillable = ['name_ar', 'name_en', 'img', 'desc_ar', 'desc_en', 'section_id', 'category_id', 'views'];
+    protected $fillable = ['name_ar', 'name_en', 'img', 'desc_ar', 'desc_en', 'section_id', 'category_id', 'views', 'user_id'];
 
     // protected $sluggable = 'name_en';
 
@@ -101,5 +101,10 @@ class Article extends Model
     {
         return $this->belongsToMany(Vaccination::class, 'article_vaccinations', 'article_id', 'vaccination_id')
             ->withTimestamps();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

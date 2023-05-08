@@ -88,4 +88,9 @@ class User extends Authenticatable
 
         return true;
     }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
 }

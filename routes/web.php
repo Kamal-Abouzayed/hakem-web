@@ -149,7 +149,7 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
     Route::get('changePassword/{code}', 'AuthController@changePassword')->name('admin.changePassword');
     Route::post('update-password', 'AuthController@updatePassword')->name('admin.updatePassword');
 
-    Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::middleware(['auth', 'role:admin|employee'])->group(function () {
 
         Route::get('ckeditor', 'CkeditorController@index');
 
@@ -172,46 +172,53 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
         // Faqs
         Route::resource('faqs', 'FaqController')->names('faqs');
 
-        // categories
-        Route::resource('section/{sectionSlug}/categories', 'CategoryController')->names('categories');
 
-        // // sub categories
-        // Route::resource('section/{sectionSlug}/sub-categories', 'SubCategoryController')->names('sub-categories');
+        Route::group(['middleware' => 'permission'], function () {
+            // categories
+            Route::resource('section/{sectionSlug}/categories', 'CategoryController')->names('categories');
 
-        // Advices
-        Route::resource('section/{sectionSlug}/advices', 'AdviceController')->names('advices');
+            // // sub categories
+            // Route::resource('section/{sectionSlug}/sub-categories', 'SubCategoryController')->names('sub-categories');
 
-        // Articles
-        Route::resource('section/{sectionSlug}/articles', 'ArticleController')->names('articles');
+            // Advices
+            Route::resource('section/{sectionSlug}/advices', 'AdviceController')->names('advices');
+
+            // Articles
+            Route::resource('section/{sectionSlug}/articles', 'ArticleController')->names('articles');
+        });
+
 
         // Body Systems
-        Route::resource('body-systems', 'BodySystemController')->names('body-systems');
+        Route::resource('body-systems', 'BodySystemController')->names('body-systems')->middleware(['can:body_system']);
 
         // Organs
-        Route::resource('organs', 'OrganController')->names('organs');
+        Route::resource('organs', 'OrganController')->names('organs')->middleware(['can:organs']);
 
         // Checkups
-        Route::resource('checkups', 'CheckupController')->names('checkups');
+        Route::resource('checkups', 'CheckupController')->names('checkups')->middleware(['can:checkups']);
 
         // Vaccinations
-        Route::resource('vaccinations', 'VaccinationController')->names('vaccinations');
+        Route::resource('vaccinations', 'VaccinationController')->names('vaccinations')->middleware(['can:vaccinations']);
 
         // Videos
-        Route::resource('videos', 'VideoController')->names('videos');
+        Route::resource('videos', 'VideoController')->names('videos')->middleware(['can:videos']);
 
         // Images
         Route::resource('images', 'ImageController')->names('images');
 
         // Pregnancy Stages
-        Route::resource('pregnancy-stages', 'PregnancyStageController')->names('pregnancy-stages');
+        Route::resource('pregnancy-stages', 'PregnancyStageController')->names('pregnancy-stages')->middleware(['can:pregnancy_stages']);
 
-        // Contacts
-        Route::resource('contacts', 'ContactController')->names('contacts');
-        Route::get('contacts/reply/{id}', 'ContactController@reply')->name('contacts.reply');
-        Route::post('contacts/send-reply/{id}', 'ContactController@sendReply')->name('contacts.sendReply');
+
+        Route::group(['middleware' => ['can:contacts']], function () {
+            // Contacts
+            Route::resource('contacts', 'ContactController')->names('contacts');
+            Route::get('contacts/reply/{id}', 'ContactController@reply')->name('contacts.reply');
+            Route::post('contacts/send-reply/{id}', 'ContactController@sendReply')->name('contacts.sendReply');
+        });
 
         // Settings
-        Route::resource('settings', 'SettingController')->names('settings');
+        Route::resource('settings', 'SettingController')->names('settings')->middleware(['can:settings']);
 
         // Mail Lists
         Route::get('mail-list', 'MailListController@index')->name('mail.index');

@@ -81,7 +81,11 @@ class ArticleController extends Controller
     public function store(ArticleRequest $request, $sectionSlug)
     {
 
+        $user = auth()->user();
+
         $data = $request->except('_token', 'img', 'medicine_id');
+
+        $data['user_id'] = $user->id;
 
         $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
 

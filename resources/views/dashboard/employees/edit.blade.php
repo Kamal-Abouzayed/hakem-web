@@ -6,43 +6,25 @@
         @csrf
         @method('PATCH')
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">{{ $user->title_ar }}</h6>
+            <h6 class="m-0 font-weight-bold text-primary">{{ $user->full_name }}</h6>
         </div>
         <div class="card-body">
 
-            <div class="col-md-6 mb-3">
-                <label class="form-label" for="photo">الصورة</label>
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <a id="lfm" data-input="photo" data-preview="photo" class="btn btn-secondary text-white px-4"
-                            style="border-top-right-radius: 0;border-bottom-right-radius: 0;border-top-left-radius: 0;border-bottom-left-radius: 0;">
-                            <i class="fa fa-picture-o"></i> اختر الصورة
-                        </a>
-                    </span>
-                    <input type="text" class="form-control photo" name="photo" id="photo" placeholder="الرابط"
-                        value="{{ $user->photo }}" required>
-
-                </div>
-                <div class="mb-3 mt-3 d-block slider-holder photo">
-                    <img width="100" src="{{ $user->photo }}" alt="">
-                </div>
-                <small class="text-danger">{{ $errors->first('photo') }}</small>
-            </div>
 
             <div class="row">
                 <div class="form-group col-6">
-                    <label for="name">الاسم</label>
-                    <input type="text" class="form-control" name="name" autocomplete="name"
-                        value="{{ old('name', $user->name) }}" required>
-                    @error('name')
+                    <label for="fname">الاسم الأول</label>
+                    <input type="text" class="form-control" name="fname" autocomplete="fname"
+                        value="{{ old('fname', $user->fname) }}" required>
+                    @error('fname')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="form-group col-6">
-                    <label for="phone">رقم الجوال</label>
-                    <input type="text" class="form-control" name="phone" autocomplete="phone"
-                        value="{{ old('phone', $user->phone) }}" required>
-                    @error('phone')
+                    <label for="lname">الاسم الأخير</label>
+                    <input type="text" class="form-control" name="lname" autocomplete="lname"
+                        value="{{ old('lname', $user->lname) }}" required>
+                    @error('lname')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>

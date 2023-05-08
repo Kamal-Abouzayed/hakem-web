@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contract\UserRepositoryInterface;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 
 class EmployeeController extends Controller
 {

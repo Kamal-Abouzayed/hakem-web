@@ -18,6 +18,7 @@
                             <th>المحتوى</th>
                             <th>القسم</th>
                             <th>الصورة</th>
+                            <th>الكاتب</th>
                             <th>الإجراءات</th>
                         </tr>
                     </thead>
@@ -26,7 +27,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $article->name }}</td>
-                                <td>{!! Str::limit($article->desc, 70) !!}</td>
+                                <td>{!! strip_tags(Str::limit($article->desc, 70)) !!}</td>
                                 <td>{{ $article->section->name }}</td>
                                 <td>
                                     @if ($article->img)
@@ -35,6 +36,7 @@
                                         <img src="https://placehold.co/100">
                                     @endif
                                 </td>
+                                <td>{{ $article->user ? $article->user->full_name : '-' }}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Second group">
                                         <a href="{{ route('dashboard.articles.edit', ['sectionSlug' => request()->sectionSlug, 'article' => $article->slug]) }}"
