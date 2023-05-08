@@ -190,6 +190,9 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
         // Organs
         Route::resource('organs', 'OrganController')->names('organs');
 
+        // Checkups
+        Route::resource('checkups', 'CheckupController')->names('checkups');
+
         // Videos
         Route::resource('videos', 'VideoController')->names('videos');
 
