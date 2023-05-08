@@ -5,7 +5,7 @@
                 <div class="main-container">
                     <div class="top-par">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="{{ route('web.home') }}">
                                 <img src="{{ asset('storage/' . getSetting('logo')) }}" alt="">
                             </a>
                         </div>
