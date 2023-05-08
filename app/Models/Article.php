@@ -93,7 +93,13 @@ class Article extends Model
 
     public function checkups()
     {
-        return $this->belongsToMany(Organ::class, 'article_checkups', 'article_id', 'checkup_id')
+        return $this->belongsToMany(Checkup::class, 'article_checkups', 'article_id', 'checkup_id')
+            ->withTimestamps();
+    }
+
+    public function vaccinations()
+    {
+        return $this->belongsToMany(Vaccination::class, 'article_vaccinations', 'article_id', 'vaccination_id')
             ->withTimestamps();
     }
 }

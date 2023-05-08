@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+        use App\Repositories\Sql\VaccinationRepository;
+        use App\Repositories\Contract\VaccinationRepositoryInterface;
+
         use App\Repositories\Sql\CheckupRepository;
         use App\Repositories\Contract\CheckupRepositoryInterface;
 
@@ -76,6 +79,8 @@ class RepositoriesServiceProvider extends ServiceProvider
 {
 
     public function register(){
+
+        $this->app->bind(VaccinationRepositoryInterface::class, VaccinationRepository::class);
 
         $this->app->bind(CheckupRepositoryInterface::class, CheckupRepository::class);
 

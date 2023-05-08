@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Checkup extends Model
+class Vaccination extends Model
 {
     use HasFactory;
 
@@ -62,7 +62,7 @@ class Checkup extends Model
 
     public function articles()
     {
-        return $this->belongsToMany(Article::class, 'article_checkups', 'checkup_id', 'article_id')
+        return $this->belongsToMany(Article::class, 'article_vaccinations', 'vaccination_id', 'article_id')
             ->withTimestamps();
     }
 }

@@ -3,23 +3,21 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Dashboard\CheckupRequest;
-use App\Models\ArticleCheckup;
-use App\Repositories\Contract\CheckupRepositoryInterface;
+use App\Repositories\Contract\ArticleRepositoryInterface;
+use App\Repositories\Contract\VaccinationRepositoryInterface;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
-class CheckupController extends Controller
+class VaccinationController extends Controller
 {
     protected $articleRepo;
-    protected $checkupRepo;
+    protected $vaccinationRepo;
 
     public function __construct(
         ArticleRepositoryInterface $articleRepo,
-        CheckupRepositoryInterface $checkupRepo
+        VaccinationRepositoryInterface $vaccinationRepo
     ) {
         $this->articleRepo = $articleRepo;
-        $this->checkupRepo = $checkupRepo;
+        $this->vaccinationRepo = $vaccinationRepo;
     }
 
     /**
@@ -29,11 +27,11 @@ class CheckupController extends Controller
      */
     public function index($sectionSlug)
     {
-        $pageTitle = 'الفحوصات';
+        $pageTitle = 'التطعيمات';
 
-        $checkups = $this->checkupRepo->getAll();
+        $vaccinations = $this->vaccinationRepo->getAll();
 
-        return view('dashboard.checkups.index', compact('pageTitle', 'checkups'));
+        return view('dashboard.vaccinations.index', compact('pageTitle', 'vaccinations'));
     }
 
     /**
@@ -43,11 +41,11 @@ class CheckupController extends Controller
      */
     public function create($sectionSlug)
     {
-        $pageTitle = 'إضافة فحص جديد';
+        $pageTitle = 'إضافة تطعيم جديد';
 
         $articles = $this->articleRepo->getAll();
 
-        return view('dashboard.checkups.create', compact('pageTitle', 'articles'));
+        return view('dashboard.vaccinations.create', compact('pageTitle', 'articles'));
     }
 
     /**
@@ -62,7 +60,7 @@ class CheckupController extends Controller
         $data = $request->except('_token', 'img', 'article_id');
 
         if ($request->hasFile('img')) {
-            $data['img'] = $request->file('img')->store('checkups');
+            $data['img'] = $request->file('img')->store('vaccinations');
         }
 
         // dd($data);
@@ -92,7 +90,7 @@ class CheckupController extends Controller
         //     Mail::to($user->email)->send(new ArticleMail($data));
         // }
 
-        return redirect()->route('dashboard.checkups.index')->with('success', 'تمت الإضافة بنجاح');
+        return redirect()->route('dashboard.vaccinations.index')->with('success', 'تمت الإضافة بنجاح');
     }
 
     /**
@@ -114,13 +112,13 @@ class CheckupController extends Controller
      */
     public function edit($slug)
     {
-        $checkup = $this->checkupRepo->findWhere([['slug', $slug]]);
+        $vaccination = $this->vaccinationRepo->findWhere([['slug', $slug]]);
 
         $pageTitle = 'تعديل الفحوصات';
 
         $articles = $this->articleRepo->getAll();
 
-        return view('dashboard.checkups.edit', compact('articles', 'pageTitle', 'checkup'));
+        return view('dashboard.vaccinations.edit', compact('articles', 'pageTitle', 'vaccination'));
     }
 
     /**
@@ -132,7 +130,7 @@ class CheckupController extends Controller
      */
     public function update(CheckupRequest $request, $slug)
     {
-        $checkup = $this->checkupRepo->findWhere([['slug', $slug]]);
+        $checkup = $this->vaccinationRepo->findWhere([['slug', $slug]]);
 
         $data = $request->except('_token', '_method', 'img', 'article_id');
 
@@ -140,7 +138,7 @@ class CheckupController extends Controller
 
             Storage::delete($checkup->img);
 
-            $data['img'] = $request->file('img')->store('checkups');
+            $data['img'] = $request->file('img')->store('vaccinations');
         } else {
             $data['img'] = $checkup->img;
         }
@@ -160,7 +158,7 @@ class CheckupController extends Controller
         }
 
 
-        return redirect()->route('dashboard.checkups.index')->with('success', 'تم التعديل بنجاح');
+        return redirect()->route('dashboard.vaccinations.index')->with('success', 'تم التعديل بنجاح');
     }
 
     /**
@@ -172,13 +170,13 @@ class CheckupController extends Controller
     public function destroy($slug)
     {
 
-        $checkup = $this->checkupRepo->findWhere([['slug', $slug]]);
+        $vaccination = $this->vaccinationRepo->findWhere([['slug', $slug]]);
 
-        if ($checkup->img) {
-            Storage::delete($checkup->img);
+        if ($vaccination->img) {
+            Storage::delete($vaccination->img);
         }
 
-        $checkup->delete();
+        $vaccination->delete();
 
         return \response()->json([
             'message' => 'تم الحذف بنجاح',

@@ -193,6 +193,9 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
         // Checkups
         Route::resource('checkups', 'CheckupController')->names('checkups');
 
+        // Vaccinations
+        Route::resource('vaccinations', 'VaccinationController')->names('vaccinations');
+
         // Videos
         Route::resource('videos', 'VideoController')->names('videos');
 
