@@ -179,4 +179,20 @@ class SectionController extends Controller
 
         return view('web.organ-details', compact('pageTitle', 'section', 'article', 'share'));
     }
+
+    public function searchDiseasesByLetter(Request $request, $sectionSlug)
+    {
+        $pageTitle = __('Search Results');
+
+        $searchTerm = $request->search_character;
+
+        $section = $this->sectionRepo->findWhere([['slug', $sectionSlug]]);
+
+        $articles = Article::query()->where(function ($q) use ($searchTerm) {
+            $q->where('name_ar', 'LIKE', $searchTerm . '%')
+                ->orWhere('name_en', 'LIKE', $searchTerm . '%');
+        })->where('section_id', $section->id)->get();
+
+        return view('web.search-diseases', compact('pageTitle', 'articles'));
+    }
 }

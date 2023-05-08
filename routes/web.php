@@ -104,6 +104,7 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
 
     // pregnancy stage details
     Route::get('{sectionSlug}/search-diseases', 'SectionController@searchDiseases')->name('search-diseases');
+    Route::get('{sectionSlug}/search-diseases-by-letter', 'SectionController@searchDiseasesByLetter')->name('search-diseases-by-letter');
 
     Route::get('{sectionSlug}/search-calories', 'SectionController@searchCalories')->name('search-calories');
 
