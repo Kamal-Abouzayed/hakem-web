@@ -177,7 +177,7 @@ return [
         App\Providers\RepositoriesServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Jorenvh\Share\Providers\ShareServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
+        // Laravel\Socialite\SocialiteServiceProvider::class,
 
     ],
 

@@ -17,8 +17,17 @@ class HomeController extends Controller
         $this->articleRepo = $articleRepo;
     }
 
-    public function index()
+    public function index(Request $request)
     {
+
+        $ip = hash('sha512', $request->ip());
+
+        if (Visitor::where('ip', $ip)->count() < 1) {
+            Visitor::create([
+                'ip' => $ip,
+            ]);
+        }
+
         $pageTitle = __('Home');
 
         $articles = $this->articleRepo->limit(12);

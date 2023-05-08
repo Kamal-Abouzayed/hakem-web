@@ -191,7 +191,7 @@ class AuthController extends Controller
 
         $data = $request->except('_token', '_method');
 
-        if ($request->has('password')) {
+        if ($request->password) {
             $data['password'] = bcrypt($request->password);
         } else {
             $data['password'] = $user->password;

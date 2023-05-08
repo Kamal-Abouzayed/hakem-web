@@ -2,16 +2,14 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
 
-class Article extends Model
+class Vaccination extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory;
 
-    protected $fillable = ['name_ar', 'name_en', 'img', 'desc_ar', 'desc_en', 'section_id', 'category_id', 'views'];
+    protected $fillable = ['name_ar', 'name_en', 'img', 'desc_ar', 'desc_en', 'views'];
 
     // protected $sluggable = 'name_en';
 
@@ -62,44 +60,9 @@ class Article extends Model
         return $dateFromat->translatedFormat($format);
     }
 
-    public function section()
+    public function articles()
     {
-        return $this->belongsTo(Section::class);
-    }
-
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-
-    public function diseases()
-    {
-        return $this->belongsToMany(Article::class, 'disease_medicines', 'medicine_id', 'disease_id')->where('section_id', 4)
-            ->withTimestamps();
-    }
-
-    public function medicines()
-    {
-        return $this->belongsToMany(Article::class, 'disease_medicines', 'disease_id', 'medicine_id')->where('section_id', 5)
-            ->withTimestamps();
-    }
-
-    public function organs()
-    {
-        return $this->belongsToMany(Organ::class, 'disease_organs', 'disease_id', 'organ_id')
-            ->withTimestamps();
-    }
-
-    public function checkups()
-    {
-        return $this->belongsToMany(Checkup::class, 'article_checkups', 'article_id', 'checkup_id')
-            ->withTimestamps();
-    }
-
-    public function vaccinations()
-    {
-        return $this->belongsToMany(Vaccination::class, 'article_vaccinations', 'article_id', 'vaccination_id')
+        return $this->belongsToMany(Article::class, 'article_vaccinations', 'vaccination_id', 'article_id')
             ->withTimestamps();
     }
 }

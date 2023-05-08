@@ -17,6 +17,14 @@
                 <span>لوحة التحكم</span></a>
         </li>
 
+        <!-- Nav Item - Employees -->
+        <li
+            class="nav-item {{ areActiveRoutes(['dashboard.employees.index', 'dashboard.employees.create', 'dashboard.employees.edit']) }}">
+            <a class="nav-link" href="{{ route('dashboard.employees.index') }}">
+                <i class="fa-solid fa-users"></i>
+                <span>الموظفين</span></a>
+        </li>
+
         <!-- Nav Item - Users -->
         <li
             class="nav-item {{ areActiveRoutes(['dashboard.users.index', 'dashboard.users.create', 'dashboard.users.edit']) }}">
@@ -100,7 +108,7 @@
             </a>
         </li>
 
-{{--         <!-- Nav Item - Images -->
+        {{--         <!-- Nav Item - Images -->
         <li
             class="nav-item {{ areActiveRoutes(['dashboard.images.index', 'dashboard.images.create', 'dashboard.images.edit']) }}">
             <a class="nav-link" href="{{ route('dashboard.images.index') }}">
