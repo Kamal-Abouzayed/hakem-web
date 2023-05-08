@@ -33,7 +33,7 @@
                 <div class="form-group col-12">
                     <label for="article_id">المقالات</label>
 
-                    <select name="article_id" class="form-control" id="" required>
+                    <select name="article_id[]" class="select2-multiple form-control" id="" multiple required>
                         <option value="">اختر</option>
                         @foreach ($articles as $article)
                             <option value="{{ $article->id }}"

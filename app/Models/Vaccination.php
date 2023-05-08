@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Vaccination extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
-    protected $fillable = ['name_ar', 'name_en', 'img', 'desc_ar', 'desc_en', 'views'];
+    protected $fillable = ['name_ar', 'name_en', 'img', 'desc_ar', 'desc_en', 'views', 'user_id'];
 
     // protected $sluggable = 'name_en';
 
@@ -64,5 +65,10 @@ class Vaccination extends Model
     {
         return $this->belongsToMany(Article::class, 'article_vaccinations', 'vaccination_id', 'article_id')
             ->withTimestamps();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -13,7 +13,7 @@ class VaccinationRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,26 @@ class VaccinationRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        switch (request()->method()) {
+            case 'PATCH':
+                return [
+                    'name_ar'     => 'required|string|max:255',
+                    'name_en'     => 'required|string|max:255',
+                    'desc_ar'     => 'required|string',
+                    'desc_en'     => 'required|string',
+                    'img'         => 'nullable',
+                ];
+                break;
+
+            default:
+                return [
+                    'name_ar'     => 'required|string|max:255',
+                    'name_en'     => 'required|string|max:255',
+                    'desc_ar'     => 'required|string',
+                    'desc_en'     => 'required|string',
+                    'img'         => 'required',
+                ];
+                break;
+        }
     }
 }

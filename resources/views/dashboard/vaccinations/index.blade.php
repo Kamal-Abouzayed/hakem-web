@@ -17,6 +17,7 @@
                             <th>العنوان</th>
                             <th>المحتوى</th>
                             <th>الصورة</th>
+                            <th>الكاتب</th>
                             <th>الإجراءات</th>
                         </tr>
                     </thead>
@@ -26,14 +27,15 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $vaccination->name }}</td>
                                 <td>{!! Str::limit($vaccination->desc, 70) !!}</td>
-                                <td>{{ $vaccination->section->name }}</td>
                                 <td>
                                     @if ($vaccination->img)
-                                        <img src="{{ asset('storage/' . $vaccination->img) }}" width="100" height="100">
+                                        <img src="{{ asset('storage/' . $vaccination->img) }}" width="100"
+                                            height="100">
                                     @else
                                         <img src="https://placehold.co/100">
                                     @endif
                                 </td>
+                                <td>{{ $vaccination->user->full_name }}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Second group">
                                         <a href="{{ route('dashboard.vaccinations.edit', $vaccination->slug) }}"

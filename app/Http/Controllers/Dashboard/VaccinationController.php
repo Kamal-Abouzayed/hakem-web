@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\VaccinationRequest;
+use App\Models\ArticleVaccination;
 use App\Repositories\Contract\ArticleRepositoryInterface;
 use App\Repositories\Contract\VaccinationRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class VaccinationController extends Controller
 {
@@ -25,7 +28,7 @@ class VaccinationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($sectionSlug)
+    public function index()
     {
         $pageTitle = 'التطعيمات';
 
@@ -39,7 +42,7 @@ class VaccinationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($sectionSlug)
+    public function create()
     {
         $pageTitle = 'إضافة تطعيم جديد';
 
@@ -54,22 +57,24 @@ class VaccinationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CheckupRequest $request)
+    public function store(VaccinationRequest $request)
     {
 
         $data = $request->except('_token', 'img', 'article_id');
+
+        $data['user_id'] = auth()->user()->id;
 
         if ($request->hasFile('img')) {
             $data['img'] = $request->file('img')->store('vaccinations');
         }
 
         // dd($data);
-        $checkup =  $this->articleRepo->create($data);
+        $vaccination =  $this->vaccinationRepo->create($data);
 
         if ($request->article_id) {
             foreach ($request->article_id as $key => $article) {
-                ArticleCheckup::create([
-                    'checkup_id'  => $checkup->id,
+                ArticleVaccination::create([
+                    'vaccination_id'  => $vaccination->id,
                     'article_id' => $article,
                 ]);
             }
@@ -128,30 +133,30 @@ class VaccinationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CheckupRequest $request, $slug)
+    public function update(VaccinationRequest $request, $slug)
     {
-        $checkup = $this->vaccinationRepo->findWhere([['slug', $slug]]);
+        $vaccination = $this->vaccinationRepo->findWhere([['slug', $slug]]);
 
         $data = $request->except('_token', '_method', 'img', 'article_id');
 
         if ($request->hasFile('img')) {
 
-            Storage::delete($checkup->img);
+            Storage::delete($vaccination->img);
 
             $data['img'] = $request->file('img')->store('vaccinations');
         } else {
-            $data['img'] = $checkup->img;
+            $data['img'] = $vaccination->img;
         }
 
-        $checkup->update($data);
+        $vaccination->update($data);
 
         if ($request->article_id) {
 
-            ArticleCheckup::where('checkup_id', $checkup->id)->get()->each->delete();
+            ArticleVaccination::where('vaccination_id', $vaccination->id)->get()->each->delete();
 
             foreach ($request->article_id as $key => $article) {
-                ArticleCheckup::create([
-                    'checkup_id'  => $checkup->id,
+                ArticleVaccination::create([
+                    'vaccination_id'  => $vaccination->id,
                     'article_id' => $article,
                 ]);
             }
