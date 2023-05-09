@@ -10,7 +10,7 @@
 
 @section('content')
     <section
-        class="medicine-health {{ $section->slug == 'pregnancy-and-birth' ? 'pregnancy-section' : ($section->slug == 'medicine-and-health' ? 'health-section' : ($section->slug == 'health-and-beauty' ? 'beauty-section' : ($section->slug == 'diseases' ? 'disease-section' : 'medicine-section'))) }}">
+        class="medicine-health {{ $section->slug == 'pregnancy-and-birth' ? 'pregnancy-section' : ($section->slug == 'medicine-and-health' ? 'health-section' : ($section->slug == 'health-and-beauty' ? 'beauty-section' : ($section->slug == 'diseases' ? 'disease-section' : ($section->slug == 'medicines' ? 'medicine-section' : 'calories-section')))) }}">
         <div class="main-container">
             <div class="title-start">
                 <h2>{{ $section->name }}</h2>

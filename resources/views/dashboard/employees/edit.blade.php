@@ -52,6 +52,9 @@
             <div class="row">
                 <div class="form-group col-12">
                     <label for="permissions">الصلاحيات</label>
+
+                    <input type="checkbox" id="select-all"> تحديد الكل
+
                     <select class="select2-multi-select form-control" id="permissions" name="permissions[]" multiple
                         required>
                         @foreach ($permissions as $permission)
@@ -76,7 +79,25 @@
         <script src="{{ asset('admin/js/custom/preview-image.js') }}"></script>
 
         <script>
-            $(".select2-multi-select").select2();
+            $(document).ready(function() {
+
+                var $select = $('.select2-multiple').select2();
+
+                $('#select-all').on('change', function() {
+                    if ($(this).is(':checked')) {
+                        $select.find('option').prop('selected', true);
+                        $select.trigger('change');
+                    } else {
+                        $select.find('option').prop('selected', false);
+                        $select.trigger('change');
+                    }
+                });
+
+                $select.on('change', function() {
+                    var allSelected = $select.find('option').length === $select.find('option:selected').length;
+                    $('#select-all').prop('checked', allSelected);
+                });
+            });
         </script>
     @endpush
 @endsection
