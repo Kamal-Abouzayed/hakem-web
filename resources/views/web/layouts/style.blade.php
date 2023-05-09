@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="{{ url('web') }}/css/owl.carousel.min.css">
 <link rel="stylesheet" href="{{ url('web') }}/css/owl.theme.default.min.css">
 <link rel="stylesheet" href="{{ url('web') }}/css/lightgallery-bundle.min.css">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+{{-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> --}}
 <link rel="stylesheet" href="{{ url('web') }}/css/animate.css">
 
 <link rel="stylesheet" href="{{ url('web') }}/css/general.css">

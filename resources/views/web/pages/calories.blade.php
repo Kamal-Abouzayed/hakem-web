@@ -23,7 +23,7 @@
                 </div>
 
                 @foreach ($category->articles as $article)
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="sub-calories">
                             <a
                                 href="{{ route('web.article-details', ['sectionSlug' => request()->sectionSlug, 'slug' => $article->slug]) }}">
