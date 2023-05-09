@@ -110,7 +110,7 @@
                                                 </div>
                                                 <div class="text-slider-new-article">
                                                     <h3> {{ $chunk->section->name }} ,<span>
-                                                            {{ $chunk->created_at }}
+                                                            {{ $chunk->user->full_name }}
                                                         </span></h3>
                                                     <p>{!! strip_tags(Str::limit($chunk->desc, 50)) !!}</p>
                                                 </div>
@@ -149,7 +149,7 @@
                             </div>
                             <div class="text-big-article-index">
                                 <h3 class="date-article"> {{ $mostReadArticles->first()->section->name }} , <span>
-                                        {{ $mostReadArticles->first()->created_at }}
+                                        {{ $mostReadArticles->first()->user->full_name }}
                                     </span></h3>
                                 <h2> {{ $mostReadArticles->first()->name }} </h2>
                                 <p>{!! strip_tags(Str::limit($mostReadArticles->first()->desc, 740)) !!}. </p>
