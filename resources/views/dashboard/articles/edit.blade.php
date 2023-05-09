@@ -127,6 +127,8 @@
 
             <div>
                 <button type="submit" class="btn btn-primary">حفظ</button>
+                <a href="{{ route('dashboard.articles.index', ['sectionSlug' => request()->sectionSlug]) }}" type="button"
+                    class="btn btn-warning">إلغاء</a>
             </div>
         </div>
     </form>
