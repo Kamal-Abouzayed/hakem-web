@@ -42,6 +42,15 @@ Route::get('/auth/callback', function () {
 
         return redirect()->route('web.home')->with('success', __('Logged in successfully'));
     } else {
+
+        // dd('ss');
+
+        $checkEmail = User::where('email', $user->email)->first();
+
+        if ($checkEmail) {
+            return redirect()->route('web.login')->with('error', __('Email already exists'));
+        }
+
         $newUser = User::create([
             'uid'      => $user->id,
             'fname'    => $user->user['given_name'],
