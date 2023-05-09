@@ -12,7 +12,7 @@
                     </div>
                     <div class="text-read-article-index">
                         <h3 class="date-article"> {{ $content->section->name }} ,<span>
-                                {{ $content->created_at }}
+                                {{ $content->user->full_name }}
                             </span></h3>
                         <p>{!! strip_tags(Str::limit($content->desc, 50)) !!}</p>
                     </div>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="text-read-article-index">
                         <h3 class="date-article"> {{ $mostReadArticle->section->name }} ,<span>
-                                {{ $mostReadArticle->created_at }}
+                                {{ $mostReadArticle->user->full_name }}
                             </span></h3>
                         <p>{!! strip_tags(Str::limit($mostReadArticle->desc, 50)) !!}</p>
                     </div>
@@ -115,7 +115,7 @@
                             </div>
                             <div class="text-read-article-index">
                                 <h3 class="date-article"> {{ $medicines->section->name }} ,<span>
-                                        {{ $medicines->created_at }}
+                                        {{ $medicines->user->full_name }}
                                     </span></h3>
                                 <p>{!! strip_tags(Str::limit($medicines->desc, 50)) !!}</p>
                             </div>
@@ -172,7 +172,7 @@
                             </div>
                             <div class="text-read-article-index">
                                 <h3 class="date-article"> {{ $disease->section->name }} ,<span>
-                                        {{ $disease->created_at }}
+                                        {{ $disease->user->full_name }}
                                     </span></h3>
                                 <p>{!! strip_tags(Str::limit($disease->desc, 50)) !!}</p>
                             </div>
@@ -200,7 +200,7 @@
                         </div>
                         <div class="text-read-article-index">
                             <h3 class="date-article"> {{ $disease->section->name }} ,<span>
-                                    {{ $disease->created_at }}
+                                    {{ $disease->user->full_name }}
                                 </span></h3>
                             <p>{!! strip_tags(Str::limit($disease->desc, 50)) !!}</p>
                         </div>
@@ -226,7 +226,7 @@
                         </div>
                         <div class="text-read-article-index">
                             <h3 class="date-article"> {{ $relatedArticle->section->name }} ,<span>
-                                    {{ $relatedArticle->created_at }}
+                                    {{ $relatedArticle->user->full_name }}
                                 </span></h3>
                             <p>{!! strip_tags(Str::limit($relatedArticle->desc, 50)) !!}</p>
                         </div>
@@ -251,7 +251,7 @@
                         </div>
                         <div class="text-read-article-index">
                             <h3 class="date-article"> {{ __('Checkups') }} ,<span>
-                                    {{ $checkup->created_at }}
+                                    {{ $checkup->user->full_name }}
                                 </span></h3>
                             <p>{!! strip_tags(Str::limit($checkup->desc, 50)) !!}</p>
                         </div>
@@ -277,7 +277,7 @@
                         </div>
                         <div class="text-read-article-index">
                             <h3 class="date-article"> {{ $vaccinationArticle->section->name }} ,<span>
-                                    {{ $vaccinationArticle->created_at }}
+                                    {{ $vaccinationArticle->user->full_name }}
                                 </span></h3>
                             <p>{!! strip_tags(Str::limit($vaccinationArticle->desc, 50)) !!}</p>
                         </div>
@@ -302,7 +302,7 @@
                         </div>
                         <div class="text-read-article-index">
                             <h3 class="date-article"> {{ __('Vaccinations') }} ,<span>
-                                    {{ $vaccination->created_at }}
+                                    {{ $vaccination->user->full_name }}
                                 </span></h3>
                             <p>{!! strip_tags(Str::limit($vaccination->desc, 50)) !!}</p>
                         </div>

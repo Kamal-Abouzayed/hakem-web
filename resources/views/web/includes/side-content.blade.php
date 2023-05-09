@@ -29,7 +29,7 @@
                     </div>
                     <div class="text-read-article-index">
                         <h3 class="date-article"> {{ $content->section->name }} ,<span>
-                                {{ $content->created_at }}
+                                {{ $content->user->full_name }}
                             </span></h3>
                         <p>{!! strip_tags(Str::limit($content->desc, 50)) !!}</p>
                     </div>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="text-read-article-index">
                         <h3 class="date-article"> {{ $article->section->name }} ,<span>
-                                {{ $article->created_at }}
+                                {{ $article->user->full_name }}
                             </span></h3>
                         <p>{!! strip_tags(Str::limit($article->desc, 50)) !!}</p>
                     </div>
@@ -87,7 +87,7 @@
                     </div>
                     <div class="text-read-article-index">
                         <h3 class="date-article"> {{ $newArticle->section->name }} ,<span>
-                                {{ $newArticle->created_at }}
+                                {{ $newArticle->user->full_name }}
                             </span></h3>
                         <p>{!! strip_tags(Str::limit($newArticle->desc, 50)) !!}</p>
                     </div>

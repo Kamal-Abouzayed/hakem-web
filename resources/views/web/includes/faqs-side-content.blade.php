@@ -73,7 +73,7 @@
                     </div>
                     <div class="text-read-article-index">
                         <h3 class="date-article"> {{ $article->section->name }} ,<span>
-                                {{ $article->created_at }}
+                                {{ $article->user->full_name }}
                             </span></h3>
                         <p>{!! strip_tags(Str::limit($article->desc, 50)) !!}</p>
                     </div>
