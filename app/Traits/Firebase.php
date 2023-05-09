@@ -37,6 +37,6 @@ trait Firebase
 
         $response = curl_exec($ch);
 
-        dd($response);
+        // dd($response);
     }
 }

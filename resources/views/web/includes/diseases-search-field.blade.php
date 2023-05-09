@@ -27,6 +27,10 @@
                 <label for="check_search"> أ </label>
             </li>
             <li>
+                <input type="radio" id="check_search0" value="ا" name="search_character">
+                <label for="check_search0"> ا </label>
+            </li>
+            <li>
                 <input type="radio" id="check_search1"value="ب" name="search_character">
                 <label for="check_search1"> ب </label>
             </li>
@@ -252,8 +256,8 @@
 
 
 
-            <div class="btn-login">
-                <button>{{ __('Search') }}</button>
+            <div style="margin-top: 30px; width:100%; text-align:center">
+                <button class="ctm-btn">{{ __('Search') }}</button>
             </div>
 
         </ul>
