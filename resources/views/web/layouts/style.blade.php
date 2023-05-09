@@ -4,6 +4,8 @@
 <meta name="description" content=" website" />
 <meta name="keywords" content="" />
 <meta name="author" content="" />
+<meta name="csrf-token" id="token" content="{{ csrf_token() }}" />
+
 <!-- Chrome, Firefox OS and Opera -->
 <meta name="theme-color" content="">
 <!-- Windows Phone -->

@@ -73,6 +73,7 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
     Route::post('login-submit', 'AuthController@loginSubmit')->name('login-submit');
     Route::get('logout', 'AuthController@logout')->name('logout');
 
+    Route::post('save-token', 'UserController@saveToken')->name('save-token');
 
 
     // Home

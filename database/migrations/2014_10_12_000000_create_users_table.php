@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('image')->nullable();
             $table->string('code')->nullable();
             $table->boolean('isActive')->default(0);
+            $table->string('device_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

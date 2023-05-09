@@ -33,6 +33,7 @@ class User extends Authenticatable
         'code',
         'isActive',
         'uid',
+        'device_token',
     ];
 
     /**

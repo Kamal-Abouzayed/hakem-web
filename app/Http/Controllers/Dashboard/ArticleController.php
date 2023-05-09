@@ -8,6 +8,7 @@ use App\Mail\ArticleMail;
 use App\Models\DiseaseMedicine;
 use App\Models\DiseaseOrgan;
 use App\Models\User;
+use App\Notifications\ArticleNotification;
 use App\Notifications\ArticleNotify;
 use App\Repositories\Contract\ArticleRepositoryInterface;
 use App\Repositories\Contract\CategoryRepositoryInterface;
@@ -116,20 +117,11 @@ class ArticleController extends Controller
             }
         }
 
-        // $users = User::where('isActive', 1)->get();
+        $users = User::whereDoesntHave('roles')->where('device_token', '!=', null)->get();
 
-
-        // foreach ($users as $key => $user) {
-
-        //     $data = [
-        //         'username' => $user->fname . ' ' . $user->lname,
-        //         'article'  => $article->name,
-        //         'link'     => url($section->slug . '/article-details/' . $article->slug),
-        //         'msg'      => __('New Article From Hakem Web')
-        //     ];
-
-        //     Mail::to($user->email)->send(new ArticleMail($data));
-        // }
+        foreach ($users as $key => $user) {
+            $user->notify(new ArticleNotification($article));
+        }
 
         return redirect()->route('dashboard.articles.index', $sectionSlug)->with('success', 'تمت الإضافة بنجاح');
     }
