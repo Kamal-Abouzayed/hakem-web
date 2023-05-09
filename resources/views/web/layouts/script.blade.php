@@ -84,12 +84,13 @@
         };
         // new Notification(noteTitle, noteOptions);
 
-        if (Notification.permission === 'granted') {
-            navigator.serviceWorker.ready.then(function(registration) {
-                registration.showNotification(noteTitle, noteOptions);
-            });
-        }
     });
+
+    if (Notification.permission === 'granted') {
+        navigator.serviceWorker.ready.then(function(registration) {
+            registration.showNotification(noteTitle, noteOptions);
+        });
+    }
 </script>
 
 <!--Start of Tawk.to Script-->
