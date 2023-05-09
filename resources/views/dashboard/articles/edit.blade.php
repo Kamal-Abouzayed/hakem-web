@@ -53,7 +53,7 @@
                 <div class="row">
                     <div class="form-group col-12">
                         <label for="medicine_id">الأدوية</label>
-                        <select name="medicine_id[]" class="form-control" id="" multiple required>
+                        <select name="medicine_id[]" class="form-control select2-multiple" id="" multiple required>
                             {{-- <option value="">اختر</option> --}}
                             @foreach ($medicines as $medicine)
                                 <option value="{{ $medicine->id }}"
@@ -71,7 +71,7 @@
                 <div class="row">
                     <div class="form-group col-12">
                         <label for="medicine_id">أعضاء الجسم</label>
-                        <select name="organ_id[]" class="form-control" id="" multiple required>
+                        <select name="organ_id[]" class="form-control select2-multiple" id="" multiple required>
                             {{-- <option value="">اختر</option> --}}
                             @foreach ($organs as $organ)
                                 <option value="{{ $organ->id }}"
@@ -138,6 +138,8 @@
         <script src="{{ asset('admin/js/custom/ckeditor.js') }}"></script> --}}
 
         <script>
+            $('.select2-multiple').select2();
+
             $(document).ready(function() {
                 $('#desc_ar').summernote({
                     lang: 'ar-Eg'
