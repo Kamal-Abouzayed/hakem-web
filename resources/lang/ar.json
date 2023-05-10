@@ -197,5 +197,7 @@
 "Do you allow notifications?"                                                      : "هل تسمح بالإشعارات؟",
 "Yes"                                                                              : "نعم",
 "No"                                                                               : "لا",
+"Search in All Checkups"                                                           : "ابحث في جميع الفحوصات",
+"Search in All Vaccinations"                                                       : "ابحث في جميع التطعيمات",
 ""                                                                                 : ""
 }

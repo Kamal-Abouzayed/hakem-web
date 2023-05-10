@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\Checkup;
+use App\Models\Vaccination;
 use App\Repositories\Contract\ArticleRepositoryInterface;
 use App\Repositories\Contract\BodySystemRepositoryInterface;
 use App\Repositories\Contract\CategoryRepositoryInterface;
@@ -194,5 +196,37 @@ class SectionController extends Controller
         })->where('section_id', $section->id)->get();
 
         return view('web.search-diseases', compact('pageTitle', 'articles'));
+    }
+
+    public function searchCheckups(Request $request)
+    {
+        $pageTitle = __('Search Results');
+
+        $searchTerm = $request->searchTerm;
+
+        $articles = Checkup::query()->where(function ($q) use ($searchTerm) {
+            $q->where('name_ar', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('name_en', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('desc_ar', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('desc_en', 'LIKE', "%{$searchTerm}%");
+        })->get();
+
+        return view('web.search-checkups', compact('pageTitle', 'articles'));
+    }
+
+    public function searchVaccinations(Request $request)
+    {
+        $pageTitle = __('Search Results');
+
+        $searchTerm = $request->searchTerm;
+
+        $articles = Vaccination::query()->where(function ($q) use ($searchTerm) {
+            $q->where('name_ar', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('name_en', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('desc_ar', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('desc_en', 'LIKE', "%{$searchTerm}%");
+        })->get();
+
+        return view('web.search-vaccinations', compact('pageTitle', 'articles'));
     }
 }

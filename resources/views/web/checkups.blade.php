@@ -17,7 +17,7 @@
             </div>
 
 
-            {{-- @include('web.includes.calories-search-field') --}}
+            @include('web.includes.checkups-search-field')
 
 
 

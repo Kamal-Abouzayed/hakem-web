@@ -152,6 +152,9 @@ Route::namespace('Web')->name('web.')->middleware('localization')->group(functio
 
     Route::get('vaccinations', 'HomeController@vaccinations')->name('vaccinations');
     Route::get('vaccination-details/{slug}', 'HomeController@vaccinationDetails')->name('vaccination-details');
+
+    Route::get('search-checkups', 'SectionController@searchCheckups')->name('search-checkups');
+    Route::get('search-vaccinations', 'SectionController@searchVaccinations')->name('search-vaccinations');
 });
 
 
