@@ -11,4 +11,10 @@ $(document).ready(function () {
     $('#about_en').summernote({
         lang: 'en-US'
     });
+    $('#main_desc_ar').summernote({
+        lang: 'ar-Eg'
+    });
+    $('#main_desc_en').summernote({
+        lang: 'en-US'
+    });
 });

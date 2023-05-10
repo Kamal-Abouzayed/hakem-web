@@ -13,7 +13,7 @@
 
                 @foreach ($settings as $setting)
                     @if ($setting->type == 'file')
-                        <div class="col-md-4">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-label" for="price_from">{{ $setting->neckname }}</label>
                                 <input type="file" id="{{ $setting->key }}" name="{{ $setting->key }}"

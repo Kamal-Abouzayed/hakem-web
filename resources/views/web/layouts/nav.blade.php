@@ -49,8 +49,7 @@
 
                     </div>
                     <div class="title-page">
-                        <h2> , {{ __('Welcome to the Hakeem Web site') }} <br>
-                            {{ __('All the information that you can trust') }} .</h2>
+                        <h2>{!! getSetting('main_desc', app()->getLocale()) !!}</h2>
                     </div>
 
 

@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- start article-index  ===
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ========= -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ========= -->
     <section class="article-index mr-section">
         <div class="main-container">
             <div class="main-article-index">
@@ -14,7 +14,8 @@
                                 $chunk->section->slug == 'health-and-beauty' ||
                                 $chunk->section->slug == 'pregnancy-and-birth')
                             <div class="sub-article-index" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
-                                <a href="{{ route('web.article-details', ['sectionSlug' => $chunk->section->slug, 'slug' => $chunk->slug]) }}">
+                                <a
+                                    href="{{ route('web.article-details', ['sectionSlug' => $chunk->section->slug, 'slug' => $chunk->slug]) }}">
                                     <img src="{{ asset('storage/' . $chunk->img) }}" alt="{{ $chunk->name }}">
                                     <div class="text-article-index">
                                         <h3>{{ $chunk->section->name }}</h3>
@@ -33,7 +34,7 @@
         </div>
     </section>
     <!-- end  article-index  ===
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ========= -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ========= -->
 
 
     <!-- start more-section === -->
@@ -102,7 +103,8 @@
                                     {{-- chunk = article --}}
                                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-easing="linear"
                                         data-aos-duration="700">
-                                        <a href="{{ route('web.article-details', ['sectionSlug' => $chunk->section->slug, 'slug' => $chunk->slug]) }}">
+                                        <a
+                                            href="{{ route('web.article-details', ['sectionSlug' => $chunk->section->slug, 'slug' => $chunk->slug]) }}">
                                             <div class="sub-slider-new-article">
                                                 <div class="img-slider-new-article">
                                                     <img src="{{ asset('storage/' . $chunk->img) }}"
@@ -154,8 +156,8 @@
                                 <h2> {{ $mostReadArticles->first()->name }} </h2>
                                 <p>{!! strip_tags(Str::limit($mostReadArticles->first()->desc, 740)) !!}. </p>
                             </div>
-                            <a href="{{ route('web.article-details', ['sectionSlug' => $mostReadArticles->first()->section->slug, 'slug' => $mostReadArticles->first()->slug]) }}" class="ctm-link"> {{ __('Read More') }} <i
-                                    class="bi bi-arrow-left"></i>
+                            <a href="{{ route('web.article-details', ['sectionSlug' => $mostReadArticles->first()->section->slug, 'slug' => $mostReadArticles->first()->slug]) }}"
+                                class="ctm-link"> {{ __('Read More') }} <i class="bi bi-arrow-left"></i>
                             </a>
                         </div>
                     </div>
@@ -164,7 +166,8 @@
                 @if ($mostReadArticles->count() > 1)
                     <div class="col-lg-4" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="700">
                         @foreach ($mostReadArticles->slice(1) as $article)
-                            <a href="{{ route('web.article-details', ['sectionSlug' => $article->section->slug, 'slug' => $article->slug]) }}">
+                            <a
+                                href="{{ route('web.article-details', ['sectionSlug' => $article->section->slug, 'slug' => $article->slug]) }}">
                                 <div class="sub-read-article-index">
                                     <div class="img-read-article-index">
                                         <img src="{{ asset('storage/' . $article->img) }}" alt="{{ $article->name }}">
@@ -198,7 +201,8 @@
                     {{-- chunk = article --}}
                     <div class="sub-read-also-article" data-aos="fade-down" data-aos-easing="linear"
                         data-aos-duration="700">
-                        <a href="{{ route('web.article-details', ['sectionSlug' => $article->section->slug, 'slug' => $article->slug]) }}">
+                        <a
+                            href="{{ route('web.article-details', ['sectionSlug' => $article->section->slug, 'slug' => $article->slug]) }}">
                             <div class="img-read-also-article">
                                 <img src="{{ asset('storage/' . $article->img) }}" alt="{{ $article->name }}">
                             </div>
@@ -214,4 +218,112 @@
             </div>
         </div>
     </section>
+
+    @push('js')
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyC-t8Wt9rFWgN7TK_gqbh3nqUU9k7ZETb8",
+                authDomain: "hakemweb.firebaseapp.com",
+                projectId: "hakemweb",
+                storageBucket: "hakemweb.appspot.com",
+                messagingSenderId: "828225928748",
+                appId: "1:828225928748:web:4f67a942fd2df47b8a1b89",
+                measurementId: "G-21PG21XJNP"
+            };
+
+            firebase.initializeApp(firebaseConfig);
+            const messaging = firebase.messaging();
+
+            function initFirebaseMessagingRegistration() {
+                messaging
+                    .requestPermission()
+                    .then(function() {
+                        return messaging.getToken()
+                    })
+                    .then(function(token) {
+                        console.log(token);
+
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+
+                        $.ajax({
+                            url: "{{ route('web.save-token') }}",
+                            type: 'POST',
+                            data: {
+                                token: token
+                            },
+                            dataType: 'JSON',
+                            success: function(response) {
+                                // alert('Token saved successfully.');
+                            },
+                            error: function(err) {
+                                console.log('User Chat Token Error' + err);
+                            },
+                        });
+
+                    }).catch(function(err) {
+                        console.log('User Chat Token Error' + err);
+                    });
+            }
+
+            @if (Auth::check() && Auth::user()->device_token == null)
+                // initFirebaseMessagingRegistration();
+
+                Swal.fire({
+                    title: "{{ __('Do you allow notifications?') }}",
+                    text: "{{ __('We like to send you push notifications to keep you up to date') }}",
+                    // icon: "info",
+                    imageUrl: "https://hakemweb.com/web/images/notification.png",
+                    imageWidth: 250,
+                    imageHeight: 250,
+                    imageAlt: "Hakem Web",
+                    confirmButtonText: "{{ __('Yes') }}",
+                    showCancelButton: true,
+                    cancelButtonText: "{{ __('No') }}",
+                    allowOutsideClick: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        initFirebaseMessagingRegistration();
+                    }
+                });
+            @else
+                Swal.fire({
+                    title: "{{ __('Do you allow notifications?') }}",
+                    text: "{{ __('We like to send you push notifications to keep you up to date') }}",
+                    // icon: "info",
+                    imageUrl: "https://hakemweb.com/web/images/notification.png",
+                    imageWidth: 250,
+                    imageHeight: 250,
+                    imageAlt: "Hakem Web",
+                    confirmButtonText: "{{ __('Yes') }}",
+                    showCancelButton: true,
+                    cancelButtonText: "{{ __('No') }}",
+                    allowOutsideClick: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "{{ route('web.login') }}"
+                    }
+                });
+            @endif
+
+            messaging.onMessage(function(payload) {
+                const noteTitle = payload.notification.title;
+                const noteOptions = {
+                    body: payload.notification.body,
+                    icon: payload.notification.icon,
+                };
+                // new Notification(noteTitle, noteOptions);
+
+            });
+
+            if (Notification.permission === 'granted') {
+                navigator.serviceWorker.ready.then(function(registration) {
+                    registration.showNotification(noteTitle, noteOptions);
+                });
+            }
+        </script>
+    @endpush
 @endsection
