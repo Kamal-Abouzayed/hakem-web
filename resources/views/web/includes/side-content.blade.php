@@ -72,10 +72,16 @@
         </div>
 
         @php
-            $newArticles = $allArticles
-                ->where('section_id', '!=', $section->id)
-                ->sortByDesc('id')
-                ->take(5);
+            
+            if (isset($section)) {
+                $newArticles = $allArticles
+                    ->where('section_id', '!=', $section->id)
+                    ->sortByDesc('id')
+                    ->take(5);
+            } else {
+                $newArticles = $allArticles->sortByDesc('id')->take(5);
+            }
+            
         @endphp
 
         @foreach ($newArticles as $newArticle)

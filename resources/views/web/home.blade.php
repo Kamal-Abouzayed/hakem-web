@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- start article-index  ===
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ========= -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ========= -->
     <section class="article-index mr-section">
         <div class="main-container">
             <div class="main-article-index">
@@ -34,7 +34,7 @@
         </div>
     </section>
     <!-- end  article-index  ===
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ========= -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ========= -->
 
 
     <!-- start more-section === -->
@@ -289,7 +289,7 @@
                         initFirebaseMessagingRegistration();
                     }
                 });
-            @else
+            @elseif (Auth::guest())
                 Swal.fire({
                     title: "{{ __('Do you allow notifications?') }}",
                     text: "{{ __('We like to send you push notifications to keep you up to date') }}",
@@ -302,8 +302,8 @@
                     showCancelButton: true,
                     cancelButtonText: "{{ __('No') }}",
                     allowOutsideClick: false
-                }).then((result) => {
-                    if (result.isConfirmed) {
+                }).then((response) => {
+                    if (response.isConfirmed) {
                         window.location.href = "{{ route('web.login') }}"
                     }
                 });

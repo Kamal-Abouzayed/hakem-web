@@ -8,6 +8,7 @@
                             <a href="{{ route('web.home') }}">
                                 <img src="{{ asset('storage/' . getSetting('logo')) }}" alt="">
                             </a>
+                            <h2 class="logo_desc">{!! getSetting('logo_desc', app()->getLocale()) !!}</h2>
                         </div>
 
                         <div class="sub-top-par">

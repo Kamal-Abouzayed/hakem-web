@@ -89,10 +89,16 @@
         </div>
 
         @php
-            $newArticles = $allArticles
-                ->where('section_id', '!=', $section->id)
-                ->sortByDesc('id')
-                ->take(5);
+
+            if (isset($section)) {
+                $newArticles = $allArticles
+                    ->where('section_id', '!=', $section->id)
+                    ->sortByDesc('id')
+                    ->take(5);
+            } else {
+                $newArticles = $allArticles->sortByDesc('id')->take(5);
+            }
+
         @endphp
 
         @foreach ($newArticles as $newArticle)
@@ -104,7 +110,7 @@
                     </div>
                     <div class="text-read-article-index">
                         <h3 class="date-article"> {{ $newArticle->section->name }} ,<span>
-                                {{ $newArticle->created_at }}
+                                {{ $newArticle->user->full_name }}
                             </span></h3>
                         <p>{!! strip_tags(Str::limit($newArticle->desc, 50)) !!}</p>
                     </div>

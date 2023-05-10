@@ -38,7 +38,7 @@
 
                         <div class="text-article-details">
                             <h3 class="date-article pb-3"> {{ $section->name }} ,<span>
-                                    {{ $article->user->full_name }}
+                                    {{ $article->created_at }}
                                 </span></h3>
                             <div class="text-details">
                                 {!! $article->desc !!}
