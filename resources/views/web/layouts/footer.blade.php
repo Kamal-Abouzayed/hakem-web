@@ -185,8 +185,10 @@
 
 
             <li>
-                <a class="click-element-mune" href=""> <img src="{{ url('web') }}/images/e6.png"
-                        alt=""> {{ __('All Categories') }}
+                <a class="click-element-mune" href="">
+                    <div class="diff-section">
+                        <img src="{{ url('web') }}/images/e6.png" alt=""> {{ __('All Categories') }}
+                    </div>
                 </a>
                 <div class="dropdowm-element-mune">
                     <ul>
@@ -199,16 +201,13 @@
                         <li>
                             <a href="{{ url('medicines/categories') }}">{{ __('Medicines') }}</a>
                         </li>
-                        {{-- <li>
-                            <a href="index.html">تطعيمات</a>
-                        </li> --}}
+                        <li><a href="{{ route('web.checkups') }}">{{ __('Checkups') }}</a></li>
+
+                        <li><a href="{{ route('web.vaccinations') }}">{{ __('Vaccinations') }}</a></li>
 
                         <li>
                             <a href="{{ route('web.faqs') }}">{{ __('Questions and Answers') }}</a>
                         </li>
-                        {{-- <li>
-                            <a href="index.html">فحوصات</a>
-                        </li> --}}
                     </ul>
                 </div>
 
@@ -216,8 +215,11 @@
 
 
             <li>
-                <a class="click-dropdown-mune" href=""><img src="{{ url('web') }}/images/e7.png"
-                        alt=""> {{ __('Language') }}</a>
+                <a class="click-dropdown-mune" href="">
+                    <div class="diff-section">
+                        <img src="{{ url('web') }}/images/e7.png" alt=""> {{ __('Language') }}
+                    </div>
+                </a>
                 <div class="dropdowm-language-mune">
                     <ul>
                         <li><a href="{{ route('language', 'ar') }}">عربي</a> </li>
