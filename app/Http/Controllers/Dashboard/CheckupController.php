@@ -81,21 +81,6 @@ class CheckupController extends Controller
             }
         }
 
-        // $users = User::where('isActive', 1)->get();
-
-
-        // foreach ($users as $key => $user) {
-
-        //     $data = [
-        //         'username' => $user->fname . ' ' . $user->lname,
-        //         'article'  => $article->name,
-        //         'link'     => url($section->slug . '/article-details/' . $article->slug),
-        //         'msg'      => __('New Article From Hakem Web')
-        //     ];
-
-        //     Mail::to($user->email)->send(new ArticleMail($data));
-        // }
-
         return redirect()->route('dashboard.checkups.index')->with('success', 'تمت الإضافة بنجاح');
     }
 

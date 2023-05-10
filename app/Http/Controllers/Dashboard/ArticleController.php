@@ -117,12 +117,6 @@ class ArticleController extends Controller
             }
         }
 
-        $users = User::whereDoesntHave('roles')->where('device_token', '!=', null)->get();
-
-        foreach ($users as $key => $user) {
-            $user->notify(new ArticleNotification($article));
-        }
-
         return redirect()->route('dashboard.articles.index', $sectionSlug)->with('success', 'تمت الإضافة بنجاح');
     }
 
