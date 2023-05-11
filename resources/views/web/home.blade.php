@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- start article-index  ===
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ========= -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ========= -->
     <section class="article-index mr-section">
         <div class="main-container">
             <div class="main-article-index">
@@ -34,7 +34,7 @@
         </div>
     </section>
     <!-- end  article-index  ===
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ========= -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ========= -->
 
 
     <!-- start more-section === -->
@@ -220,110 +220,44 @@
     </section>
 
     @push('js')
-        <script>
-            var firebaseConfig = {
-                apiKey: "AIzaSyC-t8Wt9rFWgN7TK_gqbh3nqUU9k7ZETb8",
-                authDomain: "hakemweb.firebaseapp.com",
-                projectId: "hakemweb",
-                storageBucket: "hakemweb.appspot.com",
-                messagingSenderId: "828225928748",
-                appId: "1:828225928748:web:4f67a942fd2df47b8a1b89",
-                measurementId: "G-21PG21XJNP"
-            };
+        @if (Auth::check() && Auth::user()->device_token == null)
+            // initFirebaseMessagingRegistration();
 
-            firebase.initializeApp(firebaseConfig);
-            const messaging = firebase.messaging();
-
-            function initFirebaseMessagingRegistration() {
-                messaging
-                    .requestPermission()
-                    .then(function() {
-                        return messaging.getToken()
-                    })
-                    .then(function(token) {
-                        console.log(token);
-
-                        $.ajaxSetup({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            }
-                        });
-
-                        $.ajax({
-                            url: "{{ route('web.save-token') }}",
-                            type: 'POST',
-                            data: {
-                                token: token
-                            },
-                            dataType: 'JSON',
-                            success: function(response) {
-                                // alert('Token saved successfully.');
-                            },
-                            error: function(err) {
-                                console.log('User Chat Token Error' + err);
-                            },
-                        });
-
-                    }).catch(function(err) {
-                        console.log('User Chat Token Error' + err);
-                    });
+            Swal.fire({
+            title: "{{ __('Do you allow notifications?') }}",
+            text: "{{ __('We like to send you push notifications to keep you up to date') }}",
+            // icon: "info",
+            imageUrl: "https://hakemweb.com/web/images/notification.png",
+            imageWidth: 250,
+            imageHeight: 250,
+            imageAlt: "Hakem Web",
+            confirmButtonText: "{{ __('Yes') }}",
+            showCancelButton: true,
+            cancelButtonText: "{{ __('No') }}",
+            allowOutsideClick: false
+            }).then((result) => {
+            if (result.isConfirmed) {
+            initFirebaseMessagingRegistration();
             }
-
-            @if (Auth::check() && Auth::user()->device_token == null)
-                // initFirebaseMessagingRegistration();
-
-                Swal.fire({
-                    title: "{{ __('Do you allow notifications?') }}",
-                    text: "{{ __('We like to send you push notifications to keep you up to date') }}",
-                    // icon: "info",
-                    imageUrl: "https://hakemweb.com/web/images/notification.png",
-                    imageWidth: 250,
-                    imageHeight: 250,
-                    imageAlt: "Hakem Web",
-                    confirmButtonText: "{{ __('Yes') }}",
-                    showCancelButton: true,
-                    cancelButtonText: "{{ __('No') }}",
-                    allowOutsideClick: false
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        initFirebaseMessagingRegistration();
-                    }
-                });
-            @elseif (Auth::guest())
-                Swal.fire({
-                    title: "{{ __('Do you allow notifications?') }}",
-                    text: "{{ __('We like to send you push notifications to keep you up to date') }}",
-                    // icon: "info",
-                    imageUrl: "https://hakemweb.com/web/images/notification.png",
-                    imageWidth: 250,
-                    imageHeight: 250,
-                    imageAlt: "Hakem Web",
-                    confirmButtonText: "{{ __('Yes') }}",
-                    showCancelButton: true,
-                    cancelButtonText: "{{ __('No') }}",
-                    allowOutsideClick: false
-                }).then((response) => {
-                    if (response.isConfirmed) {
-                        window.location.href = "{{ route('web.login') }}"
-                    }
-                });
-            @endif
-
-            messaging.onMessage(function(payload) {
-                const noteTitle = payload.notification.title;
-                const noteOptions = {
-                    body: payload.notification.body,
-                    icon: payload.notification.icon,
-                };
-                // new Notification(noteTitle, noteOptions);
-
             });
-
-            if (Notification.permission === 'granted') {
-                navigator.serviceWorker.ready.then(function(registration) {
-                    registration.showNotification(noteTitle, noteOptions);
-                });
+        @elseif (Auth::guest())
+            Swal.fire({
+            title: "{{ __('Do you allow notifications?') }}",
+            text: "{{ __('We like to send you push notifications to keep you up to date') }}",
+            // icon: "info",
+            imageUrl: "https://hakemweb.com/web/images/notification.png",
+            imageWidth: 250,
+            imageHeight: 250,
+            imageAlt: "Hakem Web",
+            confirmButtonText: "{{ __('Yes') }}",
+            showCancelButton: true,
+            cancelButtonText: "{{ __('No') }}",
+            allowOutsideClick: false
+            }).then((response) => {
+            if (response.isConfirmed) {
+            window.location.href = "{{ route('web.login') }}"
             }
-        </script>
+            });
+        @endif
     @endpush
 @endsection

@@ -1,5 +1,5 @@
 // Aos
-AOS.init();
+// AOS.init();
 
 setTimeout(() => {
   $(".loading").fadeOut(1000);
@@ -167,9 +167,11 @@ $(".remove_mune1").click(function () {
 
 function open() {
   $(".navicon").addClass("is-active");
-  $("#menu-div").addClass("active");
-  $("#times-ican").addClass("active");
-  $(".bg_menu").addClass("active");
+//   $("#menu-div").addClass("active");
+//   $("#times-ican").addClass("active");.
+  $(".bg_menu1").addClass("active");
+  $("#menu-div1").addClass("active");
+//   $(".bg_menu").addClass("active");
   // $(".bg_menu1").addClass("active");
 }
 
@@ -211,7 +213,8 @@ $(".remove-mune").click(function () {
 $(".remove-mune1").click(function () {
   $("#menu-div1").removeClass("active");
   $(".bg_menu1").removeClass("active");
-}); 
+  $(".navicon").removeClass("is-active");
+});
 
 $("#menu-e").click(function(e){
   e.preventDefault();
@@ -222,7 +225,7 @@ $("#menu-e").click(function(e){
 
 $("#menu-div a").click(function () {
   e.preventDefault();
-  
+
 });
 
 var $winl = $(window); // or $box parent container

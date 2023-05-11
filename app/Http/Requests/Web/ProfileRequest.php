@@ -27,6 +27,7 @@ class ProfileRequest extends FormRequest
             'fname'      => 'required|string|max:255',
             'lname'      => 'required|string|max:255',
             'email'      => 'required|email|unique:users,email,' . $this->id,
+            'phone'      => 'nullable|digits_between:9,14|unique:users,phone,' . $this->id,
             'country_id' => 'required',
             'password'   => 'nullable|min:8|confirmed',
             'birthday'   => 'nullable|date|date_format:Y-m-d',

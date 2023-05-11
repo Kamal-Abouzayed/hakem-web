@@ -6,6 +6,8 @@
             {{-- <a href="{{ route('dashboard.users.create') }}" class="btn btn-primary">إضافة مستخدم جديد</a> --}}
 
             <h5 class="text-primary text-center font-weight-bold">{{ $pageTitle }}</h5>
+
+            <button onclick="ExportToExcel('xlsx')">تصدير اكسيل</button>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -49,5 +51,22 @@
     </div>
     @push('js')
         <script src="{{ asset('admin/js/custom/custom-delete.js') }}"></script>
+        <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+        <script>
+            function ExportToExcel(type, fn, dl) {
+                var elt = document.getElementById('dataTable');
+                var wb = XLSX.utils.table_to_book(elt, {
+                    sheet: "sheet1"
+                });
+                return dl ?
+                    XLSX.write(wb, {
+                        bookType: type,
+                        bookSST: true,
+                        type: 'base64'
+                    }) :
+                    XLSX.writeFile(wb, fn || ('المستخدمين.' + (type || 'xlsx')));
+            }
+        </script>
     @endpush
 @endsection

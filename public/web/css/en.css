@@ -324,7 +324,19 @@ table tr th:first-child {
 }
 
 
+.sub-calories a {
+    padding-right: 0;
+    padding-left: 20px;
+
+}
 
 
-
+@media (max-width: 992px) {
+    .sub-human-body li a h3 {
+        padding-right: 0px !important;
+    }
+    .humun2.sub-human-body li a h3 {
+     padding-left: 0px !important; 
+    }
+}
 

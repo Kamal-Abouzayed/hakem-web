@@ -11,7 +11,6 @@
         <div class="main-diseases">
             <div class="row">
 
-
                 <div class="col-lg-12">
                     <p class="category-desc">
                         {!! $category->desc !!}

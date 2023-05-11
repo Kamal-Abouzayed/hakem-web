@@ -227,7 +227,7 @@ Route::prefix('dashboard')->namespace('Dashboard')->name('dashboard.')->group(fu
         Route::resource('images', 'ImageController')->names('images');
 
         // Pregnancy Stages
-        Route::resource('pregnancy-stages', 'PregnancyStageController')->names('pregnancy-stages')->middleware(['can:pregnancy_stages']);
+        Route::resource('pregnancy-stages', 'PregnancyStageController')->names('pregnancy-stages')->middleware(['can:pergnancy_stages']);
 
 
         Route::group(['middleware' => ['can:contacts']], function () {

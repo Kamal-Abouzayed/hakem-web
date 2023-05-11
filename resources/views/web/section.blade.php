@@ -37,12 +37,14 @@
                     </div>
                 </div>
             @else
+
+                @include('web.includes.articles-search-field')
+
                 <div class="main-medicine-health">
                     <div class="row">
 
                         @foreach ($categories as $category)
-                            <div class="col-lg-3"
-                                data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
+                            <div class="col-lg-3" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
                                 <a
                                     href="{{ route('web.category-details', ['sectionSlug' => request()->sectionSlug, 'slug' => $category->slug]) }}">
                                     <div class="sub-medicine-health">

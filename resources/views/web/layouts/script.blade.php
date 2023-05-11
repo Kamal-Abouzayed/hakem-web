@@ -24,7 +24,75 @@
 <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyDvpmt0zzyZVmVkzigNVvnOr-a9-jKuIv8",
+        authDomain: "hakemweb-d7d32.firebaseapp.com",
+        projectId: "hakemweb-d7d32",
+        storageBucket: "hakemweb-d7d32.appspot.com",
+        messagingSenderId: "57425038313",
+        appId: "1:57425038313:web:aa9828d6ebf10e7ab71978",
+        measurementId: "G-SCZ86NKDWH"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const messaging = firebase.messaging();
+
+    function initFirebaseMessagingRegistration() {
+        messaging
+            .requestPermission()
+            .then(function() {
+                return messaging.getToken()
+            })
+            .then(function(token) {
+                console.log(token);
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    url: "{{ route('web.save-token') }}",
+                    type: 'POST',
+                    data: {
+                        token: token
+                    },
+                    dataType: 'JSON',
+                    success: function(response) {
+                        // alert('Token saved successfully.');
+                    },
+                    error: function(err) {
+                        console.log('User Chat Token Error' + err);
+                    },
+                });
+
+            }).catch(function(err) {
+                console.log('User Chat Token Error' + err);
+            });
+    }
+
+
+    messaging.onMessage(function(payload) {
+        const noteTitle = payload.notification.title;
+        const noteOptions = {
+            body: payload.notification.body,
+            icon: payload.notification.icon,
+        };
+        // new Notification(noteTitle, noteOptions);
+
+    });
+
+    if (Notification.permission === 'granted') {
+        navigator.serviceWorker.ready.then(function(registration) {
+            registration.showNotification(noteTitle, noteOptions);
+        });
+    }
+</script>
+
 @stack('js')
+
 
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">

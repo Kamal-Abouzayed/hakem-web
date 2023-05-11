@@ -30,6 +30,23 @@
                         </div>
                     </div>
 
+                    {{-- @foreach ($category->articles as $article)
+                        <div class="col-lg-3" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="700">
+                            <a
+                                href="{{ route('web.article-details', ['sectionSlug' => request()->sectionSlug, 'slug' => $article->slug]) }}">
+                                <div class="sub-health-beaut">
+                                    <div class="img-health-beaut">
+                                        <img src="{{ asset('storage/' . $article->img) }}" alt="{{ $article->name }}">
+                                    </div>
+                                    <div class="text-health-beaut">
+                                        <h2>{{ $article->name }}</h2>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach --}}
+
+
 
 
                     @if ($section->advices->isNotEmpty())

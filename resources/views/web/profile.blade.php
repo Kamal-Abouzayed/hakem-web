@@ -71,6 +71,16 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-input">
+                                <input type="text" placeholder="{{ __('Phone') }}"
+                                    value="{{ old('phone', $user->phone) }}" class="form-control" name="phone">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            @error('phone')
+                                <small class="error">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        {{-- <div class="col-lg-6">
+                            <div class="form-input">
                                 <input type="password" value="{{ old('password') }}" placeholder="{{ __('Password') }}"
                                     class="form-control" name="password" autocomplete="new-password">
                                 <i class="bi bi-lock"></i>
@@ -89,7 +99,7 @@
                             @error('password_confirmation')
                                 <small class="error">{{ $message }}</small>
                             @enderror
-                        </div>
+                        </div> --}}
                         <div class="col-lg-6">
                             <div class="form-input">
                                 <input type="date"

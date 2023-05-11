@@ -6,7 +6,7 @@ trait Firebase
 {
     public function sendFcmNotifications($firebaseToken, $data, $lang = 'ar')
     {
-        $SERVER_API_KEY = 'AAAAwNYcviw:APA91bFraxpXNAGYxCAF7AEYRxe7kN7E2nqTzPhG4g6a-wC7nPOzZy1dzNh09dZQJq1yKRbfwPj549G8R5_SRXsspmZPunhNix2UpOyiqFJ-k4koOW13WFkXFlOMsjr-8uFgvBuiaQRM';
+        $SERVER_API_KEY = 'AAAADV7Mi-k:APA91bGopf3WFXBMjDdLQh2F7SHFdRfBdp9-rH4w0SO9YWEaJ3aWSslo9ZDxwilHsmCodKjAuX8hKvoqD3hFkEJso4wFAChgZOvXK1eKl1IKbjD-v7WSFLZ2AyxAHAF_sAoI2uQQPVFr';
 
         $data = [
             "registration_ids" => $firebaseToken,

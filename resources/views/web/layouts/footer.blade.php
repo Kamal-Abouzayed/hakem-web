@@ -146,7 +146,7 @@
         ======== -->
 <div class="bg_menu">
 </div>
-<div class="menu_responsive" id="menu-div">
+{{-- <div class="menu_responsive" id="menu-div">
 
     <div class="element_menu_responsive">
         <ul>
@@ -236,7 +236,7 @@
         <span></span>
     </div>
 
-</div>
+</div> --}}
 
 <!-- end menu responsive ===
         ======== -->

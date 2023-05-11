@@ -66,6 +66,16 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-input">
+                                <input type="text" placeholder="{{ __('Phone') }}"
+                                    value="{{ old('phone') }}" class="form-control" name="phone">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            @error('phone')
+                                <small class="error">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-input">
                                 <input type="password" value="{{ old('password') }}" placeholder="{{ __('Password') }}"
                                     class="form-control" name="password" required>
                                 <i class="bi bi-lock"></i>

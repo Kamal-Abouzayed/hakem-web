@@ -22,8 +22,8 @@
   --color-white: #fff;
   --color-black: #000;
   --color-main: #3B666A;
-  --bg-1: #FCD161;
-  --bg-2: #76CCD3;
+  --bg-1: #edac02;
+  --bg-2: #3B666A;
   --bg-3: #FFFCEB;
   --bg-4: #76CCD3;
   --bg-5: #F9F9F9;
@@ -110,7 +110,7 @@ p {
   font-size: 17px;
   margin: 0;
   line-height: 30px;
-  color: var(--color-text);
+  color:#000;
 }
 a,
 button,
@@ -409,19 +409,30 @@ textarea {
   font-size: 17px;
 }
 .dropdowm-language-mune ul li a::after, .dropdowm-element-mune ul li::after {
-  content: "";
-  position: absolute;
-  width: 12px;
-  background: var(--color-main);
-  height: 2px;
-  background-position: center;
-  background-size: contain;
-  right: 0;
-  background-repeat: no-repeat;
-  top: 60%;
-  transform: translateY(-50%);
+    content: "";
+    position: absolute;
+    width: 12px;
+    background: #e9ecef;
+    height: 2px;
+    background-position: center;
+    background-size: contain;
+    right: 0;
+    background-repeat: no-repeat;
+    top: 60%;
+    transform: translateY(-50%);
 }
 .dropdowm-language-mune,
 .dropdowm-element-mune {
   display: none;
+}
+
+.text-details li {
+    display: list-item;
+}
+
+
+.title-page h2 p {
+    margin: 22px 0;
+    font-size: 33px;
+    color: var(--color-white);
 }

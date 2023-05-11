@@ -1,4 +1,6 @@
-.main-article-index {
+.text-read-article-index {
+    width: 70%;
+}.main-article-index {
   display: grid;
   gap: 15px;
   grid-template-columns: repeat(12, 1fr);
@@ -7,6 +9,9 @@
 
 }
 
+  body {
+    padding: 0 !important;
+}
 
 .sub-article-index:nth-of-type(1) {
   grid-area: 1 / 1 / span 6 / span 7;
@@ -200,7 +205,7 @@
 
 .text-slider-new-article h3 span,
 .date-article span {
-  color: var(--bg-2);
+  color: #007bff;
 }
 
 .text-slider-new-article p {
@@ -302,7 +307,7 @@
 
 .sub-read-article-index .date-article {
   font-size: 16px;
-  color: var(--bg-1);
+  color: #007bff;
 }
 
 .sub-read-article-index p {
@@ -1170,13 +1175,11 @@
 .question {
   margin: 20px 0;
 }
-
 .question h3 {
-  font-size: 21px;
-  margin-top: 20px;
-  color: #B9D35E;
-  line-height: 35px;
-
+    font-size: 21px;
+    margin-top: 20px;
+    color: #17a2b8;
+    line-height: 35px;
 }
 
 
@@ -1344,20 +1347,19 @@
   color: var(--bg-2);
   font-family: "font_medium";
   font-size: 19px;
+  display:block;
 }
 
 .sub-calories a::after {
-  content: "";
-  width: 10px;
-  right: 0;
-  position: absolute;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--bg-2);
-  top: 50%;
-  transform: translateY(-50%);
+    content: "";
+    width: 10px;
+    right: 0;
+    position: absolute;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--bg-2);
+    top: 9px;
 }
-
 .sub-calories {
   margin: 0 0 40px;
 }
@@ -2344,3 +2346,139 @@ p.category-desc {
   ul.character-en {
     direction: ltr;
   }
+  
+  
+.beauty-section ,.pregnancy-section , .disease-section , .calories-section ,.medicine-section  {
+    position: relative;
+        z-index:1;
+
+}
+.beauty-section::after {
+    content: "";
+    width: 100%;
+    background-image: url(../images/beauty.png);
+    left: 0;
+    height: 100%;
+    top: 0;
+    background-size: contain;
+    position: absolute;
+        z-index:-1;
+
+}
+
+.pregnancy-section::after {
+    content: "";
+    width: 100%;
+    background-image: url(../images/pregnancy.png);
+    left: 0;
+    height: 100%;
+    top: 0;
+    background-size: contain;
+    position: absolute;
+        z-index:-1;
+
+}
+
+.disease-section::after {
+    content: "";
+    width: 100%;
+    background-image: url(../images/disease.png);
+    left: 0;
+    height: 100%;
+    top: 0;
+    background-size: contain;
+    position: absolute;
+        z-index:-1;
+
+}
+
+
+
+.calories-section::after {
+    content: "";
+    width: 100%;
+    background-image: url(../images/calories.png);
+    left: 0;
+    height: 100%;
+    top: 0;
+    background-size: contain;
+    position: absolute;
+    z-index:-1;
+
+}
+
+
+
+.medicine-section::after {
+    content: "";
+    width: 100%;
+    background-image: url(../images/medicine.png);
+    left: 0;
+    height: 100%;
+    top: 0;
+    background-size: contain;
+    position: absolute;
+    z-index:-1;
+}
+
+
+
+
+
+
+
+.img-health-beaut {
+    height: 275px;
+}
+
+
+ .sub-medicine-health {
+    height: 300px !important;
+
+}
+
+.sub-medicine-health {
+    height: 300px !important;
+
+}
+
+
+
+.text-read-article-index {
+    width: 70%;
+}
+.share-article h3 {
+    font-size: 19px;
+}
+
+
+
+
+.beauty-section .sub-medicine-health {
+    width: 100%;
+    height: auto !important;
+    border-radius: 50%;
+    position: relative;
+    margin: 10px auto;
+    aspect-ratio: 1/1;
+}
+
+
+img.swal2-image {
+    width: 104px !important;
+    height: 112px !important;
+    object-fit: contain !important;
+}
+
+.img-sub-videos {
+    height: 300px;
+}
+h2.logo_desc {
+    text-align: center;
+    color: var(--color-white);
+    margin: 15px 0 0;
+}
+
+.element_menu_responsive .click-element-mune img {
+    filter: none;
+}

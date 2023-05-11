@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Models\User;
 use App\Models\Vaccination;
 use App\Notifications\ArticleNotification;
 
@@ -15,7 +16,7 @@ class VaccinationObserver
      */
     public function created(Vaccination $vaccination)
     {
-        $users = User::whereDoesntHave('roles')->where('device_token', '!=', null)->get();
+        $users = User::where('device_token', '!=', null)->get();
 
         foreach ($users as $key => $user) {
             $user->notify(new ArticleNotification($vaccination));

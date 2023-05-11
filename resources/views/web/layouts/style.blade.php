@@ -1,4 +1,9 @@
-<title> {{ __('Hakem Web') . ' | ' . $pageTitle }} </title>
+@if (isset($pageTitle))
+    <title> {{ $pageTitle . ' | ' . __('Hakem Web') }} </title>
+@else
+    <title> {{ __('Hakem Web') }} </title>
+@endif
+
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content=" website" />
@@ -40,3 +45,6 @@
 @else
     <link rel="stylesheet" href="{{ url('web') }}/css/en.css">
 @endif
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4588751946061212"
+    crossorigin="anonymous"></script>

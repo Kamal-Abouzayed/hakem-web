@@ -38,11 +38,11 @@ class HomeController extends Controller
             ]);
         }
 
-        $pageTitle = __('Home');
+        // $pageTitle = __('Home');
 
         $articles = $this->articleRepo->limit(12);
 
-        return view('web.home', compact('articles', 'pageTitle'));
+        return view('web.home', compact('articles'));
     }
 
     public function searchArticles(Request $request)

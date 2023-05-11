@@ -3,10 +3,14 @@
 namespace App\Observers;
 
 use App\Models\Article;
+use App\Models\User;
 use App\Notifications\ArticleNotification;
 
 class ArticleObserver
 {
+
+    // public $afterCommit = true;
+
     /**
      * Handle the Article "created" event.
      *
@@ -15,9 +19,12 @@ class ArticleObserver
      */
     public function created(Article $article)
     {
-        $users = User::whereDoesntHave('roles')->where('device_token', '!=', null)->get();
+        $users = User::where('device_token', '!=', null)->get();
 
         foreach ($users as $key => $user) {
+
+            // dd('ss');
+
             $user->notify(new ArticleNotification($article));
         }
     }

@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Checkup;
+use App\Models\User;
 use App\Notifications\ArticleNotification;
 
 class CheckupObserver
@@ -15,7 +16,7 @@ class CheckupObserver
      */
     public function created(Checkup $checkup)
     {
-        $users = User::whereDoesntHave('roles')->where('device_token', '!=', null)->get();
+        $users = User::where('device_token', '!=', null)->get();
 
         foreach ($users as $key => $user) {
             $user->notify(new ArticleNotification($checkup));
