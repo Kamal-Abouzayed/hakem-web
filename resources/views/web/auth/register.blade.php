@@ -36,24 +36,7 @@
                                 <small class="error">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="col-lg-6">
-                            <div class="form-input arrow-form">
-                                <select class="form-select form-control " name="country_id" required>
-                                    <option value="">{{ __('Choose Country') }} </option>
 
-                                    @foreach ($countries as $country)
-                                        <option value="{{ $country->id }}"
-                                            {{ old('country_id') == $country->id ? 'selected' : '' }}>{{ $country->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <i class="bi bi-geo-alt"></i>
-
-                            </div>
-                            @error('country_id')
-                                <small class="error">{{ $message }}</small>
-                            @enderror
-                        </div>
                         <div class="col-lg-6">
                             <div class="form-input">
                                 <input type="email" placeholder="{{ __('Email') }}" value="{{ old('email') }}"
@@ -66,8 +49,8 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-input">
-                                <input type="text" placeholder="{{ __('Phone') }}"
-                                    value="{{ old('phone') }}" class="form-control" name="phone">
+                                <input type="text" placeholder="{{ __('Phone') }}" value="{{ old('phone') }}"
+                                    class="form-control" name="phone">
                                 <i class="bi bi-envelope"></i>
                             </div>
                             @error('phone')
@@ -96,12 +79,20 @@
                             @enderror
                         </div>
                         <div class="col-lg-6">
-                            <div class="form-input">
-                                <input type="date" value="{{ old('birthday') }}"
-                                    placeholder="{{ __('Birthdate (optional*)') }}" class="form-control" name="birthday">
-                                <i class="bi bi-calendar-date"></i>
+                            <div class="form-input arrow-form">
+                                <select class="form-select form-control " name="country_id" required>
+                                    <option value="">{{ __('Choose Country') }} </option>
+
+                                    @foreach ($countries as $country)
+                                        <option value="{{ $country->id }}"
+                                            {{ old('country_id') == $country->id ? 'selected' : '' }}>{{ $country->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <i class="bi bi-geo-alt"></i>
+
                             </div>
-                            @error('birthday')
+                            @error('country_id')
                                 <small class="error">{{ $message }}</small>
                             @enderror
                         </div>
@@ -123,6 +114,16 @@
                             </div>
                         </div>
 
+                        <div class="col-lg-6">
+                            <div class="form-input">
+                                <input type="date" value="{{ old('birthday') }}"
+                                    placeholder="{{ __('Birthdate (optional*)') }}" class="form-control" name="birthday">
+                                <i class="bi bi-calendar-date"></i>
+                            </div>
+                            @error('birthday')
+                                <small class="error">{{ $message }}</small>
+                            @enderror
+                        </div>
                         <div class="col-lg-12">
                             <div class="cleck-terms">
                                 <input type="checkbox" id="check-1" name="check" required>

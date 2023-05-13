@@ -11,9 +11,11 @@
                         <img src="{{ asset('storage/' . $content->img) }}" alt="">
                     </div>
                     <div class="text-read-article-index">
-                        <h3 class="date-article"> {{ $content->section->name }} ,<span>
+                        <h3 class="date-article"> {{ $content->section->name }}
+                            {{-- ,<span>
                                 {{ $content->created_at }}
-                            </span></h3>
+                            </span> --}}
+                        </h3>
                         <p>{!! strip_tags(Str::limit($content->desc, 50)) !!}</p>
                     </div>
                 </div>
@@ -72,9 +74,11 @@
                         <img src="{{ asset('storage/' . $article->img) }}" alt="">
                     </div>
                     <div class="text-read-article-index">
-                        <h3 class="date-article"> {{ $article->section->name }} ,<span>
+                        <h3 class="date-article"> {{ $article->section->name }}
+                            {{-- ,<span>
                                 {{ $article->user->full_name }}
-                            </span></h3>
+                            </span> --}}
+                        </h3>
                         <p>{!! strip_tags(Str::limit($article->desc, 50)) !!}</p>
                     </div>
                 </div>
@@ -109,9 +113,11 @@
                         <img src="{{ asset('storage/' . $newArticle->img) }}" alt="">
                     </div>
                     <div class="text-read-article-index">
-                        <h3 class="date-article"> {{ $newArticle->section->name }} ,<span>
+                        <h3 class="date-article"> {{ $newArticle->section->name }}
+                            {{-- ,<span>
                                 {{ $newArticle->user->full_name }}
-                            </span></h3>
+                            </span> --}}
+                        </h3>
                         <p>{!! strip_tags(Str::limit($newArticle->desc, 50)) !!}</p>
                     </div>
                 </div>

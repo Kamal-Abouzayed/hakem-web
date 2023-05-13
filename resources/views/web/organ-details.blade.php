@@ -37,9 +37,11 @@
                         </div>
 
                         <div class="text-article-details">
-                            <h3 class="date-article pb-3"> {{ $section->name }} ,<span>
+                            <h3 class="date-article pb-3"> {{ $section->name }}
+                                {{-- ,<span>
                                     {{ $article->created_at }}
-                                </span></h3>
+                                </span> --}}
+                            </h3>
                             <div class="text-details">
                                 {!! $article->desc !!}
                             </div>

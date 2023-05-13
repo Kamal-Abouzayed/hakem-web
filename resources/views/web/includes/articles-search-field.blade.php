@@ -1,4 +1,4 @@
-<div class="search-two">
+<div class="search">
     <div class="search-header">
         <form action="{{ route('web.search-articles') }}" method="GET">
             <input type="text" placeholder=" {{ __('Search Here') }} .." name="searchTerm" class="form-control">

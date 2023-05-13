@@ -38,7 +38,7 @@
                 </div>
             @else
 
-                @include('web.includes.articles-search-field')
+                {{-- @include('web.includes.articles-search-field') --}}
 
                 <div class="main-medicine-health">
                     <div class="row">

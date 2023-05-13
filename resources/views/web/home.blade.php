@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- start article-index  ===
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ========= -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ========= -->
     <section class="article-index mr-section">
         <div class="main-container">
             <div class="main-article-index">
@@ -34,7 +34,7 @@
         </div>
     </section>
     <!-- end  article-index  ===
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ========= -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ========= -->
 
 
     <!-- start more-section === -->
@@ -224,16 +224,17 @@
             @if (Auth::check() && Auth::user()->device_token == null)
                 // initFirebaseMessagingRegistration();
                 Swal.fire({
-                    title: "{{ __('Do you allow notifications?') }}",
-                    text: "{{ __('We like to send you push notifications to keep you up to date') }}",
+                    title: "{{ __('Hakem Web Notifications') }}",
+                    text: "{{ __('Would you like to receive notifications?') }}",
                     // icon: "info",
-                    imageUrl: "https://hakemweb.com/web/images/notification.png",
-                    imageWidth: 250,
-                    imageHeight: 250,
-                    imageAlt: "Hakem Web",
-                    confirmButtonText: "{{ __('Yes') }}",
+                    // imageUrl: "https://hakemweb.com/web/images/notification.png",
+                    // imageWidth: 250,
+                    // imageHeight: 250,
+                    // imageAlt: "Hakem Web",
+                    confirmButtonText: "{{ __('Yes, of course') }}",
+                    confirmButtonColor: '#76CCD3',
                     showCancelButton: true,
-                    cancelButtonText: "{{ __('No') }}",
+                    cancelButtonText: "{{ __('Not now') }}",
                     allowOutsideClick: false
                 }).then((result) => {
                     if (result.isConfirmed) {
@@ -242,16 +243,17 @@
                 });
             @elseif (Auth::guest())
                 Swal.fire({
-                    title: "{{ __('Do you allow notifications?') }}",
-                    text: "{{ __('We like to send you push notifications to keep you up to date') }}",
+                    title: "{{ __('Hakem Web Notifications') }}",
+                    text: "{{ __('Would you like to receive notifications?') }}",
                     // icon: "info",
-                    imageUrl: "https://hakemweb.com/web/images/notification.png",
-                    imageWidth: 250,
-                    imageHeight: 250,
-                    imageAlt: "Hakem Web",
-                    confirmButtonText: "{{ __('Yes') }}",
+                    // imageUrl: "https://hakemweb.com/web/images/notification.png",
+                    // imageWidth: 250,
+                    // imageHeight: 250,
+                    // imageAlt: "Hakem Web",
+                    confirmButtonText: "{{ __('Yes, of course') }}",
+                    confirmButtonColor: '#76CCD3',
                     showCancelButton: true,
-                    cancelButtonText: "{{ __('No') }}",
+                    cancelButtonText: "{{ __('Not now') }}",
                     allowOutsideClick: false
                 }).then((response) => {
                     if (response.isConfirmed) {

@@ -55,8 +55,7 @@
 
                     <input type="checkbox" id="select-all"> تحديد الكل
 
-                    <select class="select2-multi-select form-control" id="permissions" name="permissions[]" multiple
-                        required>
+                    <select class="select2-multiple form-control" id="permissions" name="permissions[]" multiple required>
                         @foreach ($permissions as $permission)
                             <option value="{{ $permission->id }}"
                                 {{ $user->permissions->contains($permission->id) ? 'selected' : '' }}>
@@ -97,6 +96,12 @@
                     var allSelected = $select.find('option').length === $select.find('option:selected').length;
                     $('#select-all').prop('checked', allSelected);
                 });
+
+                if ($select.find('option').length === $select.find('option:selected').length) {
+                    $('#select-all').prop('checked', true);
+                } else {
+                    $('#select-all').prop('checked', false);
+                }
             });
         </script>
     @endpush

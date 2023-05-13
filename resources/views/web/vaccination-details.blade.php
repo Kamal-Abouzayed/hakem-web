@@ -34,9 +34,11 @@
                         </div>
 
                         <div class="text-article-details">
-                            <h3 class="date-article pb-3"> {{ __('Checkups') }} ,<span>
+                            <h3 class="date-article pb-3"> {{ __('Checkups') }}
+                                {{-- ,<span>
                                     {{ $vaccination->created_at }}
-                                </span></h3>
+                                </span> --}}
+                            </h3>
                             <div class="text-details">
                                 {!! $vaccination->desc !!}
                             </div>

@@ -17,6 +17,7 @@
                             <th>#</th>
                             <th>اسم المستخدم</th>
                             <th>البريد الإلكترونى</th>
+                            <th>رقم الهاتف</th>
                             <th>الدولة</th>
                             <th>الجنس</th>
                             <th>تاريخ الميلاد</th>
@@ -29,6 +30,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user->full_name }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>{{ $user->phone ? $user->phone : '-' }}</td>
                                 <td>{{ $user->country ? $user->country->name : '-' }}</td>
                                 <td>{{ $user->gender ? ($user->gender == 'male' ? 'ذكر' : 'أنثى') : '-' }}</td>
                                 <td>{{ $user->birthday ? $user->birthday->format('Y-m-d') : '-' }}</td>

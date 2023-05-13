@@ -47,13 +47,13 @@
                     {{-- <div class="googel-now">
                         <a href="{{ url('auth/redirect') }}">{{ __('Login with google') }}</a>
                     </div> --}}
-
+{{-- 
                     <div class="col-md-12">
                         <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline"
                             href="{{ url('auth/redirect') }}"><img
                                 src="https://img.icons8.com/color/16/000000/google-logo.png">
                             {{ __('SignIn With Google') }} </a>
-                    </div>
+                    </div> --}}
 
                     <div class="regiester-now">
                         <p>{{ __("I don't have an account") }} <a

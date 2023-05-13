@@ -11,9 +11,11 @@
                         <img src="{{ asset('storage/' . $content->img) }}" alt="">
                     </div>
                     <div class="text-read-article-index">
-                        <h3 class="date-article"> {{ $content->section->name }} ,<span>
+                        <h3 class="date-article"> {{ $content->section->name }}
+                            {{-- ,<span>
                                 {{ $content->user->full_name }}
-                            </span></h3>
+                            </span> --}}
+                        </h3>
                         <p>{!! strip_tags(Str::limit($content->desc, 50)) !!}</p>
                     </div>
                 </div>
@@ -56,9 +58,11 @@
                         <img src="{{ asset('storage/' . $mostReadArticle->img) }}" alt="">
                     </div>
                     <div class="text-read-article-index">
-                        <h3 class="date-article"> {{ $mostReadArticle->section->name }} ,<span>
+                        <h3 class="date-article"> {{ $mostReadArticle->section->name }}
+                            {{-- ,<span>
                                 {{ $mostReadArticle->user->full_name }}
-                            </span></h3>
+                            </span> --}}
+                        </h3>
                         <p>{!! strip_tags(Str::limit($mostReadArticle->desc, 50)) !!}</p>
                     </div>
                 </div>
@@ -114,9 +118,11 @@
                                 <img src="{{ asset('storage/' . $medicines->img) }}" alt="">
                             </div>
                             <div class="text-read-article-index">
-                                <h3 class="date-article"> {{ $medicines->section->name }} ,<span>
+                                <h3 class="date-article"> {{ $medicines->section->name }}
+                                    {{-- ,<span>
                                         {{ $medicines->user->full_name }}
-                                    </span></h3>
+                                    </span> --}}
+                                </h3>
                                 <p>{!! strip_tags(Str::limit($medicines->desc, 50)) !!}</p>
                             </div>
                         </div>
@@ -141,9 +147,11 @@
                                 <img src="{{ asset('storage/' . $organ->img) }}" alt="">
                             </div>
                             <div class="text-read-article-index">
-                                <h3 class="date-article"> {{ __('Medicine and Health') }} ,<span>
+                                <h3 class="date-article"> {{ __('Medicine and Health') }}
+                                    {{-- ,<span>
                                         {{ $organ->created_at }}
-                                    </span></h3>
+                                    </span> --}}
+                                </h3>
                                 <p>{!! strip_tags(Str::limit($organ->desc, 50)) !!}</p>
                             </div>
                         </div>
@@ -171,9 +179,11 @@
                                 <img src="{{ asset('storage/' . $disease->img) }}" alt="">
                             </div>
                             <div class="text-read-article-index">
-                                <h3 class="date-article"> {{ $disease->section->name }} ,<span>
+                                <h3 class="date-article"> {{ $disease->section->name }}
+                                    {{-- ,<span>
                                         {{ $disease->user->full_name }}
-                                    </span></h3>
+                                    </span> --}}
+                                </h3>
                                 <p>{!! strip_tags(Str::limit($disease->desc, 50)) !!}</p>
                             </div>
                         </div>
@@ -199,9 +209,11 @@
                             <img src="{{ asset('storage/' . $disease->img) }}" alt="">
                         </div>
                         <div class="text-read-article-index">
-                            <h3 class="date-article"> {{ $disease->section->name }} ,<span>
+                            <h3 class="date-article"> {{ $disease->section->name }}
+                                {{-- ,<span>
                                     {{ $disease->user->full_name }}
-                                </span></h3>
+                                </span> --}}
+                            </h3>
                             <p>{!! strip_tags(Str::limit($disease->desc, 50)) !!}</p>
                         </div>
                     </div>
@@ -225,9 +237,11 @@
                             <img src="{{ asset('storage/' . $relatedArticle->img) }}" alt="">
                         </div>
                         <div class="text-read-article-index">
-                            <h3 class="date-article"> {{ $relatedArticle->section->name }} ,<span>
+                            <h3 class="date-article"> {{ $relatedArticle->section->name }}
+                                {{-- ,<span>
                                     {{ $relatedArticle->user->full_name }}
-                                </span></h3>
+                                </span> --}}
+                            </h3>
                             <p>{!! strip_tags(Str::limit($relatedArticle->desc, 50)) !!}</p>
                         </div>
                     </div>
@@ -250,9 +264,11 @@
                             <img src="{{ asset('storage/' . $checkup->img) }}" alt="">
                         </div>
                         <div class="text-read-article-index">
-                            <h3 class="date-article"> {{ __('Checkups') }} ,<span>
+                            <h3 class="date-article"> {{ __('Checkups') }}
+                                {{-- ,<span>
                                     {{ $checkup->user->full_name }}
-                                </span></h3>
+                                </span> --}}
+                            </h3>
                             <p>{!! strip_tags(Str::limit($checkup->desc, 50)) !!}</p>
                         </div>
                     </div>
@@ -276,9 +292,11 @@
                             <img src="{{ asset('storage/' . $vaccinationArticle->img) }}" alt="">
                         </div>
                         <div class="text-read-article-index">
-                            <h3 class="date-article"> {{ $vaccinationArticle->section->name }} ,<span>
+                            <h3 class="date-article"> {{ $vaccinationArticle->section->name }}
+                                {{-- ,<span>
                                     {{ $vaccinationArticle->user->full_name }}
-                                </span></h3>
+                                </span> --}}
+                            </h3>
                             <p>{!! strip_tags(Str::limit($vaccinationArticle->desc, 50)) !!}</p>
                         </div>
                     </div>
@@ -301,9 +319,11 @@
                             <img src="{{ asset('storage/' . $vaccination->img) }}" alt="">
                         </div>
                         <div class="text-read-article-index">
-                            <h3 class="date-article"> {{ __('Vaccinations') }} ,<span>
+                            <h3 class="date-article"> {{ __('Vaccinations') }}
+                                {{-- ,<span>
                                     {{ $vaccination->user->full_name }}
-                                </span></h3>
+                                </span> --}}
+                            </h3>
                             <p>{!! strip_tags(Str::limit($vaccination->desc, 50)) !!}</p>
                         </div>
                     </div>

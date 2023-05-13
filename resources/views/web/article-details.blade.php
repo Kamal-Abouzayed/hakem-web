@@ -38,9 +38,11 @@
                         </div>
 
                         <div class="text-article-details">
-                            <h3 class="date-article pb-3"> {{ $article->section->name }} ,<span>
+                            <h3 class="date-article pb-3"> {{ $article->section->name }}
+                                {{-- ,<span>
                                     {{ $article->user->full_name }}
-                                </span></h3>
+                                </span> --}}
+                            </h3>
                             <div class="text-details">
                                 {!! $article->desc !!}
                             </div>

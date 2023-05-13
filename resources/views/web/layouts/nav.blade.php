@@ -54,7 +54,7 @@
                     </div>
 
 
-                    {{-- @include('web.includes.articles-search-field') --}}
+                    @include('web.includes.articles-search-field')
 
                 </div>
             </div>
